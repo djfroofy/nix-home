@@ -1,5 +1,5 @@
 # nix-home
-Nix home-manager configuration for my desktop.
+Nix home-manager configuration for computers.
 
 To recreate home on another machine:
 
