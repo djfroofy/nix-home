@@ -40,6 +40,7 @@
   };
 
   home.file = {
+    ".Xmodmap".source = xmonad/Xmodmap;
     ".xmobarrc".source = xmonad/xmobarrc;
     ".xmonad/xmonad.hs".source = xmonad/xmonad.hs;
     ".zshrc".source = zsh/zshrc;
