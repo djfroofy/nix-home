@@ -7,7 +7,7 @@ To recreate home on another machine:
     mkdir .config
     cd .config
     git clone https://github.com/djfroofy/nix-home.git nixpkgs
-    cd nixpgs
+    cd nixpkgs
     ./setup.sh
 
 See: https://github.com/rycee/home-manager
