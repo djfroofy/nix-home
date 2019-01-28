@@ -13,6 +13,9 @@
     pkgs.youtube-dl
     pkgs.mosh
     pkgs.vscode
+    pkgs.ardour
+    pkgs.jack2
+    pkgs.qjackctl
   ];
 
 
