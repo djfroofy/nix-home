@@ -16,6 +16,7 @@
     pkgs.ardour
     pkgs.jack2
     pkgs.qjackctl
+    pkgs.flameshot
   ];
 
 
@@ -47,6 +48,7 @@
     ".xmobarrc".source = xmonad/xmobarrc;
     ".xmonad/xmonad.hs".source = xmonad/xmonad.hs;
     ".zshrc".source = zsh/zshrc;
+    ".mplayer/config".source = mplayer/config;
   };
  
 }

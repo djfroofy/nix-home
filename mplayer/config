@@ -1,0 +1,4 @@
+# ucomment to always connect to jack
+#ao=jack
+
+# Otherwise just run mplayer -ao jack path/to/file
