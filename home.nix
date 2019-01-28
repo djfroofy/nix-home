@@ -17,6 +17,8 @@
     pkgs.jack2
     pkgs.qjackctl
     pkgs.flameshot
+    pkgs.timemachine
+    pkgs.mimic
   ];
 
 
