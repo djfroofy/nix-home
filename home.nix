@@ -19,6 +19,7 @@
     pkgs.flameshot
     pkgs.timemachine
     pkgs.mimic
+    pkgs.rpm
   ];
 
 
