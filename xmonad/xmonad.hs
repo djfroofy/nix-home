@@ -83,7 +83,7 @@ defaultLayouts = avoidStruts (
 -- Colors and borders
 --
 myNormalBorderColor = "#002b36"
-myFocusedBorderColor = "#657b83"
+myFocusedBorderColor = "#65738b"
 
 -- Colors for text and backgrounds of each tab when in "Tabbed" layout.
 tabConfig = defaultTheme {
@@ -102,7 +102,7 @@ xmobarTitleColor = "green"
 xmobarCurrentWorkspaceColor = "#CEFFAC"
 
 -- Width of the window border in pixels.
-myBorderWidth = 7
+myBorderWidth = 4
 
 
 

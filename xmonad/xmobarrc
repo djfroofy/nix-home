@@ -19,5 +19,5 @@ Config { font = "xft:inconsolatalgc:pixelsize=12:antialias=true"
 ]
   , sepChar = "%"
   , alignSep = "}{"
-  , template = " %StdinReader% }{ %cpu% | %memory% | %wlp5s0% | %vol% | Seatlle:%KSEA% | %date% "
+  , template = " %StdinReader% }{ %cpu% | %memory% | %wlp5s0% | Seatlle:%KSEA% | %date% "
 }
