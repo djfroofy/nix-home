@@ -52,6 +52,8 @@
     ".xmonad/xmonad.hs".source = xmonad/xmonad.hs;
     ".zshrc".source = zsh/zshrc;
     ".mplayer/config".source = mplayer/config;
+    ".tmux.conf".source = tmux/tmux.conf;
+    ".tmux.conf.local".source = tmux/tmux.conf.local;
   };
  
 }
