@@ -304,7 +304,8 @@ main = do
  xmproc <- spawnPipe "xmobar ~/.xmobarrc"
  xmonad $ defaults  
       { manageHook = manageDocks <+> manageHook defaultConfig  
-      , layoutHook = avoidStruts $ myLayouts
+      , layoutHook = avoidStruts $ myLayouts 
+      , handleEventHook = handleEventHook defaultConfig <+> docksEventHook
       , logHook = dynamicLogWithPP xmobarPP  
            { ppOutput = hPutStrLn xmproc  
            , ppTitle = xmobarColor "#657b83" "" . shorten 100   
