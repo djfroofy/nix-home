@@ -20,6 +20,8 @@
     pkgs.timemachine
     pkgs.mimic
     pkgs.rpm
+    pkgs.fceux
+    pkgs.nixops
   ];
 
 
