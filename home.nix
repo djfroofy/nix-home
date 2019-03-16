@@ -22,6 +22,8 @@
     pkgs.rpm
     pkgs.fceux
     pkgs.nixops
+    pkgs.radeontop
+    pkgs.go-md2man
   ];
 
 
