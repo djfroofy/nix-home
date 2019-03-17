@@ -54,6 +54,7 @@ myManageHook = composeAll
     , className =? "MPlayer"        --> doFloat
     , className   =? "Download"     --> doFloat
     , className =? "Progress"       --> doFloat
+    , className =? "qemu-system-x86_64" --> doFloat
     , className =? "steam"          --> doFullFloat -- bigpicture-mode
     , title =? "Steam_Login"        --> doFloat
     , className =? "Steam"          --> doShift "three"
