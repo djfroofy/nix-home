@@ -6,24 +6,111 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+    oraclejdk.accept_license = true;
+  };
 
-  home.packages = [
-    pkgs.gimp
-    pkgs.youtube-dl
-    pkgs.mosh
-    pkgs.vscode
-    pkgs.ardour
-    pkgs.jack2
-    pkgs.qjackctl
-    pkgs.flameshot
-    pkgs.timemachine
-    pkgs.mimic
-    pkgs.rpm
-    pkgs.fceux
-    pkgs.nixops
-    pkgs.radeontop
-    pkgs.go-md2man
+  home.packages = with pkgs; [
+
+    # Screenshots
+    flameshot
+
+    # Screen, Mouse sharing
+    synergy
+
+    # Chatting
+    slack-term
+
+    # ---
+    # Development
+    # ----
+
+    # General
+    gnumake
+
+    # Java
+    oraclejdk
+    maven
+
+    # C
+    gcc
+
+    # Python and python packages
+    python
+    python27Packages.virtualenv
+    python27Packages.pykickstart
+
+    python37
+    python37Packages.virtualenv
+    python37Packages.glances
+
+    # Ruby
+    ruby
+
+    # Haskell
+    ghc
+    haskellPackages.xmonad-contrib
+
+    # Code editors, IDEs 
+    vscode
+
+    # Rust
+    rustc
+    rustPlatform.rustcSrc
+    cargo
+    racer
+    carnix
+
+    # Shells, remote debugging 
+    mosh
+
+    # ---
+    # AV and Games
+    # ---
+
+    # Audio
+    pamixer
+    paprefs
+    alsaLib
+    #fluidsynth
+    #soundfont-fluid
+    #timemachine
+    # jack2
+    # jack_rack
+    # timemachine
+    audacity
+    # chuck
+    # ardour
+    # qjackctl
+
+    # Photo Editing
+    gimp
+    blender
+
+    # Video
+    ffmpeg
+    mplayer
+    mpv
+    gimp
+    youtube-dl
+    #(pkgs.mplayer.override { jackaudioSupport = true; })
+    #(pkgs.mpv.override { jackaudioSupport = true; })
+    #(pkgs.blender.override { jackaudioSupport = true; })
+
+    # Games, GFX Demos etc
+    minetest
+    glxinfo
+    gtypist
+    maim
+
+    # Misc others
+    mimic
+    rpm
+    fceux
+    nixops
+    radeontop
+    go-md2man
   ];
 
 
@@ -60,6 +147,7 @@
     ".mplayer/config".source = mplayer/config;
     ".tmux.conf".source = tmux/tmux.conf;
     ".tmux.conf.local".source = tmux/tmux.conf.local;
+    ".slack-term".source = chat/slack-term;
   };
  
 }

@@ -296,6 +296,11 @@ myStartupHook = do
 -- myLayouts
 myLayouts = onWorkspace "three" simplestFloat $ defaultLayouts
 
+-- Set transparency on windows when out of focus
+-- myFadeHook = composeAll [isUnfocused --> transparency 0.2
+--                        ,                opaque
+--			]
+
 ------------------------------------------------------------------------
 -- Run xmonad with all the defaults we set up.
 --
@@ -306,7 +311,7 @@ main = do
  xmonad $ defaults  
       { manageHook = manageDocks <+> manageHook defaultConfig  
       , layoutHook = avoidStruts $ myLayouts 
-      , handleEventHook = handleEventHook defaultConfig <+> docksEventHook
+      , handleEventHook = handleEventHook defaultConfig <+> docksEventHook -- <+> fadeWindowsEventHook
       , logHook = dynamicLogWithPP xmobarPP  
            { ppOutput = hPutStrLn xmproc  
            , ppTitle = xmobarColor "#657b83" "" . shorten 100   
