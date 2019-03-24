@@ -22,6 +22,9 @@
     # Chatting
     slack-term
 
+    # Health and Well-being
+    redshift
+
     # ---
     # Development
     # ----
@@ -88,6 +91,9 @@
     gimp
     blender
 
+    # Bling
+    almonds
+
     # Video
     ffmpeg
     mplayer
@@ -113,6 +119,12 @@
     go-md2man
   ];
 
+
+  services.redshift = {
+    enable = true;
+    latitude = "47.679925";
+    longitude = "-122.268718";
+  };
 
   programs.vim = {
     enable = true;
