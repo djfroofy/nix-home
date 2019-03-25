@@ -63,7 +63,6 @@
     rustc
     rustPlatform.rustcSrc
     cargo
-    racer
     carnix
 
     # Shells, remote debugging 
