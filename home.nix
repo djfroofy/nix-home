@@ -13,8 +13,9 @@
 
   home.packages = with pkgs; [
 
-    # Screenshots
+    # Screenshots, Screencasts
     flameshot
+    vokoscreen
 
     # Screen, Mouse sharing
     synergy
@@ -140,7 +141,12 @@
       "rust-vim"
       "vim-racer"
     ];
-    
+  };
+
+  programs.zsh.oh-my-zsh = {
+    enable = true;
+    plugins = [ "git" "python" "rust" "carg" "nix-shell" ];
+    theme = "agnoster";
   };
   
   programs.git = {

@@ -1,4 +1,4 @@
-Config { font = "xft:inconsolatalgc:pixelsize=17:antialias=true"
+Config { font = "xft:inconsolatalgc:pixelsize=15:antialias=true"
   , bgColor = "#002b36"
   , fgColor = "#657b83"
   , border = NoBorder

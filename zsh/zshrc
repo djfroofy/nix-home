@@ -1,6 +1,19 @@
 # Created by dsmather for 5.6.2
+
 ZSH_THEME="agnoster"
-ZSH_TMUX_AUTOSTART=true
-plugins=(git python rust cargo)
+#ZSH_TMUX_AUTOSTART=true
+
+plugins=(git python rust cargo nix-shell)
+
 source $OH_MY_ZSH/oh-my-zsh.sh
 
+export PATH=$HOME/Projects/roo/target/debug/:$PATH
+
+# Aliases
+alias gpom='git push origin master'
+alias nso='nix-store --optimise -v'
+alias gcold='nix-collect-garbage --delete-older-than 30d'
+alias sgcold='sudo nix-collect-garbage --delete-older-than 30d'
+alias nbz='cd ~/Projects/nix-buildzones'
+alias lolj='sudo journalctl -f | lolcat'
+alias nixb="nix-build '<nixpkgs>' -A"
