@@ -7,7 +7,11 @@ plugins=(git python rust cargo nix-shell)
 
 source $OH_MY_ZSH/oh-my-zsh.sh
 
-export PATH=$HOME/Projects/roo/target/debug/:$PATH
+#for _rust_project in $(find $HOME/Projects/ -t d -maxdepth 1 -print)
+#do
+#	[[ -f ${_rust_project}/Cargo.toml ]] && PATH=${_rust_project}/target/debug:$PATH
+#done
+#export PATH
 
 # Aliases
 alias gpom='git push origin master'
@@ -17,3 +21,5 @@ alias sgcold='sudo nix-collect-garbage --delete-older-than 30d'
 alias nbz='cd ~/Projects/nix-buildzones'
 alias lolj='sudo journalctl -f | lolcat'
 alias nixb="nix-build '<nixpkgs>' -A"
+alias nature_video="mplayer -vf delogo=1598:99:254:65:0 $HOME/videos/nature.webm"
+alias campfire_video="mplayer -vf delogo=1110:653:150:50:0 $HOME/videos/campfire.mp4"

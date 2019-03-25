@@ -1,0 +1,2 @@
+#!/bin/sh
+mplayer -vf delogo=1110:653:150:50:0 $HOME/videos/campfire.mp4

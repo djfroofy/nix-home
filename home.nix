@@ -32,6 +32,7 @@
 
     # General
     gnumake
+    direnv
 
     # Java
     oraclejdk
@@ -161,10 +162,12 @@
     ".xmobarrc".source = xmonad/xmobarrc;
     ".xmonad/xmonad.hs".source = xmonad/xmonad.hs;
     ".zshrc".source = zsh/zshrc;
+    ".zshrc.local".source = zsh/zshrc.local;
     ".mplayer/config".source = mplayer/config;
     ".tmux.conf".source = tmux/tmux.conf;
     ".tmux.conf.local".source = tmux/tmux.conf.local;
     ".slack-term".source = chat/slack-term;
+    "bin".source = ./bin;
   };
  
 }

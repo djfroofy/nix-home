@@ -1,0 +1,2 @@
+#!/bin/sh
+mplayer -vf delogo=1598:99:254:65:0 /home/dsmather/videos/nature.webm
