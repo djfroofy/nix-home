@@ -46,6 +46,7 @@
     gnumake
     direnv
     minicom
+    xsel
 
     # Java
     maven
@@ -160,6 +161,22 @@
     ];
   };
 
+  programs.tmux = {
+    enable = true;
+    keyMode = "vi";
+    plugins = with pkgs; [
+      tmuxPlugins.sensible
+      tmuxPlugins.yank
+      tmuxPlugins.fpp
+      tmuxPlugins.battery
+      tmuxPlugins.copycat
+      tmuxPlugins.continuum
+      tmuxPlugins.open
+      tmuxPlugins.cpu
+      tmuxPlugins.pain-control
+    ];
+  };
+
   programs.zsh.oh-my-zsh = {
     enable = true;
     plugins = [ "git" "python" "rust" "carg" "nix-shell" ];
@@ -181,8 +198,6 @@
     ".zshrc".source = zsh/zshrc;
     ".zshrc.local".source = zsh/zshrc.local;
     ".mplayer/config".source = mplayer/config;
-    ".tmux.conf".source = tmux/tmux.conf;
-    ".tmux.conf.local".source = tmux/tmux.conf.local;
     ".slack-term".source = chat/slack-term;
     "bin".source = ./bin;
   };
