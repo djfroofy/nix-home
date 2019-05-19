@@ -11,6 +11,18 @@
     oraclejdk.accept_license = true;
   };
 
+
+  nixpkgs.overlays = [
+    (self: super:
+    {
+      oracledjk8 = super.oraclejdk8.override {
+        # Download from Oracle website
+        src = ./jdk-8u201-linux-x64.tar.gz;
+      };
+    })
+  ];
+
+
   home.packages = with pkgs; [
 
     # Screenshots, Screencasts
@@ -33,10 +45,11 @@
     # General
     gnumake
     direnv
+    minicom
 
     # Java
-    oraclejdk
     maven
+    oraclejdk8
 
     # C
     gcc
@@ -79,14 +92,14 @@
     alsaLib
     #fluidsynth
     #soundfont-fluid
-    #timemachine
-    # jack2
-    # jack_rack
-    # timemachine
+    jack2
+    jack_rack
+    timemachine
     audacity
     # chuck
-    # ardour
-    # qjackctl
+    ardour
+    qjackctl
+    bitwig-studio
 
     # Photo Editing
     gimp
@@ -97,11 +110,10 @@
 
     # Video
     ffmpeg
-    mplayer
     mpv
     gimp
     youtube-dl
-    #(pkgs.mplayer.override { jackaudioSupport = true; })
+    (pkgs.mplayer.override { jackaudioSupport = true; })
     #(pkgs.mpv.override { jackaudioSupport = true; })
     #(pkgs.blender.override { jackaudioSupport = true; })
 
@@ -118,6 +130,11 @@
     nixops
     radeontop
     go-md2man
+
+    # electronics projects
+    arduino
+    fritzing
+    ino
   ];
 
 
