@@ -12,22 +12,14 @@
   };
 
 
-  nixpkgs.overlays = [
-    (self: super:
-    {
-      oracledjk8 = super.oraclejdk8.override {
-        # Download from Oracle website
-        src = ./jdk-8u201-linux-x64.tar.gz;
-      };
-    })
-  ];
-
-
   home.packages = with pkgs; [
 
     # Screenshots, Screencasts
     flameshot
     vokoscreen
+    
+    # Keyboard stuff
+    xsel
 
     # Screen, Mouse sharing
     synergy
@@ -46,7 +38,6 @@
     gnumake
     direnv
     minicom
-    xsel
 
     # Java
     maven
@@ -59,7 +50,6 @@
     python
     python27Packages.virtualenv
     python27Packages.pykickstart
-
     python37
     python37Packages.virtualenv
     python37Packages.glances
@@ -145,6 +135,12 @@
     longitude = "-122.268718";
   };
 
+  # Make holding and release a meta key send key.
+  # (Using default which turns CTL keys into escape for vim.
+  services.xcape = {
+    enable = true;
+  };
+
   programs.vim = {
     enable = true;
     extraConfig = builtins.readFile vim/vimrc;
@@ -165,22 +161,60 @@
     enable = true;
     keyMode = "vi";
     plugins = with pkgs; [
-      tmuxPlugins.sensible
       tmuxPlugins.yank
       tmuxPlugins.fpp
-      tmuxPlugins.battery
       tmuxPlugins.copycat
-      tmuxPlugins.continuum
       tmuxPlugins.open
       tmuxPlugins.cpu
       tmuxPlugins.pain-control
+      tmuxPlugins.sidebar
+      {
+        plugin = tmuxPlugins.resurrect;
+        extraConfig = ''
+          set -g @resurrect-processes '"~.glances-wrapped" ~vim ~htop ~journalctl "git log" "git diff"'
+          set -g @resurrect-save-shell-history 'off'
+        '';
+      }
+      {
+        plugin = tmuxPlugins.continuum;
+        extraConfig = ''
+          set -g @continuum-restore 'on'
+          set -g @continuum-save-interval '1'
+          set -g @continuum-boot 'on'
+          '';
+      }
     ];
+    extraConfig = ''
+      set -g status-right "#{cpu_bg_color} CPU: #{cpu_icon} #{cpu_percentage} |#[bg=colour69]| \"#{=21:pane_title}\" |#[bg=colour7]| %H:%M %d-%b-%y"
+      set -g status-style fg=colour232,bg=colour66
+    '';
   };
 
-  programs.zsh.oh-my-zsh = {
+  programs.zsh = {
     enable = true;
-    plugins = [ "git" "python" "rust" "carg" "nix-shell" ];
-    theme = "agnoster";
+    shellAliases = {
+      gpom = "git push origin master";
+      nso = "nix-store --optimise -v";
+      gcold = "nix-collect-garbage --delete-older-than 30d";
+      sgcold = "sudo nix-collect-garbage --delete-older-than 30d";
+      nbz = "cd ~/Projects/nix-buildzones";
+      lolj = "sudo journalctl -f | lolcat";
+      nixb = "nix-build '<nixpkgs>' -A";
+      nature_video = "mplayer -vf delogo=1598:99:254:65:0 $HOME/videos/nature.webm";
+      campfire_video = "mplayer -vf delogo=1110:653:150:50:0 $HOME/videos/campfire.mp4";
+      sdana = "mkdir -p $HOME/systemd-analyze; systemd-analyze plot > $HOME/systemd-analyze/analysis-$(date +%Y%m%d-%H%M).svg";
+    };
+    oh-my-zsh = {
+      enable = true;
+      plugins = [
+        "git"
+        "python"
+        "rust"
+        "carg"
+        "nix-shell"
+      ];
+      theme = "agnoster";
+    };
   };
   
   programs.git = {
@@ -195,8 +229,6 @@
     ".Xmodmap".source = xmonad/Xmodmap;
     ".xmobarrc".source = xmonad/xmobarrc;
     ".xmonad/xmonad.hs".source = xmonad/xmonad.hs;
-    ".zshrc".source = zsh/zshrc;
-    ".zshrc.local".source = zsh/zshrc.local;
     ".mplayer/config".source = mplayer/config;
     ".slack-term".source = chat/slack-term;
     "bin".source = ./bin;
