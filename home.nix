@@ -11,6 +11,11 @@
     oraclejdk.accept_license = true;
   };
 
+  nixpkgs.config.packageOverrides = pkgs: { 
+     nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {
+	inherit pkgs;
+     };
+   };
 
   home.packages = with pkgs; [
 
@@ -20,6 +25,9 @@
     
     # Keyboard stuff
     xsel
+
+    # status bar (dmenu replacement)
+    rofi
 
     # Screen, Mouse sharing
     synergy
@@ -224,6 +232,21 @@
     userEmail = "drew.smathers@gmail.com";
     extraConfig = builtins.readFile git/gitconfig;
   };
+
+  programs.firefox = {
+    enable = true;
+    extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+      https-everywhere
+    ];
+  };
+
+  #programs.firefox = {
+  #  enable = true;
+  #  extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+  #    tridactyl
+  #    tampermonkey
+  #  ];
+  #};
 
   home.file = {
     ".Xmodmap".source = xmonad/Xmodmap;

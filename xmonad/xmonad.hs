@@ -12,6 +12,7 @@ import XMonad.Layout.Spiral
 import XMonad.Layout.PerWorkspace(onWorkspace)
 import XMonad.Layout.Tabbed
 import XMonad.Util.Run(spawnPipe)
+--import XMonad.Util.Run(safeSpawn)
 import XMonad.Util.EZConfig(additionalKeys)
 import qualified XMonad.StackSet as W
 import qualified Data.Map as M
@@ -135,16 +136,16 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
  --    spawn "exe=`dmenu_path_c | yeganesh` && eval \"exec $exe\"")
 
   -- Mute volume.
-  , ((modMask .|. controlMask, xK_m),
-     spawn "amixer -q set Master toggle")
+  --, ((modMask .|. controlMask, xK_m),
+  --m   spawn "amixer -q set Master toggle")
 
   -- Decrease volume.
-  , ((modMask .|. controlMask, xK_j),
-     spawn "amixer -q set Master 5%-")
+  --, ((modMask .|. controlMask, xK_j),
+  --   spawn "amixer -q set Master 5%-")
 
   -- Increase volume.
-  , ((modMask .|. controlMask, xK_k),
-     spawn "amixer -q set Master 5%+")
+  --, ((modMask .|. controlMask, xK_k),
+  --   spawn "amixer -q set Master 5%+")
 
   -- Audio previous.
   --, ((0, 0x1008FF16),
@@ -217,6 +218,10 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   -- Expand the master area.
   , ((modMask, xK_l),
      sendMessage Expand)
+  
+  -- Lock the screen
+  , ((modMask .|. shiftMask, xK_b),
+     spawn  "xautolock -locknow || (killall xautolock; xautolock -time 10 -locker slock & sleep 1; xautolock -locknow)")
 
   -- Push window back into tiling.
   , ((modMask, xK_t),
