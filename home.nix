@@ -254,6 +254,7 @@
     ".xmonad/xmonad.hs".source = xmonad/xmonad.hs;
     ".mplayer/config".source = mplayer/config;
     ".slack-term".source = chat/slack-term;
+    ".config/termite/config".source = base16-termite/themes/base16-monokai.config;
     "bin".source = ./bin;
   };
  
