@@ -161,13 +161,13 @@
       number = true;
     };
     plugins = [
-      "sensible"
       "supertab"
       "The_NERD_tree" # file system explorer
       "rust-vim"
       "vim-racer"
-      "vim-airline"
+      "lightline-vim"
       "nord-vim"
+      "vim-gitgutter"
     ];
   };
 

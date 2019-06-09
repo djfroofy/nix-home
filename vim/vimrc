@@ -25,3 +25,4 @@ map <C-t> :NERDTreeToggle<CR>
 
 colorscheme nord
 
+let g:nord_bold_vertical_split_line = 1
