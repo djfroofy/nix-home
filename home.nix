@@ -25,8 +25,7 @@
     
     # Keyboard stuff
     xsel
-
-    # status bar (dmenu replacement)
+    dmenu
     rofi
 
     # Screen, Mouse sharing
@@ -95,10 +94,15 @@
     jack_rack
     timemachine
     audacity
+    samplv1
     # chuck
     ardour
     qjackctl
     bitwig-studio
+    AMB-plugins
+    caps
+    ladspaPlugins
+    zam-plugins
 
     # Photo Editing
     gimp
@@ -162,6 +166,8 @@
       "The_NERD_tree" # file system explorer
       "rust-vim"
       "vim-racer"
+      "vim-airline"
+      "nord-vim"
     ];
   };
 
@@ -193,8 +199,7 @@
       }
     ];
     extraConfig = ''
-      set -g status-right "#{cpu_bg_color} CPU: #{cpu_icon} #{cpu_percentage} |#[bg=colour69]| \"#{=21:pane_title}\" |#[bg=colour7]| %H:%M %d-%b-%y"
-      set -g status-style fg=colour232,bg=colour66
+      run-shell "~/.nord-tmux/nord.tmux"
     '';
   };
 
@@ -240,13 +245,6 @@
     ];
   };
 
-  #programs.firefox = {
-  #  enable = true;
-  #  extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-  #    tridactyl
-  #    tampermonkey
-  #  ];
-  #};
 
   home.file = {
     ".Xmodmap".source = xmonad/Xmodmap;
@@ -254,7 +252,8 @@
     ".xmonad/xmonad.hs".source = xmonad/xmonad.hs;
     ".mplayer/config".source = mplayer/config;
     ".slack-term".source = chat/slack-term;
-    ".config/termite/config".source = base16-termite/themes/base16-monokai.config;
+    ".config/termite/config".source = nord-termite/src/config;
+    ".nord-tmux".source = ./nord-tmux;
     "bin".source = ./bin;
   };
  

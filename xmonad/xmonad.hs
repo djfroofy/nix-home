@@ -132,8 +132,9 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
  -- , ((0, xK_Print), spawn "scrot -e 'mv $f ~dana/Pictures/Screenshots'")
         
 
- -- , ((modMask, xK_p),
- --    spawn "exe=`dmenu_path_c | yeganesh` && eval \"exec $exe\"")
+ , ((modMask, xK_p),
+     spawn "exe=`dmenu_path_c | yeganesh` && eval \"exec $exe\"")
+
 
   -- Mute volume.
   --, ((modMask .|. controlMask, xK_m),
