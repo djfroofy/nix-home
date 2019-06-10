@@ -223,8 +223,6 @@
         "git"
         "python"
         "rust"
-        "carg"
-        "nix-shell"
       ];
       theme = "agnoster";
     };
