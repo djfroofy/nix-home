@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# Set the background wallpaper with feh
+feh --bg-scale /home/dsmather/captures/modern-desktop-bg.jpg &

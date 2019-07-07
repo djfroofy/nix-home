@@ -22,11 +22,15 @@
     # Screenshots, Screencasts
     flameshot
     vokoscreen
+    xmobar
     
     # Keyboard stuff
     xsel
+    xclip
     dmenu
-    rofi
+    maim
+    xdotool
+    slop
 
     # Screen, Mouse sharing
     synergy
@@ -47,8 +51,8 @@
     minicom
 
     # Java
-    maven
-    oraclejdk8
+    #maven
+    #oraclejdk8
 
     # C
     gcc
@@ -66,7 +70,6 @@
 
     # Haskell
     ghc
-    haskellPackages.xmonad-contrib
 
     # Code editors, IDEs 
     vscode
@@ -138,6 +141,9 @@
     arduino
     fritzing
     ino
+
+    unrar
+    xorg.xdpyinfo
   ];
 
 
@@ -248,6 +254,7 @@
     ".Xmodmap".source = xmonad/Xmodmap;
     ".xmobarrc".source = xmonad/xmobarrc;
     ".xmonad/xmonad.hs".source = xmonad/xmonad.hs;
+    ".xsessionrc".source = xmonad/xsessionrc;
     ".mplayer/config".source = mplayer/config;
     ".slack-term".source = chat/slack-term;
     ".config/termite/config".source = nord-termite/src/config;

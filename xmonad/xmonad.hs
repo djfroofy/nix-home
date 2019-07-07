@@ -12,8 +12,8 @@ import XMonad.Layout.Spiral
 import XMonad.Layout.PerWorkspace(onWorkspace)
 import XMonad.Layout.Tabbed
 import XMonad.Util.Run(spawnPipe)
---import XMonad.Util.Run(safeSpawn)
 import XMonad.Util.EZConfig(additionalKeys)
+import XMonad.Wallpaper;
 import qualified XMonad.StackSet as W
 import qualified Data.Map as M
 
@@ -48,18 +48,12 @@ myWorkspaces = ["one","two","three","four","five","six","seven","eight","nine"] 
 --
 myManageHook = composeAll
     [ resource =? "desktop_window"  --> doIgnore
-    , className =? "Galculator"     --> doFloat
-    , className =? "Steam"          --> doFloat
     , className =? "Gimp"           --> doFloat
     , resource =? "gpicview"        --> doFloat
     , className =? "MPlayer"        --> doFloat
     , className   =? "Download"     --> doFloat
     , className =? "Progress"       --> doFloat
     , className =? "qemu-system-x86_64" --> doFloat
-    , className =? "steam"          --> doFullFloat -- bigpicture-mode
-    , title =? "Steam_Login"        --> doFloat
-    , className =? "Steam"          --> doShift "three"
-    , title =? "Steam_Login"        --> doShift "three"
 --    , isFullscreen --> (doF W.focusDown <+> doFullFloat)]
     , isFullscreen                  --> doFullFloat ]
 
@@ -113,7 +107,7 @@ myBorderWidth = 4
 --
 -- modMask lets you specify which modkey you want to use. The default
 -- is mod1Mask ("left alt"). You may also consider using mod3Mask
--- ("right alt"), which does not conflict with emacs keybindings. The
+-- ("rght alt"), which does not conflict with emacs keybindings. The
 -- "windows key" is usually mod4Mask.
 --
 myModMask = mod1Mask
@@ -125,44 +119,14 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
   -- Start a terminal. Terminal to start is specified by myTerminal variable.
   [ ((modMask .|. shiftMask, xK_Return),
-     spawn $ XMonad.terminal conf)
+      spawn $ XMonad.terminal conf)
 
  -- Takes screenshot
  -- i, ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s -e 'mv $f ~dana/Pictures/Screenshots'")
  -- , ((0, xK_Print), spawn "scrot -e 'mv $f ~dana/Pictures/Screenshots'")
         
-
  , ((modMask, xK_p),
      spawn "exe=`dmenu_path_c | yeganesh` && eval \"exec $exe\"")
-
-
-  -- Mute volume.
-  --, ((modMask .|. controlMask, xK_m),
-  --m   spawn "amixer -q set Master toggle")
-
-  -- Decrease volume.
-  --, ((modMask .|. controlMask, xK_j),
-  --   spawn "amixer -q set Master 5%-")
-
-  -- Increase volume.
-  --, ((modMask .|. controlMask, xK_k),
-  --   spawn "amixer -q set Master 5%+")
-
-  -- Audio previous.
-  --, ((0, 0x1008FF16),
-  --   spawn "")
-
-  -- Play/pause.
-  --, ((0, 0x1008FF14),
-  --   spawn "")
-
-  -- Audio next.
-  --, ((0, 0x1008FF17),
-  --   spawn "")
-
-  -- Eject CD tray.
-  --, ((0, 0x1008FF2C),
-  --   spawn "eject -T")
 
   --------------------------------------------------------------------
   -- "Standard" xmonad key bindings
@@ -220,10 +184,6 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , ((modMask, xK_l),
      sendMessage Expand)
   
-  -- Lock the screen
-  , ((modMask .|. shiftMask, xK_b),
-     spawn  "xautolock -locknow || (killall xautolock; xautolock -time 10 -locker slock & sleep 1; xautolock -locknow)")
-
   -- Push window back into tiling.
   , ((modMask, xK_t),
      withFocused $ windows . W.sink)
@@ -314,6 +274,7 @@ myLayouts = onWorkspace "three" simplestFloat $ defaultLayouts
 
 main = do  
  xmproc <- spawnPipe "xmobar ~/.xmobarrc"
+ setRandomWallpaper [ "$HOME/captures/wallpapers" ]
  xmonad $ defaults  
       { manageHook = manageDocks <+> manageHook defaultConfig  
       , layoutHook = avoidStruts $ myLayouts 
@@ -326,7 +287,16 @@ main = do
            , ppUrgent  = xmobarColor "#ff69b4" ""
            , ppLayout = const "" -- to disable the layout info on xmobar  
            } 
-     } 
+     }
+     `additionalKeys`
+     [
+       -- Select screenshot
+       ((myModMask, xK_s),
+         spawn "maim -s -b 2 -c 0.7,0.7,0.88,1 $HOME/captures/screen-selection-`date +%Y%m%d-%H%M%S`.png")
+        -- Lock the screen
+     , ((myModMask .|. shiftMask, xK_b),
+         spawn  "xautolock -locknow || (killall xautolock; xautolock -time 10 -locker slock & sleep 1; xautolock -locknow)")
+     ]
 
 
 ------------------------------------------------------------------------
