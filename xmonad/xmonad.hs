@@ -126,7 +126,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
  -- , ((0, xK_Print), spawn "scrot -e 'mv $f ~dana/Pictures/Screenshots'")
         
  , ((modMask, xK_p),
-     spawn "exe=`dmenu_path_c | yeganesh` && eval \"exec $exe\"")
+     spawn "rofi -show run")
 
   --------------------------------------------------------------------
   -- "Standard" xmonad key bindings
@@ -206,6 +206,14 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   -- Restart xmonad.
   , ((modMask, xK_q),
      restart "xmonad" True)
+
+  -- Select screenshot
+  , ((myModMask, xK_s)
+      spawn "maim -s -b 2 -c 0.7,0.7,0.88,1 $HOME/captures/screen-selection-`date +%Y%m%d-%H%M%S`.png")
+
+  -- Lock the screen
+  , ((myModMask .|. shiftMask, xK_b),
+      spawn  "xautolock -locknow || (killall xautolock; xautolock -time 10 -locker slock & sleep 1; xautolock -locknow)")
   ]
   ++
  
@@ -288,16 +296,6 @@ main = do
            , ppLayout = const "" -- to disable the layout info on xmobar  
            } 
      }
-     `additionalKeys`
-     [
-       -- Select screenshot
-       ((myModMask, xK_s),
-         spawn "maim -s -b 2 -c 0.7,0.7,0.88,1 $HOME/captures/screen-selection-`date +%Y%m%d-%H%M%S`.png")
-        -- Lock the screen
-     , ((myModMask .|. shiftMask, xK_b),
-         spawn  "xautolock -locknow || (killall xautolock; xautolock -time 10 -locker slock & sleep 1; xautolock -locknow)")
-     ]
-
 
 ------------------------------------------------------------------------
 -- Combine it all together
@@ -309,20 +307,21 @@ main = do
 --
 defaults = defaultConfig {
     -- simple stuff
-    terminal = myTerminal,
-    focusFollowsMouse = myFocusFollowsMouse,
-    borderWidth = myBorderWidth,
-    modMask = myModMask,
-    workspaces = myWorkspaces,
-    normalBorderColor = myNormalBorderColor,
-    focusedBorderColor = myFocusedBorderColor,
+      terminal = myTerminal
+    , focusFollowsMouse = myFocusFollowsMouse
+    , borderWidth = myBorderWidth
+    , modMask = myModMask
+    , workspaces = myWorkspaces
+    , normalBorderColor = myNormalBorderColor
+    , focusedBorderColor = myFocusedBorderColor
  
     -- key bindings
-    mouseBindings = myMouseBindings,
+    , keys = myKeys 
+    , mouseBindings = myMouseBindings
  
     -- hooks, layouts
     -- defaultLayouts = smartBorders $ myLayout,
     -- layoutHook = myLayouts,
-    manageHook = myManageHook,
-    startupHook = myStartupHook
+    , manageHook = myManageHook
+    , startupHook = myStartupHook
 }

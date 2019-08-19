@@ -49,10 +49,11 @@
     gnumake
     direnv
     minicom
+    broot
 
     # Java
-    #maven
-    #oraclejdk8
+    maven
+    oraclejdk8
 
     # C
     gcc
@@ -191,7 +192,7 @@
       {
         plugin = tmuxPlugins.resurrect;
         extraConfig = ''
-          set -g @resurrect-processes '"~.glances-wrapped" ~vim ~htop ~journalctl "git log" "git diff"'
+          set -g @resurrect-processes '"~.glances-wrapped" ~vim ~htop ~journalctl nix-shell "git log" "git diff"'
           set -g @resurrect-save-shell-history 'off'
         '';
       }
