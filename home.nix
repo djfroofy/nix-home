@@ -207,6 +207,7 @@
     ];
     extraConfig = ''
       run-shell "~/.nord-tmux/nord.tmux"
+      set et
     '';
   };
 

@@ -1,6 +1,6 @@
 Config { font = "xft:inconsolatalgc:pixelsize=15:antialias=true"
-  , bgColor = "#002b36"
-  , fgColor = "#657b83"
+  , bgColor = "#2e3440"
+  , fgColor = "#eceff4"
   , border = NoBorder
   , borderColor = "black"
   , hideOnStart = False
@@ -9,12 +9,12 @@ Config { font = "xft:inconsolatalgc:pixelsize=15:antialias=true"
   , lowerOnStart = True
   , overrideRedirect = False
   , allDesktops = True
-  , commands = [ Run Weather "KSEA" ["-t"," <tempC>C","-L","64","-H","77","--normal","#657b83","--high","#657b83","--low","#657b83"] 36000
-  , Run Network "wlp5s0" ["-L","0","-H","32","--normal","#657b83","--high","#657b83"] 10
-  , Run Cpu ["-L","3","-H","50","--normal","#657b83","--high","#657b83"] 10
+  , commands = [ Run Weather "KSEA" ["-t"," <tempC>C","-L","64","-H","77","--normal","#88c0d0","--high","#ebcb8b","--low","#eceff4"] 36000
+  , Run Network "wlp5s0" ["-L","0","-H","32","--normal","#eceef4","--high","#b48ead"] 10
+  , Run Cpu ["-L","3","-H","50","--normal","#a3be8c","--high","#bg616a"] 10
   , Run Memory ["-t","Mem: <usedratio>%"] 10
   , Run Com "~/bin/get-volume.sh" [] "vol" 1
-  , Run Date "<fc=#93a1a1>%a %b %_d %Y %H:%M</fc>" "date" 10
+  , Run Date "<fc=#88c0d0>%a %b %_d %Y %H:%M</fc>" "date" 10
   , Run StdinReader
 ]
   , sepChar = "%"
