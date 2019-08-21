@@ -13,7 +13,6 @@ import XMonad.Layout.PerWorkspace(onWorkspace)
 import XMonad.Layout.Tabbed
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
-import XMonad.Wallpaper;
 import qualified XMonad.StackSet as W
 import qualified Data.Map as M
 
@@ -23,6 +22,7 @@ import qualified Data.Map as M
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
+
 myTerminal = "termite"
 
 ------------------------------------------------------------------------
@@ -30,7 +30,7 @@ myTerminal = "termite"
 -- The default number of workspaces (virtual screens) and their names.
 --
 myWorkspaces = ["one","two","three","four","five","six","seven","eight","nine"] -- ++ map show [6..9]
- 
+
 
 ------------------------------------------------------------------------
 -- Window rules
@@ -49,12 +49,10 @@ myWorkspaces = ["one","two","three","four","five","six","seven","eight","nine"] 
 myManageHook = composeAll
     [ resource =? "desktop_window"  --> doIgnore
     , className =? "Gimp"           --> doFloat
-    , resource =? "gpicview"        --> doFloat
     , className =? "MPlayer"        --> doFloat
     , className   =? "Download"     --> doFloat
     , className =? "Progress"       --> doFloat
     , className =? "qemu-system-x86_64" --> doFloat
---    , isFullscreen --> (doF W.focusDown <+> doFullFloat)]
     , isFullscreen                  --> doFullFloat ]
 
 ------------------------------------------------------------------------
@@ -78,27 +76,27 @@ defaultLayouts = avoidStruts (
 ------------------------------------------------------------------------
 -- Colors and borders
 --
-myNormalBorderColor = "#002b36"
-myFocusedBorderColor = "#65738b"
+myNormalBorderColor = "#434c5e"
+myFocusedBorderColor = "#8fbcbb"
 
 -- Colors for text and backgrounds of each tab when in "Tabbed" layout.
 tabConfig = defaultTheme {
-    activeBorderColor = "#7C7C7C",
-    activeTextColor = "#CEFFAC",
+    activeBorderColor = "#8fbcbb",
+    activeTextColor = "#eceff4",
     activeColor = "#000000",
-    inactiveBorderColor = "#7C7C7C",
+    inactiveBorderColor = "#434c5e",
     inactiveTextColor = "#EEEEEE",
     inactiveColor = "#000000"
 }
 
 -- Color of current window title in xmobar.
-xmobarTitleColor = "green"
+xmobarTitleColor = "#a3be8c"
 
 -- Color of current workspace in xmobar.
-xmobarCurrentWorkspaceColor = "#CEFFAC"
+xmobarCurrentWorkspaceColor = "#eceff4"
 
 -- Width of the window border in pixels.
-myBorderWidth = 4
+myBorderWidth = 3
 
 
 
@@ -107,7 +105,7 @@ myBorderWidth = 4
 --
 -- modMask lets you specify which modkey you want to use. The default
 -- is mod1Mask ("left alt"). You may also consider using mod3Mask
--- ("rght alt"), which does not conflict with emacs keybindings. The
+-- ("right alt"), which does not conflict with emacs keybindings. The
 -- "windows key" is usually mod4Mask.
 --
 myModMask = mod1Mask
@@ -119,18 +117,11 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
   -- Start a terminal. Terminal to start is specified by myTerminal variable.
   [ ((modMask .|. shiftMask, xK_Return),
-      spawn $ XMonad.terminal conf)
+     spawn $ XMonad.terminal conf)
 
- -- Takes screenshot
- -- i, ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s -e 'mv $f ~dana/Pictures/Screenshots'")
- -- , ((0, xK_Print), spawn "scrot -e 'mv $f ~dana/Pictures/Screenshots'")
-        
- , ((modMask, xK_p),
-     spawn "rofi -show run")
+  , ((modMask, xK_f),
+     spawn "/run/current-system/sw/bin/termite")
 
-  --------------------------------------------------------------------
-  -- "Standard" xmonad key bindings
-  --
 
   -- Close focused window.
   , ((modMask .|. shiftMask, xK_c),
@@ -183,7 +174,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   -- Expand the master area.
   , ((modMask, xK_l),
      sendMessage Expand)
-  
+
   -- Push window back into tiling.
   , ((modMask, xK_t),
      withFocused $ windows . W.sink)
@@ -195,6 +186,16 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   -- Decrement the number of windows in the master area.
   , ((modMask, xK_period),
      sendMessage (IncMasterN (-1)))
+  
+  -- Decrement the number of windows in the master area.
+  , ((modMask, xK_p),
+      spawn "rofi -theme Arc-Dark -show run")
+
+  , ((modMask, xK_s),
+      spawn "mkdir -p $HOME/captures && maim --select --bordersize=2 --color=0.7,0.8,0.8 > $HOME/captures/select-screen-$(date +%Y%m%d-%H%M%S).png")
+
+  , ((modMask .|. shiftMask, xK_l),
+       spawn "xautolock -locknow")
 
   -- Toggle the status bar gap.
   -- TODO: update this binding with avoidStruts, ((modMask, xK_b),
@@ -206,14 +207,6 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   -- Restart xmonad.
   , ((modMask, xK_q),
      restart "xmonad" True)
-
-  -- Select screenshot
-  , ((myModMask, xK_s)
-      spawn "maim -s -b 2 -c 0.7,0.7,0.88,1 $HOME/captures/screen-selection-`date +%Y%m%d-%H%M%S`.png")
-
-  -- Lock the screen
-  , ((myModMask .|. shiftMask, xK_b),
-      spawn  "xautolock -locknow || (killall xautolock; xautolock -time 10 -locker slock & sleep 1; xautolock -locknow)")
   ]
   ++
  
@@ -270,11 +263,6 @@ myStartupHook = do
 -- myLayouts
 myLayouts = onWorkspace "three" simplestFloat $ defaultLayouts
 
--- Set transparency on windows when out of focus
--- myFadeHook = composeAll [isUnfocused --> transparency 0.2
---                        ,                opaque
---			]
-
 ------------------------------------------------------------------------
 -- Run xmonad with all the defaults we set up.
 --
@@ -282,11 +270,10 @@ myLayouts = onWorkspace "three" simplestFloat $ defaultLayouts
 
 main = do  
  xmproc <- spawnPipe "xmobar ~/.xmobarrc"
- setRandomWallpaper [ "$HOME/captures/wallpapers" ]
  xmonad $ defaults  
       { manageHook = manageDocks <+> manageHook defaultConfig  
       , layoutHook = avoidStruts $ myLayouts 
-      , handleEventHook = handleEventHook defaultConfig <+> docksEventHook -- <+> fadeWindowsEventHook
+      , handleEventHook = handleEventHook defaultConfig <+> docksEventHook
       , logHook = dynamicLogWithPP xmobarPP  
            { ppOutput = hPutStrLn xmproc  
            , ppTitle = xmobarColor "#657b83" "" . shorten 100   
@@ -295,7 +282,8 @@ main = do
            , ppUrgent  = xmobarColor "#ff69b4" ""
            , ppLayout = const "" -- to disable the layout info on xmobar  
            } 
-     }
+     } 
+
 
 ------------------------------------------------------------------------
 -- Combine it all together
@@ -307,21 +295,22 @@ main = do
 --
 defaults = defaultConfig {
     -- simple stuff
-      terminal = myTerminal
-    , focusFollowsMouse = myFocusFollowsMouse
-    , borderWidth = myBorderWidth
-    , modMask = myModMask
-    , workspaces = myWorkspaces
-    , normalBorderColor = myNormalBorderColor
-    , focusedBorderColor = myFocusedBorderColor
+    terminal = myTerminal,
+    focusFollowsMouse = myFocusFollowsMouse,
+    borderWidth = myBorderWidth,
+    modMask = myModMask,
+    workspaces = myWorkspaces,
+    normalBorderColor = myNormalBorderColor,
+    focusedBorderColor = myFocusedBorderColor,
  
     -- key bindings
-    , keys = myKeys 
-    , mouseBindings = myMouseBindings
+    keys = myKeys,
+    -- mouse bindings
+    mouseBindings = myMouseBindings,
  
     -- hooks, layouts
     -- defaultLayouts = smartBorders $ myLayout,
     -- layoutHook = myLayouts,
-    , manageHook = myManageHook
-    , startupHook = myStartupHook
+    manageHook = myManageHook,
+    startupHook = myStartupHook
 }
