@@ -23,6 +23,7 @@
     flameshot
     vokoscreen
     xmobar
+    rofi
     
     # Keyboard stuff
     xsel
