@@ -262,6 +262,7 @@
     ".slack-term".source = chat/slack-term;
     ".config/termite/config".source = nord-termite/src/config;
     ".nord-tmux".source = ./nord-tmux;
+    ".local/share/rofi/themes".source = ./base16-rofi/themes;
     "bin".source = ./bin;
   };
  

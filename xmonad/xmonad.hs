@@ -189,7 +189,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   
   -- Decrement the number of windows in the master area.
   , ((modMask, xK_p),
-      spawn "rofi -theme Arc-Dark -show run")
+      spawn "rofi -theme base16-nord-froofy -show run")
 
   , ((modMask, xK_s),
       spawn "mkdir -p $HOME/captures && maim --select --bordersize=2 --color=0.7,0.8,0.8 > $HOME/captures/select-screen-$(date +%Y%m%d-%H%M%S).png")
