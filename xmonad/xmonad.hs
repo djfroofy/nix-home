@@ -1,6 +1,7 @@
 import System.IO
 import System.Exit
 import XMonad
+import XMonad.Config.Desktop
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
@@ -13,6 +14,7 @@ import XMonad.Layout.PerWorkspace(onWorkspace)
 import XMonad.Layout.Tabbed
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
+import XMonad.Wallpaper(setRandomWallpaper)
 import qualified XMonad.StackSet as W
 import qualified Data.Map as M
 
@@ -266,14 +268,14 @@ myLayouts = onWorkspace "three" simplestFloat $ defaultLayouts
 ------------------------------------------------------------------------
 -- Run xmonad with all the defaults we set up.
 --
---main = xmonad =<< xmobar defaultConfig { terminal = "urxvt" }
 
 main = do  
  xmproc <- spawnPipe "xmobar ~/.xmobarrc"
+ setRandomWallpaper [ "$HOME/captures/wallpapers" ]
  xmonad $ defaults  
-      { manageHook = manageDocks <+> manageHook defaultConfig  
+      { manageHook = manageDocks <+> manageHook desktopConfig
       , layoutHook = avoidStruts $ myLayouts 
-      , handleEventHook = handleEventHook defaultConfig <+> docksEventHook
+      , handleEventHook = handleEventHook desktopConfig <+> docksEventHook
       , logHook = dynamicLogWithPP xmobarPP  
            { ppOutput = hPutStrLn xmproc  
            , ppTitle = xmobarColor "#657b83" "" . shorten 100   
@@ -293,7 +295,7 @@ main = do
 -- 
 -- No need to modify this.
 --
-defaults = defaultConfig {
+defaults = desktopConfig {
     -- simple stuff
     terminal = myTerminal,
     focusFollowsMouse = myFocusFollowsMouse,

@@ -23,6 +23,7 @@
     flameshot
     vokoscreen
     xmobar
+    haskellPackages.xmonad-wallpaper
     rofi
     
     # Keyboard stuff
