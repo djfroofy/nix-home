@@ -20,7 +20,6 @@
   home.packages = with pkgs; [
 
     # Screenshots, Screencasts
-    flameshot
     vokoscreen
     xmobar
     haskellPackages.xmonad-wallpaper
@@ -169,14 +168,14 @@
       relativenumber = true;
       number = true;
     };
-    plugins = [
-      "supertab"
-      "The_NERD_tree" # file system explorer
-      "rust-vim"
-      "vim-racer"
-      "lightline-vim"
-      "nord-vim"
-      "vim-gitgutter"
+    plugins = with pkgs; [
+      vimPlugins.supertab
+      vimPlugins.The_NERD_tree # file system explorer
+      vimPlugins.rust-vim
+      vimPlugins.vim-racer
+      vimPlugins.lightline-vim
+      vimPlugins.nord-vim
+      vimPlugins.vim-gitgutter
     ];
   };
 
