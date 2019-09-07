@@ -203,6 +203,7 @@
           set -g @continuum-restore 'on'
           set -g @continuum-save-interval '1'
           set -g @continuum-boot 'on'
+          bind-key a set-window-option synchronize-panes
           '';
       }
     ];
