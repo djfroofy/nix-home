@@ -194,7 +194,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
       spawn "rofi -theme base16-nord-froofy -show run")
 
   , ((modMask, xK_s),
-      spawn "mkdir -p $HOME/captures && maim --select --bordersize=2 --color=0.7,0.8,0.8 > $HOME/captures/select-screen-$(date +%Y%m%d-%H%M%S).png")
+      spawn "mkdir -p $HOME/captures && maim --select --bordersize=3 --color=0.706,0.557,0.678 $HOME/captures/select-screen-$(date +%Y%m%d-%H%M%S).png")
 
   , ((modMask .|. shiftMask, xK_l),
        spawn "xautolock -locknow")
