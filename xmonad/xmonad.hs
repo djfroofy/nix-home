@@ -122,7 +122,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
      spawn $ XMonad.terminal conf)
 
   , ((modMask, xK_f),
-     spawn "/run/current-system/sw/bin/termite")
+     spawn "termite")
 
 
   -- Close focused window.
