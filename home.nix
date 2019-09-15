@@ -23,6 +23,7 @@
     vokoscreen
     xmobar
     haskellPackages.xmonad-wallpaper
+    # dmenu replacement task launcher
     rofi
     
     # Keyboard stuff
@@ -34,10 +35,10 @@
     slop
 
     # Screen, Mouse sharing
-    synergy
+    # synergy
 
     # Chatting
-    slack-term
+    # slack-term
 
     # Health and Well-being
     redshift
@@ -129,7 +130,6 @@
     minetest
     glxinfo
     gtypist
-    maim
 
     # Misc others
     mimic
@@ -263,7 +263,7 @@
     ".xmonad/xmonad.hs".source = xmonad/xmonad.hs;
     ".xsessionrc".source = xmonad/xsessionrc;
     ".mplayer/config".source = mplayer/config;
-    ".slack-term".source = chat/slack-term;
+    #".slack-term".source = chat/slack-term;
     ".config/termite/config".source = nord-termite/src/config;
     ".nord-tmux".source = ./nord-tmux;
     ".local/share/rofi/themes".source = ./base16-rofi/themes;
