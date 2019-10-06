@@ -22,6 +22,7 @@
     # Screenshots, Screencasts
     vokoscreen
     xmobar
+    arandr
     haskellPackages.xmonad-wallpaper
     feh
     acpi
