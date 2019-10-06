@@ -9,15 +9,36 @@ Config { font = "xft:inconsolatalgc:pixelsize=15:antialias=true"
   , lowerOnStart = True
   , overrideRedirect = False
   , allDesktops = True
-  , commands = [ Run Weather "KSEA" ["-t"," <tempC>C","-L","64","-H","77","--normal","#88c0d0","--high","#ebcb8b","--low","#eceff4"] 36000
-  , Run Network "wlp5s0" ["-L","0","-H","32","--normal","#eceef4","--high","#b48ead"] 10
-  , Run Cpu ["-L","3","-H","50","--normal","#a3be8c","--high","#bg616a"] 10
-  , Run Memory ["-t","Mem: <usedratio>%"] 10
-  , Run Com "~/bin/get-volume.sh" [] "vol" 1
-  , Run Date "<fc=#88c0d0>%a %b %_d %Y %H:%M</fc>" "date" 10
-  , Run StdinReader
-]
+  , commands =
+     [
+     -- Seattle Weather
+       Run Weather "KSEA" ["-t"," <tempC>C","-L","64","-H","77","--normal","#88c0d0","--high","#ebcb8b","--low","#eceff4"] 36000
+     -- Network monitoring
+     , Run Network "wlp5s0" ["-L","0","-H","32","--normal","#eceef4","--high","#b48ead"] 10
+     -- CPU activity monitor
+     , Run Cpu ["-L","3","-H","50","--normal","#a3be8c","--high","#bg616a"] 10
+     -- Memory Usage monitor
+     , Run Memory ["-t","Mem: <usedratio>%"] 10
+     -- Volume Monitor
+     , Run Com "~/bin/get-volume.sh" [] "vol" 1
+     -- Battery monitor
+     , Run Battery [ "--template" , "Batt: <acstatus>"
+                   , "--Low"      , "10"   -- units: %
+                   , "--High"     , "80"   -- units: %
+                   , "--low"      , "darkred"
+                   , "--normal"   , "darkorange"
+                   , "--high"     , "darkgreen"
+                   , "--" -- battery specific options
+                          -- discharging status
+                          , "-o"  , "<fc=#dAA520>Charging</fc>"
+                          -- charged status
+                          , "-i"  , "<fc=#006000>Charged</fc>"
+                   ] 50
+     -- Date and time
+     , Run Date "<fc=#88c0d0>%a %b %_d %Y %H:%M</fc>" "date" 10
+     , Run StdinReader
+     ]
   , sepChar = "%"
   , alignSep = "}{"
-  , template = " %StdinReader% }{ %cpu% | %memory% | %wlp5s0% | Seatlle:%KSEA% | %date% "
+  , template = " %StdinReader% }{ %battery% | %cpu% | %memory% | %wlp5s0% | Seatlle:%KSEA% | %date% "
 }

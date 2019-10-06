@@ -23,6 +23,8 @@
     vokoscreen
     xmobar
     haskellPackages.xmonad-wallpaper
+    feh
+    acpi
     # dmenu replacement task launcher
     rofi
     
