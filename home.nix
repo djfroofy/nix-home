@@ -40,7 +40,10 @@
     # Screen, Mouse sharing
     # synergy
 
-    # Chatting
+    # Chatting, conferencing, emailing
+    zoom-us
+    slack-dark
+    mutt
     # slack-term
 
     # Health and Well-being
@@ -55,6 +58,7 @@
     direnv
     minicom
     broot
+    neofetch
 
     # Java
     maven
@@ -66,7 +70,6 @@
     # Python and python packages
     python
     python27Packages.virtualenv
-    python27Packages.pykickstart
     python37
     python37Packages.virtualenv
     python37Packages.glances
@@ -116,9 +119,11 @@
     # Photo Editing
     gimp
     blender
+    inkscape
 
     # Bling
     almonds
+    xaos
 
     # Video
     ffmpeg
