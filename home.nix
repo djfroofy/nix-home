@@ -3,8 +3,9 @@
 
 {
 
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
+  imports = [
+    ./work/work.nix
+  ];
 
   nixpkgs.config = {
     allowUnfree = true;
@@ -13,9 +14,9 @@
 
   nixpkgs.config.packageOverrides = pkgs: { 
      nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {
-	inherit pkgs;
-     };
-   };
+  	inherit pkgs;
+    };
+  };
 
   home.packages = with pkgs; [
 
@@ -42,7 +43,7 @@
 
     # Chatting, conferencing, emailing
     zoom-us
-    slack-dark
+    slack
     mutt
     # slack-term
 
@@ -55,6 +56,7 @@
 
     # General
     gnumake
+    cmake
     direnv
     minicom
     broot
@@ -76,6 +78,10 @@
 
     # Ruby
     ruby
+
+    # Go
+    go
+    protobuf
 
     # Haskell
     ghc
@@ -264,6 +270,10 @@
     ];
   };
 
+  programs.home-manager = {
+    enable = true;
+  };
+
 
   home.file = {
     ".Xmodmap".source = xmonad/Xmodmap;
@@ -271,7 +281,6 @@
     ".xmonad/xmonad.hs".source = xmonad/xmonad.hs;
     ".xsessionrc".source = xmonad/xsessionrc;
     ".mplayer/config".source = mplayer/config;
-    #".slack-term".source = chat/slack-term;
     ".config/termite/config".source = nord-termite/src/config;
     ".nord-tmux".source = ./nord-tmux;
     ".local/share/rofi/themes".source = ./base16-rofi/themes;
