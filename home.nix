@@ -26,6 +26,8 @@
     arandr
     haskellPackages.xmonad-wallpaper
     feh
+    firefox
+    google-chrome
     acpi
     # dmenu replacement task launcher
     rofi
@@ -45,6 +47,7 @@
     zoom-us
     slack
     mutt
+
     # slack-term
 
     # Health and Well-being
@@ -61,6 +64,13 @@
     minicom
     broot
     neofetch
+    openconnect
+    opensc
+    yubico-piv-tool
+    yubikey-manager
+    dnsutils
+    #opencryptoki
+    #pcsclite
 
     # Java
     maven
@@ -116,7 +126,7 @@
     # chuck
     ardour
     qjackctl
-    bitwig-studio
+    # bitwig-studio
     AMB-plugins
     caps
     ladspaPlugins
@@ -148,6 +158,7 @@
     # Misc others
     mimic
     rpm
+    fpm
     fceux
     nixops
     radeontop
