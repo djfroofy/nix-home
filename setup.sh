@@ -2,19 +2,23 @@
 
 set -euf -o pipefail
 
-if [[ -d work ]]; then
-   echo backing up work to _work.back
-   mv work _work.back
-fi
-mkdir -p work/bin
-echo "{ ... }: {}" > work/work.nix
-echo "================================================================"
-echo "Created stub directory for work configurations. At a later point"
-echo "you can backup and symlink in prefered work configurations. Ex:"
-echo "    cd ~/.config/nixpgs"
-echo "    rm -rf work"
-echo "    ln -s ~/Projects/nix-home-work work"
-echo "================================================================"
+for dropin in work personal
+do
+        if [[ -d "${dropin}" ]]
+        then
+                echo Drop-in ${dropin} already exists, skipping
+        else
+                mkdir -p ${dropin}
+                echo "{ ... }: {}" > ${dropin}/${dropin}.nix
+                echo "================================================================"
+                echo "Created stub directory for your ${dropin} configurations. At a later point"
+                echo "you can backup and symlink in prefered ${dropin} configurations. Ex:"
+                echo "    cd ~/.config/nixpgs"
+                echo "    mv ${dropin} ${dropin}.bak"
+                echo "    ln -s ~/Projects/nix-home-${dropin} ${dropin}"
+                echo "================================================================"
+        fi
+done
 
 nix-channel --add https://github.com/rycee/home-manager/archive/master.tar.gz home-manager
 nix-channel --update home-manager

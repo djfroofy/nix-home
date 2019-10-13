@@ -5,6 +5,7 @@
 
   imports = [
     ./work/work.nix
+    ./personal/personal.nix
   ];
 
   nixpkgs.config = {
