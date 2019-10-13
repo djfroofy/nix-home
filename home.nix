@@ -29,6 +29,7 @@
     firefox
     google-chrome
     acpi
+    i7z
     # dmenu replacement task launcher
     rofi
     
@@ -47,6 +48,7 @@
     zoom-us
     slack
     mutt
+    procmail
 
     # slack-term
 
