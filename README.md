@@ -25,7 +25,7 @@ For more details on home-manager for nix, see: https://github.com/rycee/home-man
 
 # drop-in configurations
 
-The setup.sh script below creates 2 subdirecties and stub drop-in nix expressions: (work|personal).nix and package.nix.
+The setup.sh script below creates 2 subdirecties and stub drop-in nix expressions: (work|personal).nix and packages.nix.
 
 This allows you to easily add custom configuration for personal and work and not worry about
 maintaining divergent branches for home and work profiles.
