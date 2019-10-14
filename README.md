@@ -22,3 +22,24 @@ This is mostly tested on NixOS 19.09 along with the following configuration: htt
 On other Linux systems, ymmv definitely.
 
 For more details on home-manager for nix, see: https://github.com/rycee/home-manager
+
+# drop-in configurations
+
+The setup.sh script below creates 2 subdirecties and stub drop-in nix expressions: <drop-in>.nix and package.nix.
+
+This allows you to easily add custom configuration for personal and work and not worry about
+maintaining divergent branches for home and work profiles.
+
+To override work configuration, for example, with a checkout containing nix expressions and other files:
+
+    cd ~/.config/nixpgs
+    mv work work.bak
+    ln -s ~/Projects/nix-home-work work
+
+For personal configuration:
+
+    cd ~/.config/nixpgs
+    mv personal personal.bak
+    ln -s ~/Projects/nix-home-personal personal
+
+For an example drop-in see: https://github.com/djfroofy/nix-home-personal

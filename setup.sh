@@ -10,6 +10,7 @@ do
         else
                 mkdir -p ${dropin}
                 echo "{ ... }: {}" > ${dropin}/${dropin}.nix
+                echo "pkgs: with pkgs; []" > ${dropin}/packages.nix
                 echo "================================================================"
                 echo "Created stub directory for your ${dropin} configurations. At a later point"
                 echo "you can backup and symlink in prefered ${dropin} configurations. Ex:"
