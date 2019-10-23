@@ -30,6 +30,7 @@
     google-chrome
     acpi
     rofi
+    adobe-reader
     
     # Keyboard stuff
     xsel
@@ -38,6 +39,7 @@
     maim
     xdotool
     slop
+    ffmpeg
 
     # Screen, Mouse sharing
     # synergy
@@ -66,6 +68,7 @@
     neofetch
     dnsutils
     i7z
+    lm_sensors
 
     # Java
     maven
@@ -80,6 +83,9 @@
     python37
     python37Packages.virtualenv
     python37Packages.glances
+
+    # code review stuff
+    arcanist
 
     # Ruby
     ruby
@@ -162,7 +168,7 @@
       {
         plugin = tmuxPlugins.resurrect;
         extraConfig = ''
-          set -g @resurrect-processes '"~.glances-wrapped" ~vim ~htop ~journalctl nix-shell "git log" "git diff"'
+          set -g @resurrect-processes '"~.glances-wrapped" ~vim ~htop ~journalctl nix-shell "git log" "git diff" "watch" "sudo i7z"'
           set -g @resurrect-save-shell-history 'off'
         '';
       }

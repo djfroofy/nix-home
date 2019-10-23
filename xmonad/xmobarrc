@@ -16,7 +16,7 @@ Config { font = "xft:inconsolatalgc:pixelsize=15:antialias=true"
      -- Network monitoring
      , Run Network "wlp5s0" ["-L","0","-H","32","--normal","#eceef4","--high","#b48ead"] 10
      -- CPU activity monitor
-     , Run Cpu ["-L","3","-H","50","--normal","#a3be8c","--high","#bg616a"] 10
+     , Run Cpu ["-L","3","-H","50","--normal","#a3be8c","--high","#bf616a"] 10
      -- Memory Usage monitor
      , Run Memory ["-t","Mem: <usedratio>%"] 10
      -- Volume Monitor

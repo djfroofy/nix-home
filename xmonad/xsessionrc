@@ -2,3 +2,10 @@
 
 # Set the background wallpaper with feh
 feh --bg-scale /home/dsmather/captures/modern-desktop-bg.jpg &
+
+# Set up i18n input
+export XMODIFIERS="@im=fcitx"
+export XMODIFIER="@im=fcitx"
+export GTK_IM_MODULE="fcitx"
+export QT_IM_MODULE="fcitx"
+fcitx &
