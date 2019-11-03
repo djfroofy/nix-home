@@ -1,8 +1,5 @@
 { config, pkgs, ... }:
-
-
 {
-
   imports = [
     ./work/work.nix
     ./personal/personal.nix
@@ -12,116 +9,6 @@
     allowUnfree = true;
     oraclejdk.accept_license = true;
   };
-
-  nixpkgs.config.packageOverrides = pkgs: { 
-     nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {
-  	inherit pkgs;
-    };
-  };
-
-  home.packages = with pkgs; [
-
-    # X related stuff
-    xmobar
-    arandr
-    haskellPackages.xmonad-wallpaper
-    feh
-    firefox
-    google-chrome
-    acpi
-    rofi
-    adobe-reader
-    
-    # Keyboard stuff
-    xsel
-    xclip
-    dmenu
-    maim
-    xdotool
-    slop
-    ffmpeg
-
-    # Screen, Mouse sharing
-    # synergy
-
-    # Chatting, conferencing, emailing
-    zoom-us
-    slack
-    mutt
-    procmail
-
-    # slack-term
-
-    # Health and Well-being
-    redshift
-
-    # ---
-    # Development
-    # ----
-
-    # General
-    gnumake
-    cmake
-    direnv
-    minicom
-    broot
-    neofetch
-    dnsutils
-    i7z
-    lm_sensors
-
-    # Java
-    maven
-    oraclejdk8
-
-    # C
-    gcc
-
-    # Python and python packages
-    python
-    python27Packages.virtualenv
-    python37
-    python37Packages.virtualenv
-    python37Packages.glances
-
-    # code review stuff
-    arcanist
-
-    # Ruby
-    ruby
-
-    # Go
-    go
-    protobuf
-
-    # Haskell
-    ghc
-
-    # Code editors, IDEs 
-    vscode
-
-    # Rust
-    rustc
-    rustPlatform.rustcSrc
-    cargo
-    carnix
-
-    # Shells, remote debugging 
-    mosh
-
-    # Misc others
-    mimic
-    rpm
-    fpm
-    fceux
-    nixops
-    radeontop
-    go-md2man
-
-    unrar
-    xorg.xdpyinfo
-
-  ] ++ (import ./personal/packages.nix pkgs) ++ (import ./work/packages.nix pkgs);
 
 
   services.redshift = {
@@ -224,13 +111,6 @@
     };
   };
 
-  programs.firefox = {
-    enable = true;
-    extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-      https-everywhere
-    ];
-  };
-
   programs.home-manager = {
     enable = true;
   };
@@ -245,6 +125,7 @@
     ".config/termite/config".source = nord-termite/src/config;
     ".nord-tmux".source = ./nord-tmux;
     ".local/share/rofi/themes".source = ./base16-rofi/themes;
+    ".mutt".source = ./mutt;
     "bin".source = ./bin;
   };
  

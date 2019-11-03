@@ -1,0 +1,16 @@
+auto_view text/html                                      # view html automatically
+
+alternative_order text/plain text/enriched text/html     # save html for last
+
+source ~/.mutt/colors-gruvbox-shuber.muttrc
+
+set mailcap_path = ~/.mutt/mailcap
+
+set sort = threads
+set sort_aux = last-date-received
+
+# As last ditch effort to view HTML - just view in browser
+macro attach 'V' "<pipe-entry>iconv -c --to-code=UTF8 > ~/.cache/mutt/mail.html<enter><shell-escape>$BROWSER ~/.cache/mutt/mail.html<enter>"
+
+source ~/.mutt/smtp-auth.muttrc
+
