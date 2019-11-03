@@ -1,8 +1,8 @@
 { config, pkgs, ... }:
 {
   imports = [
-    ./work/work.nix
-    ./personal/personal.nix
+    ./work/home.nix
+    ./personal/home.nix
   ];
 
   nixpkgs.config = {
