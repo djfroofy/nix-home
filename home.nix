@@ -28,7 +28,7 @@
     Timer = {
       Unit = "fetchmail.service";
       AccuracySec = "10s";
-      OnCalendar = "*:*:00";
+      OnCalendar = "*:0/15";
     };
     Install = {
       WantedBy = [ "timers.target" ];
@@ -150,6 +150,7 @@
     ".nord-tmux".source = ./nord-tmux;
     ".local/share/rofi/themes".source = ./base16-rofi/themes;
     ".mutt".source = ./mutt;
+    ".urlview".source = ./urlview;
     "bin".source = ./bin;
   };
  

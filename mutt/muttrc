@@ -1,16 +1,29 @@
 auto_view text/html                                      # view html automatically
-
 alternative_order text/plain text/enriched text/html     # save html for last
 
-source ~/.mutt/colors-gruvbox-shuber.muttrc
+mailboxes =INBOX
 
 set mailcap_path = ~/.mutt/mailcap
 
-set sort = threads
+set header_cache = ~/.cache/mutt
+set message_cachedir = ~/.cache/mutt
+
+set sort = "reverse-threads"
 set sort_aux = last-date-received
+set sort_browser = "reverse-date"
+
+set sidebar_visible = no
+
+bind index,pager B sidebar-toggle-visible
+
+# Collapse threads
+unset collapse_unread
+set uncollapse_jump = yes
 
 # As last ditch effort to view HTML - just view in browser
 macro attach 'V' "<pipe-entry>iconv -c --to-code=UTF8 > ~/.cache/mutt/mail.html<enter><shell-escape>$BROWSER ~/.cache/mutt/mail.html<enter>"
 
 source ~/.mutt/smtp-auth.muttrc
 
+# Color scheme = gruvbox
+source ~/.mutt/colors-gruvbox-shuber.muttrc
