@@ -1,0 +1,12 @@
+set realname = 'John Doe'
+set from = john.doe@oracle.com
+
+set use_from = yes
+set smtp_url = "smtps://john.doe@oracle.com@example.com:465/"
+set smtp_pass = 'secret'
+set ssl_force_tls = yes
+set ssl_starttls = no
+set smtp_authenticators = "login"
+
+set ssl_verify_host = no
+set ssl_verify_dates = no
