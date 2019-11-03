@@ -10,6 +10,30 @@
     oraclejdk.accept_license = true;
   };
 
+  systemd.user.services.fetchmail = {
+    Unit = {
+      Description = "fetchmail";
+    };
+    Service = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.fetchmail}/bin/fetchmail";
+      SuccessExitStatus = "0";
+    };
+  };
+
+  systemd.user.timers.fetchmail = {
+    Unit = {
+      Description = "fetchmail timer";
+    };
+    Timer = {
+      Unit = "fetchmail.service";
+      AccuracySec = "10s";
+      OnCalendar = "*:*:00";
+    };
+    Install = {
+      WantedBy = [ "timers.target" ];
+    };
+  };
 
   services.redshift = {
     enable = true;

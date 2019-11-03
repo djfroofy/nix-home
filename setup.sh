@@ -1,4 +1,4 @@
-#!/run/current-system/sw/bin/bash
+#!/usr/bin/env bash
 
 set -euf -o pipefail
 
@@ -9,7 +9,7 @@ do
                 echo Drop-in ${dropin} already exists, skipping
         else
                 mkdir -p ${dropin}
-                echo "{ ... }: {}" > ${dropin}/${dropin}.nix
+                echo "{ ... }: {}" > ${dropin}/home.nix
                 echo "pkgs: with pkgs; []" > ${dropin}/packages.nix
                 echo "================================================================"
                 echo "Created stub directory for your ${dropin} configurations. At a later point"
