@@ -10,30 +10,30 @@
     oraclejdk.accept_license = true;
   };
 
-  systemd.user.services.fetchmail = {
-    Unit = {
-      Description = "fetchmail";
-    };
-    Service = {
-      Type = "oneshot";
-      ExecStart = "${pkgs.fetchmail}/bin/fetchmail";
-      SuccessExitStatus = "0";
-    };
-  };
+  #systemd.user.services.fetchmail = {
+  #  Unit = {
+  #    Description = "fetchmail";
+  #  };
+  #  Service = {
+  #    Type = "oneshot";
+  #    ExecStart = "${pkgs.fetchmail}/bin/fetchmail --nobounce";
+  #    SuccessExitStatus = "0 1";
+  #  };
+  #};
 
-  systemd.user.timers.fetchmail = {
-    Unit = {
-      Description = "fetchmail timer";
-    };
-    Timer = {
-      Unit = "fetchmail.service";
-      AccuracySec = "10s";
-      OnCalendar = "*:0/15";
-    };
-    Install = {
-      WantedBy = [ "timers.target" ];
-    };
-  };
+  #systemd.user.timers.fetchmail = {
+  #  Unit = {
+  #    Description = "fetchmail timer";
+  #  };
+  #  Timer = {
+  #    Unit = "fetchmail.service";
+  #    AccuracySec = "10s";
+  #    OnCalendar = "*:0/15";
+  #  };
+  #  Install = {
+  #    WantedBy = [ "timers.target" ];
+  #  };
+  #};
 
   services.redshift = {
     enable = true;
@@ -150,6 +150,7 @@
     ".nord-tmux".source = ./nord-tmux;
     ".local/share/rofi/themes".source = ./base16-rofi/themes;
     ".mutt".source = ./mutt;
+    ".notmuch-config".source = ./notmuch-config;
     ".urlview".source = ./urlview;
     "bin".source = ./bin;
   };

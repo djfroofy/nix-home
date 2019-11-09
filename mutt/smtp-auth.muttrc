@@ -1,0 +1,12 @@
+set realname = "`cat ~/.mailauth/realname`" 
+set from = `cat ~/.mailauth/email` 
+
+set use_from = yes
+set smtp_url = "smtps://`cat ~/.mailauth/username`@stbeehive.oracle.com:465/"
+set smtp_pass = `cat ~/.mailauth/password` 
+set ssl_force_tls = yes
+set ssl_starttls = no
+set smtp_authenticators = "login"
+
+set ssl_verify_host = no
+set ssl_verify_dates = no

@@ -1,6 +1,7 @@
 import System.IO
 import System.Exit
 import XMonad
+import XMonad.Actions.WindowGo
 import XMonad.Config.Desktop
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
@@ -122,7 +123,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
      spawn $ XMonad.terminal conf)
 
   , ((modMask, xK_f),
-     spawn "termite")
+     runOrRaise "firefox" (className =? "Firefox"))
 
 
   -- Close focused window.
@@ -231,7 +232,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 -- Focus rules
 -- True if your focus should follow your mouse cursor.
 myFocusFollowsMouse :: Bool
-myFocusFollowsMouse = True
+myFocusFollowsMouse = False
  
 myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
   [
