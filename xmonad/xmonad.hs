@@ -2,6 +2,7 @@ import System.IO
 import System.Exit
 import XMonad
 import XMonad.Actions.WindowGo
+import XMonad.Actions.WindowMenu
 import XMonad.Config.Desktop
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
@@ -152,11 +153,15 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
   -- Move focus to the previous window.
   , ((modMask, xK_k),
-     windows W.focusUp )
+     windows W.focusUp)
 
   -- Move focus to the master window.
-  , ((modMask, xK_m),
-     windows W.focusMaster )
+  --, ((modMask, xK_m),
+  --   withFocused (sendMessage . maximizeRestore))
+     
+  -- Bring up the window menu?
+  , ((modMask, xK_o),
+     windowMenu)
 
   -- Swap the focused window and the master window.
   , ((modMask, xK_Return),
@@ -264,7 +269,8 @@ myStartupHook = do
 ------------------------------------------------------------------------
 -- Floats all windows in a certain workspace. 
 -- myLayouts
-myLayouts = onWorkspace "three" simplestFloat $ defaultLayouts
+-- myLayouts = onWorkspace "three" simplestFloat $ defaultLayouts
+myLayouts = defaultLayouts
 
 ------------------------------------------------------------------------
 -- Run xmonad with all the defaults we set up.
