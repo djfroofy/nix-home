@@ -10,31 +10,6 @@
     oraclejdk.accept_license = true;
   };
 
-  #systemd.user.services.fetchmail = {
-  #  Unit = {
-  #    Description = "fetchmail";
-  #  };
-  #  Service = {
-  #    Type = "oneshot";
-  #    ExecStart = "${pkgs.fetchmail}/bin/fetchmail --nobounce";
-  #    SuccessExitStatus = "0 1";
-  #  };
-  #};
-
-  #systemd.user.timers.fetchmail = {
-  #  Unit = {
-  #    Description = "fetchmail timer";
-  #  };
-  #  Timer = {
-  #    Unit = "fetchmail.service";
-  #    AccuracySec = "10s";
-  #    OnCalendar = "*:0/15";
-  #  };
-  #  Install = {
-  #    WantedBy = [ "timers.target" ];
-  #  };
-  #};
-
   services.redshift = {
     enable = true;
     latitude = "47.679925";
@@ -111,6 +86,7 @@
       nature_video = "mplayer -vf delogo=1598:99:254:65:0 $HOME/videos/nature.webm";
       campfire_video = "mplayer -vf delogo=1110:653:150:50:0 $HOME/videos/campfire.mp4";
       sdana = "mkdir -p $HOME/systemd-analyze; systemd-analyze plot > $HOME/systemd-analyze/analysis-$(date +%Y%m%d-%H%M).svg";
+      ff69 = "/nix/store/aaa9km89zpvnsn4gss95vskm9h9jncfp-firefox-69.0.2/bin/firefox";
     };
     oh-my-zsh = {
       enable = true;
