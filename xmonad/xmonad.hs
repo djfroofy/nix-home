@@ -1,6 +1,7 @@
 import System.IO
 import System.Exit
 import XMonad
+import XMonad.Actions.GridSelect
 import XMonad.Actions.WindowGo
 import XMonad.Actions.WindowMenu
 import XMonad.Config.Desktop
@@ -102,7 +103,21 @@ xmobarCurrentWorkspaceColor = "#eceff4"
 -- Width of the window border in pixels.
 myBorderWidth = 3
 
+nordColorizer = colorRangeFromClassName
+        (0x2e,0x34,0x40)  -- lowest inactive bg
+        (0x81,0xa1,0xc1)  -- highest inactive bg
+        (0xeb,0xcb,0x8b)  -- active bg
+        white             -- inactive fg
+        black             -- active fg
+    where black = minBound
+          white = maxBound
 
+gsconfig colorizer = (buildDefaultGSConfig colorizer)
+    {  gs_cellheight  = 73
+    ,  gs_cellwidth   = 410
+    ,  gs_bordercolor = "#88c0d0"
+    ,  gs_font        = "xft:Ubuntu-Light:size=12"
+    }
 
 ------------------------------------------------------------------------
 -- Key bindings
@@ -126,6 +141,8 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , ((modMask, xK_f),
      runOrRaise "firefox" (className =? "Firefox"))
 
+  , ((modMask, xK_g),
+     goToSelected $ gsconfig nordColorizer)
 
   -- Close focused window.
   , ((modMask .|. shiftMask, xK_c),
