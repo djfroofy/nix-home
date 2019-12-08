@@ -37,6 +37,7 @@
       vimPlugins.lightline-vim
       vimPlugins.nord-vim
       vimPlugins.vim-gitgutter
+      vimPlugins.vim-better-whitespace
     ];
   };
 
@@ -98,7 +99,7 @@
       theme = "agnoster";
     };
   };
-  
+
   programs.git = {
     package = pkgs.gitAndTools.gitFull;
     enable = true;
@@ -130,5 +131,5 @@
     ".urlview".source = ./urlview;
     "bin".source = ./bin;
   };
- 
+
 }
