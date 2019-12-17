@@ -11,8 +11,10 @@ Config { font = "xft:inconsolatalgc:pixelsize=15:antialias=true"
   , allDesktops = True
   , commands =
      [
+     -- Kernel
+       Run Com "uname" ["-r"] "kernel" 10
      -- Seattle Weather
-       Run Weather "KSEA" ["-t"," <tempC>C","-L","64","-H","77","--normal","#88c0d0","--high","#ebcb8b","--low","#eceff4"] 36000
+     , Run Weather "KSEA" ["-t"," <tempC>C","-L","64","-H","77","--normal","#88c0d0","--high","#ebcb8b","--low","#eceff4"] 36000
      -- Network monitoring
      , Run Network "wlp5s0" ["-L","0","-H","32","--normal","#eceef4","--high","#b48ead"] 10
      -- CPU activity monitor
@@ -40,5 +42,5 @@ Config { font = "xft:inconsolatalgc:pixelsize=15:antialias=true"
      ]
   , sepChar = "%"
   , alignSep = "}{"
-  , template = " %StdinReader% }{ %battery% | %cpu% | %memory% | %wlp5s0% | Seatlle:%KSEA% | %date% "
+  , template = "<icon=nixos.xpm/> %StdinReader% }{ <fc=#ebcb8b>%kernel%</fc> <icon=tux.xpm/> | %battery% | %cpu% | %memory% | %wlp5s0% | Seattle:%KSEA% | %date% "
 }

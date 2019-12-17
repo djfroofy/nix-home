@@ -99,6 +99,9 @@
       ];
       theme = "agnoster";
     };
+    initExtra = ''
+      eval "$(thefuck --alias)"
+    '';
   };
 
   programs.git = {
@@ -122,6 +125,7 @@
     ".Xmodmap".source = xmonad/Xmodmap;
     ".xmobarrc".source = xmonad/xmobarrc;
     ".xmonad/xmonad.hs".source = xmonad/xmonad.hs;
+    ".xmonad/icons".source = xmonad/icons;
     ".xsessionrc".source = xmonad/xsessionrc;
     ".mplayer/config".source = mplayer/config;
     ".config/termite/config".source = nord-termite/src/config;

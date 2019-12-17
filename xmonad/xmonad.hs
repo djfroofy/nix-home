@@ -205,10 +205,6 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   -- Move focus to the master window.
   --, ((modMask, xK_m),
   --   withFocused (sendMessage . maximizeRestore))
-     
-  -- Bring up the window menu?
-  , ((modMask, xK_o),
-     windowMenu)
 
   -- Swap the focused window and the master window.
   , ((modMask, xK_Return),
@@ -314,7 +310,7 @@ myStartupHook = do
     spawn "xmodmap ~/.Xmodmap"
 
 ------------------------------------------------------------------------
--- Floats all windows in a certain workspace. 
+-- Floats all windows in a certain workspace.
 -- myLayouts
 -- myLayouts = onWorkspace "three" simplestFloat $ defaultLayouts
 myLayouts = defaultLayouts
@@ -323,22 +319,22 @@ myLayouts = defaultLayouts
 -- Run xmonad with all the defaults we set up.
 --
 
-main = do  
- xmproc <- spawnPipe "xmobar ~/.xmobarrc"
+main = do
+ xmproc <- spawnPipe "xmobar -i ~/.xmonad/icons ~/.xmobarrc"
  setRandomWallpaper [ "$HOME/captures/wallpapers" ]
- xmonad $ defaults  
+ xmonad $ defaults
       { manageHook = manageDocks <+> manageHook desktopConfig
-      , layoutHook = avoidStruts $ myLayouts 
+      , layoutHook = avoidStruts $ myLayouts
       , handleEventHook = handleEventHook desktopConfig <+> docksEventHook
-      , logHook = dynamicLogWithPP xmobarPP  
-           { ppOutput = hPutStrLn xmproc  
-           , ppTitle = xmobarColor "#657b83" "" . shorten 100   
+      , logHook = dynamicLogWithPP xmobarPP
+           { ppOutput = hPutStrLn xmproc
+           , ppTitle = xmobarColor "#657b83" "" . shorten 100
            , ppCurrent = xmobarColor "#c0c0c0" "" . wrap "" ""
            , ppSep     = xmobarColor "#c0c0c0" "" " | "
            , ppUrgent  = xmobarColor "#ff69b4" ""
-           , ppLayout = const "" -- to disable the layout info on xmobar  
-           } 
-     } 
+           , ppLayout = const "" -- to disable the layout info on xmobar
+           }
+     }
 
 
 ------------------------------------------------------------------------
@@ -346,7 +342,7 @@ main = do
 -- A structure containing your configuration settings, overriding
 -- fields in the default config. Any you don't override, will
 -- use the defaults defined in xmonad/XMonad/Config.hs
--- 
+--
 -- No need to modify this.
 --
 defaults = desktopConfig {
@@ -358,12 +354,10 @@ defaults = desktopConfig {
     workspaces = myWorkspaces,
     normalBorderColor = myNormalBorderColor,
     focusedBorderColor = myFocusedBorderColor,
- 
     -- key bindings
     keys = myKeys,
     -- mouse bindings
     mouseBindings = myMouseBindings,
- 
     -- hooks, layouts
     -- defaultLayouts = smartBorders $ myLayout,
     -- layoutHook = myLayouts,
