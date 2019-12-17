@@ -37,8 +37,8 @@
       vimPlugins.lightline-vim
       vimPlugins.nord-vim
       vimPlugins.vim-gitgutter
-      vimPlugins.vim-better-whitespace
       vimPlugins.vim-nix
+      vimPlugins.vim-better-whitespace
     ];
   };
 

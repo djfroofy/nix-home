@@ -3,7 +3,6 @@ import System.Exit
 import XMonad
 import XMonad.Actions.GridSelect
 import XMonad.Actions.WindowGo
-import XMonad.Actions.WindowMenu
 import XMonad.Config.Desktop
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
@@ -118,10 +117,10 @@ nordColorizerOcean = colorRangeFromClassName
 
 gsconfigWindows colorizer = (buildDefaultGSConfig colorizer)
     {  gs_cellheight  = gsCellHeight
-    ,  gs_cellwidth   = gsCellWidth 
+    ,  gs_cellwidth   = gsCellWidth
     ,  gs_bordercolor = "#88c0d0"
     --,  gs_font        = "xft:Ubuntu-Light:size=14"
-    ,  gs_font        = gsFont 
+    ,  gs_font        = gsFont
     }
 
 nordColorizerSnow = colorRangeFromClassName
@@ -134,11 +133,11 @@ nordColorizerSnow = colorRangeFromClassName
           white = maxBound
 
 gsconfigActions colorizer = (buildDefaultGSConfig colorizer)
-    {  gs_cellheight  = gsCellHeight 
-    ,  gs_cellwidth   = gsCellWidth 
+    {  gs_cellheight  = gsCellHeight
+    ,  gs_cellwidth   = gsCellWidth
     ,  gs_bordercolor = "#b48ead"
     --,  gs_font        = "xft:Ubuntu-Light:size=14"
-    ,  gs_font        = gsFont 
+    ,  gs_font        = gsFont
     }
 
 gsconfigSelectedActions =
@@ -155,7 +154,7 @@ gsconfig2 = gsconfigActions nordColorizerSnow
 -- "windows key" is usually mod4Mask.
 --
 myModMask = mod1Mask
- 
+
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   ----------------------------------------------------------------------
   -- Custom key bindings
@@ -237,7 +236,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   -- Decrement the number of windows in the master area.
   , ((modMask, xK_period),
      sendMessage (IncMasterN (-1)))
-  
+
   -- Decrement the number of windows in the master area.
   , ((modMask, xK_p),
       spawn "rofi -theme base16-nord-froofy -show run")
@@ -260,7 +259,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
      restart "xmonad" True)
   ]
   ++
- 
+
   -- mod-[1..9], Switch to workspace N
   -- mod-shift-[1..9], Move client to workspace N
   [((m .|. modMask, k), windows $ f i)
@@ -273,7 +272,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   [((m .|. modMask, key), screenWorkspace sc >>= flip whenJust (windows . f))
       | (key, sc) <- zip [xK_w, xK_e, xK_r] [0..]
       , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
- 
+
 ------------------------------------------------------------------------
 -- Mouse bindings
 --
@@ -281,21 +280,21 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 -- True if your focus should follow your mouse cursor.
 myFocusFollowsMouse :: Bool
 myFocusFollowsMouse = False
- 
+
 myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
   [
     -- mod-button1, Set the window to floating mode and move by dragging
     ((modMask, button1),
      (\w -> focus w >> mouseMoveWindow w))
- 
+
     -- mod-button2, Raise the window to the top of the stack
     , ((modMask, button2),
        (\w -> focus w >> windows W.swapMaster))
- 
+
     -- mod-button3, Set the window to floating mode and resize by dragging
     , ((modMask, button3),
        (\w -> focus w >> mouseResizeWindow w))
- 
+
     -- you may also bind events to the mouse scroll wheel (button4 and button5)
   ]
 
