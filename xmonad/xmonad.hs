@@ -248,10 +248,14 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   -- Turn the volume up
   , ((modMask, xK_i),
        raiseVolume 3 >> return ())
+  , ((modMask .|. shiftMask, xK_i),
+       raiseVolume 1 >> return ())
 
   -- Turn the volume down
   , ((modMask, xK_u),
        lowerVolume 3 >> return ())
+  , ((modMask .|. shiftMask, xK_u),
+       lowerVolume 1 >> return ())
 
   -- Mute the volume
   , ((modMask, xK_o),
