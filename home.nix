@@ -123,7 +123,7 @@
 
   home.file = {
     ".Xmodmap".source = xmonad/Xmodmap;
-    ".xmobarrc".source = xmonad/xmobar.hs;
+    ".xmobarrc".source = xmonad/xmobarrc;
     ".xmonad/xmonad.hs".source = xmonad/xmonad.hs;
     ".xmonad/icons".source = xmonad/icons;
     ".xsessionrc".source = xmonad/xsessionrc;
