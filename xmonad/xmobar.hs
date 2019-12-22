@@ -1,3 +1,15 @@
+--------------------------------------------------------------------------
+-- |
+-- Copyright: (c) 2019, 2020 Drew Smathers
+-- License: MIT
+--
+-- Maintainer: drew.smathers@gmail.com
+-- Stability: unstable
+-- Portability: linux
+-- |
+--------------------------------------------------------------------------
+
+
 Config {
     font = "xft:audiowide-regular:pixelsize=15:antialias=true"
   , bgColor = "#2e3440"
@@ -37,9 +49,9 @@ Config {
                , "--high"    , "#bf616a"
                ] 10
      , Run MultiCoreTemp [ "--template"  , "Temp: <fc=#4c566a><max>°C <avg>°C</fc>"
-                         , "--Low"     , "40"
+                         , "--Low"     , "55"
                          , "--High"    , "80"
-                         , "--low"     , "#a3be8c"
+                         , "--low"     , "#88c0d0"
                          , "--normal"  , "#d08770"
                          , "--high"    , "#bf616a"
                          ] 10
@@ -73,21 +85,21 @@ Config {
                       , "--high"    , "#bf616a"
                       ] 10
      -- Disk Usage
-     , Run DiskU [ ("/"     , "Disk: <fc=#4c566a>/ <used>/<size></fc>")
+     , Run DiskU [ ("/"     , "Disk: <fc=#4c566a>/ <usedp>%</fc>")
                  , ("/boot" , "<fc=#4c566a> /boot <usedp>%</fc>")
                  ]
-                 [ "--Low"       , "20"
+                 [ "--Low"       , "55"
                  , "--High"      , "85"
                  , "--low"       , "#a3be8c"
                  , "--normal"    , "#d08770"
                  , "--high"      , "#bf616a"
                  ] 50
      -- Volume
-     , Run Volume "default" "Master" [ "--template"  , "Vol: <fc=#4c566a><volume>%</fc> <status>"
+     , Run Volume "default" "Master" [ "--template"  , "Vol: <fc=#b48ead><volume>%</fc> <status>"
                                      , "--"
                                      , "--onc"       , "#a3be8c"
                                      , "--offc"      , "#bf616a"
-                                     ] 10
+                                     ] 3
      -- Date and time
      , Run Date "<fc=#88c0d0>%a %b %_d %Y %H:%M</fc>" "date" 10
      , Run StdinReader

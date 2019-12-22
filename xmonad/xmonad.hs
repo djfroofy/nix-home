@@ -2,6 +2,7 @@ import System.IO
 import System.Exit
 import XMonad
 import XMonad.Actions.GridSelect
+import XMonad.Actions.Volume
 import XMonad.Actions.WindowGo
 import XMonad.Config.Desktop
 import XMonad.Hooks.DynamicLog
@@ -201,10 +202,6 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , ((modMask, xK_k),
      windows W.focusUp)
 
-  -- Move focus to the master window.
-  --, ((modMask, xK_m),
-  --   withFocused (sendMessage . maximizeRestore))
-
   -- Swap the focused window and the master window.
   , ((modMask, xK_Return),
      windows W.swapMaster)
@@ -242,13 +239,23 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
       spawn "rofi -theme base16-nord-froofy -show run")
 
   , ((modMask, xK_s),
-      spawn "mkdir -p $HOME/captures && maim --select --bordersize=3 --color=0.706,0.557,0.678 $HOME/captures/select-screen-$(date +%Y%m%d-%H%M%S).png")
+      spawn "mkdir -p $HOME/captures && maim --select --bordersize=3 \
+      \--color=0.706,0.557,0.678 $HOME/captures/select-screen-$(date +%Y%m%d-%H%M%S).png")
 
   , ((modMask .|. shiftMask, xK_l),
        spawn "xautolock -locknow")
 
-  -- Toggle the status bar gap.
-  -- TODO: update this binding with avoidStruts, ((modMask, xK_b),
+  -- Turn the volume up
+  , ((modMask, xK_i),
+       raiseVolume 3 >> return ())
+
+  -- Turn the volume down
+  , ((modMask, xK_u),
+       lowerVolume 3 >> return ())
+
+  -- Mute the volume
+  , ((modMask, xK_o),
+       toggleMute    >> return ())
 
   -- Quit xmonad.
   , ((modMask .|. shiftMask, xK_q),
@@ -326,12 +333,12 @@ main = do
       , layoutHook = avoidStruts $ myLayouts
       , handleEventHook = handleEventHook desktopConfig <+> docksEventHook
       , logHook = dynamicLogWithPP xmobarPP
-           { ppOutput = hPutStrLn xmproc
-           , ppTitle = xmobarColor "#657b83" "" . shorten 100
+           { ppOutput  = hPutStrLn xmproc
+           , ppTitle   = xmobarColor "#657b83" "" . shorten 100
            , ppCurrent = xmobarColor "#c0c0c0" "" . wrap "" ""
            , ppSep     = xmobarColor "#c0c0c0" "" " | "
            , ppUrgent  = xmobarColor "#ff69b4" ""
-           , ppLayout = const "" -- to disable the layout info on xmobar
+           , ppLayout  = const "" -- to disable the layout info on xmobar
            }
      }
 
