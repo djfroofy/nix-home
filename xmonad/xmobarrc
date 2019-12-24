@@ -88,7 +88,7 @@ Config {
                       , "--high"    , "#bf616a"
                       ] 10
      -- Wireless Network Interface information
-     , Run Wireless "wlp5s0" [ "--template" , "<essid> <fc=#4c566a><quality></fc>" ] 50
+     , Run Wireless "wlp0s20f3" [ "--template" , "<essid> <fc=#4c566a><quality></fc>" ] 50
      -- Disk Usage
      , Run DiskU [ ("/"     , "Disk: <fc=#4c566a>/ <usedp>%</fc>")
                  , ("/boot" , "<fc=#4c566a> /boot <usedp>%</fc>")
@@ -120,8 +120,8 @@ Config {
   , sepChar = "%"
   , alignSep = "}{"
   , template = " <icon=nixos.xpm/> %StdinReader% %hostname% }{ \
-                \%battery% | %cpu% | %memory% | %disku% | %diskio% | \
-                \%dynnetwork% | %wlp5s0wi% | \
-                \%KSEA% %KATL% | %alsa:default:Master% | %date% | \
+                \%battery% | %cpu% | %multicoretemp% | %memory% | %disku% | %diskio% | \
+                \%dynnetwork% | %wlp0s20f3wi% | \
+                \<icon=xmas-tree.xpm/>%KSEA% <icon=xmas-tree.xpm/>%KATL% | %alsa:default:Master% | %date% | \
                 \<icon=tux.xpm/> <fc=#ebcb8b>%kernel%</fc> "
 }

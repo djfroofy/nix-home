@@ -122,6 +122,6 @@ Config {
   , template = " <icon=nixos.xpm/> %StdinReader% %hostname% }{ \
                 \%battery% | %cpu% | {temp}%memory% | %disku% | %diskio% | \
                 \%dynnetwork% | %{wiiface}wi% | \
-                \%KSEA% %KATL% | %alsa:default:Master% | %date% | \
+                \<icon=xmas-tree.xpm/>%KSEA% <icon=xmas-tree.xpm/>%KATL% | %alsa:default:Master% | %date% | \
                 \<icon=tux.xpm/> <fc=#ebcb8b>%kernel%</fc> "
 }
