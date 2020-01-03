@@ -81,8 +81,8 @@ Config {
                    ] 50
      -- Network monitoring
      , Run DynNetwork [ "--template", "Net: <fc=#4c566a><tx>kB/s|<rx>kB/s</fc>"
-                      , "--Low"     , "1000"          -- units: B/s
-                      , "--High"    , "10000000"      -- units: B/s
+                      , "--Low"     , "80000"          -- units: B/s
+                      , "--High"    , "10000000"       -- units: B/s
                       , "--low"     , "#a3be8c"
                       , "--normal"  , "#d08770"
                       , "--high"    , "#bf616a"
@@ -122,6 +122,6 @@ Config {
   , template = " <icon=nixos.xpm/> %StdinReader% %hostname% }{ \
                 \%battery% | %cpu% | {temp}%memory% | %disku% | %diskio% | \
                 \%dynnetwork% | %{wiiface}wi% | \
-                \<icon=xmas-tree.xpm/>%KSEA% <icon=xmas-tree.xpm/>%KATL% | %alsa:default:Master% | %date% | \
+                \%KSEA% %KATL% | %alsa:default:Master% | %date% | \
                 \<icon=tux.xpm/> <fc=#ebcb8b>%kernel%</fc> "
 }
