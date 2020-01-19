@@ -168,9 +168,6 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , ((modMask, xK_f),
      runOrRaise "firefox" (className =? "Firefox"))
 
-  , ((modMask, xK_m),
-     runSelectedAction defaultGSConfig [("firefox", spawn "firefox")])
-
   , ((modMask, xK_g),
      goToSelected $ gsconfigWindows nordColorizerOcean)
 
@@ -185,10 +182,6 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   -- Reset the layouts on the current workspace to default.
   , ((modMask .|. shiftMask, xK_space),
      setLayout $ XMonad.layoutHook conf)
-
-  -- Resize viewed windows to the correct size.
-  , ((modMask, xK_n),
-     refresh)
 
   -- Move focus to the next window.
   , ((modMask, xK_Tab),
@@ -243,23 +236,40 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
       \--color=0.706,0.557,0.678 $HOME/captures/select-screen-$(date +%Y%m%d-%H%M%S).png")
 
   , ((modMask .|. shiftMask, xK_l),
-       spawn "xautolock -locknow")
+     spawn "xautolock -locknow")
 
+  -- Change screen layouts
+  --
+  , ((modMask, xK_n),
+     spawn "$HOME/.screenlayout/laptop.sh")
+
+  , ((modMask, xK_m),
+     spawn "$HOME/.screenlayout/home-laptop-closed-1-ext.sh")
+
+  , ((modMask, xK_comma),
+     spawn "$HOME/.screenlayout/home-laptop-open-1-ext.sh")
+
+  , ((modMask, xK_period),
+     spawn "$HOME/.screenlayout/office-laptop-open-2-ext.sh")
+
+  -- Volume controls
   -- Turn the volume up
   , ((modMask, xK_i),
-       raiseVolume 3 >> return ())
+     raiseVolume 3 >> return ())
+
   , ((modMask .|. shiftMask, xK_i),
-       raiseVolume 1 >> return ())
+     raiseVolume 1 >> return ())
 
   -- Turn the volume down
   , ((modMask, xK_u),
-       lowerVolume 3 >> return ())
+     lowerVolume 3 >> return ())
+
   , ((modMask .|. shiftMask, xK_u),
-       lowerVolume 1 >> return ())
+     lowerVolume 1 >> return ())
 
   -- Mute the volume
   , ((modMask, xK_o),
-       toggleMute    >> return ())
+     toggleMute    >> return ())
 
   -- Quit xmonad.
   , ((modMask .|. shiftMask, xK_q),

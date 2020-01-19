@@ -107,8 +107,6 @@
   programs.git = {
     package = pkgs.gitAndTools.gitFull;
     enable = true;
-    userName = "Drew Smathers";
-    userEmail = "drew.smathers@gmail.com";
     aliases = {
       st = "status -s";
       ls = "log --pretty=format:\"%C(yellow)%h%Cred%d\\\\ %Creset%s%Cblue\\\\ [%cn]\" --decorate";
@@ -134,6 +132,7 @@
     ".mutt".source = ./mutt;
     ".notmuch-config".source = ./notmuch-config;
     ".urlview".source = ./urlview;
+    ".screenlayout".source = ./screenlayout;
     "bin".source = ./bin;
   };
 
