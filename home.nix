@@ -133,6 +133,7 @@
     ".notmuch-config".source = ./notmuch-config;
     ".urlview".source = ./urlview;
     ".screenlayout".source = ./screenlayout;
+    ".task/hooks/on-modify.timewarrior".source = ./on-modify.timewarrior;
     "bin".source = ./bin;
   };
 
