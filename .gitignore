@@ -2,3 +2,4 @@ jdk-*.tar.gz
 *.swp
 work
 personal
+xmonad/xmobarrc
