@@ -21,10 +21,15 @@ do
         fi
 done
 
-nix-channel --add https://github.com/rycee/home-manager/archive/master.tar.gz home-manager
+nix-channel --add https://github.com/rycee/home-manager/archive/release-19.09.tar.gz home-manager
 nix-channel --update home-manager
 
 make git-submodule
+
+# setup timewarrior - timewarrior does not not like an immutable .cfg file :/
+mkdir -p ~/.timewarrior
+cp -v timewarrior/timewarrior.cfg ~/.timewarrior
+sed -i 's/dsmather/'"${USER}"'/g' ~/.timewarrior/timewarrior.cfg
 
 echo "================================================================"
 echo done with first part of setup.

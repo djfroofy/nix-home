@@ -88,7 +88,6 @@
       nature_video = "mplayer -vf delogo=1598:99:254:65:0 $HOME/videos/nature.webm";
       campfire_video = "mplayer -vf delogo=1110:653:150:50:0 $HOME/videos/campfire.mp4";
       sdana = "mkdir -p $HOME/systemd-analyze; systemd-analyze plot > $HOME/systemd-analyze/analysis-$(date +%Y%m%d-%H%M).svg";
-      # ff69 = "/nix/store/aaa9km89zpvnsn4gss95vskm9h9jncfp-firefox-69.0.2/bin/firefox";
     };
     oh-my-zsh = {
       enable = true;
@@ -133,7 +132,10 @@
     ".notmuch-config".source = ./notmuch-config;
     ".urlview".source = ./urlview;
     ".screenlayout".source = ./screenlayout;
-    ".task/hooks/on-modify.timewarrior".source = ./on-modify.timewarrior;
+    ".taskrc".source = ./taskrc;
+    ".task/hooks/on-modify.timewarrior".source = ./timewarrior/on-modify.timewarrior;
+    ".task/nord.theme".source = ./igloo/snowblocks/taskwarrior/nord.theme;
+    ".timewarrior/nord.theme".source = ./igloo/snowblocks/timewarrior/nord.theme;
     "bin".source = ./bin;
   };
 

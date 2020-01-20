@@ -11,3 +11,6 @@
 	path = base16-rofi
 	url = git@github.com:djfroofy/base16-rofi.git
 	branch = nord-froofy
+[submodule "igloo"]
+	path = igloo
+	url = git@github.com:arcticicestudio/igloo.git
