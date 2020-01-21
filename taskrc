@@ -14,7 +14,7 @@
 data.location=~/.task
 
 # Color theme (uncomment one to use)
-include ~/.task/nord.theme
+#include ~/.task/nord.theme
 #include /nix/store/xwyndah7jf1918v7k7dfdqm1dmw1k7s3-taskwarrior-2.5.1/share/doc/task/rc/light-16.theme
 #include /nix/store/xwyndah7jf1918v7k7dfdqm1dmw1k7s3-taskwarrior-2.5.1/share/doc/task/rc/light-256.theme
 #include /nix/store/xwyndah7jf1918v7k7dfdqm1dmw1k7s3-taskwarrior-2.5.1/share/doc/task/rc/dark-16.theme

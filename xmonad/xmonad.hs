@@ -219,15 +219,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , ((modMask, xK_t),
      withFocused $ windows . W.sink)
 
-  -- Increment the number of windows in the master area.
-  , ((modMask, xK_comma),
-     sendMessage (IncMasterN 1))
-
-  -- Decrement the number of windows in the master area.
-  , ((modMask, xK_period),
-     sendMessage (IncMasterN (-1)))
-
-  -- Decrement the number of windows in the master area.
+  -- Application launcher
   , ((modMask, xK_p),
       spawn "rofi -theme base16-nord-froofy -show run")
 
@@ -251,6 +243,10 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
   , ((modMask, xK_period),
      spawn "$HOME/.screenlayout/office-laptop-open-2-ext.sh")
+
+  , ((modMask, xK_slash),
+     spawn "$HOME/.screenlayout/home-desktop-1-ext.sh")
+
 
   -- Volume controls
   -- Turn the volume up
