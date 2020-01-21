@@ -247,6 +247,8 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , ((modMask, xK_slash),
      spawn "$HOME/.screenlayout/home-desktop-1-ext.sh")
 
+  , ((modMask, xK_backslash),
+     spawn "$HOME/.screenlayout/office-laptop-open-meeting-room.sh")
 
   -- Volume controls
   -- Turn the volume up
