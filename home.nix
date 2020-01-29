@@ -132,7 +132,6 @@
     ".notmuch-config".source = ./notmuch-config;
     ".urlview".source = ./urlview;
     ".screenlayout".source = ./screenlayout;
-    ".taskrc".source = ./taskrc;
     ".task/hooks/on-modify.timewarrior".source = ./timewarrior/on-modify.timewarrior;
     ".task/nord.theme".source = ./igloo/snowblocks/taskwarrior/nord.theme;
     ".timewarrior/nord.theme".source = ./igloo/snowblocks/timewarrior/nord.theme;
