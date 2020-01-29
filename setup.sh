@@ -26,10 +26,12 @@ nix-channel --update home-manager
 
 make git-submodule
 
-# setup timewarrior - timewarrior does not not like an immutable .cfg file :/
+# setup taskwarrior and timewarrior - unfortunately both of these applications like to
+# modify their rc files (ick)
 mkdir -p ~/.timewarrior
 cp -v timewarrior/timewarrior.cfg ~/.timewarrior
 sed -i 's/dsmather/'"${USER}"'/g' ~/.timewarrior/timewarrior.cfg
+ln -s ~/.config/nixpkgs/taskrc ~/.taskrc
 
 echo "================================================================"
 echo done with first part of setup.

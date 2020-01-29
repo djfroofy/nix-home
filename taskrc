@@ -30,3 +30,6 @@ data.location=~/.task
 #include /nix/store/xwyndah7jf1918v7k7dfdqm1dmw1k7s3-taskwarrior-2.5.1/share/doc/task/rc/solarized-light-256.theme
 #include /nix/store/xwyndah7jf1918v7k7dfdqm1dmw1k7s3-taskwarrior-2.5.1/share/doc/task/rc/no-color.theme
 
+context.work=-personal
+context.personal=+personal
+context=work
