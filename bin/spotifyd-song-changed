@@ -1,0 +1,48 @@
+#!/run/current-system/sw/bin/nix-shell
+#!nix-shell -i bash -p coreutils curl pass jq python27
+# vi: ft=bash
+
+set -eufx -o pipefail
+
+SPOTIFY_HOOK_CACHE=~/.spotify-hook.cache
+SPOTIFY_AUTH_TOKEN_CACHE=${SPOTIFY_HOOK_CACHE}/authtoken
+PASS_KEY=spotify/djfroofy/api-client-credentials
+RESPONSE_CACHE=${SPOTIFY_HOOK_CACHE}/response
+NOW_PLAYING_PIPE=/tmp/spotify-now-playing
+
+mkdir -p $SPOTIFY_HOOK_CACHE
+
+echo Getting information for TRACK: ${TRACK_ID}
+
+function regenerate_auth_token() {
+        SPOTIFY_AUTH_CREDENTIALS=$(pass ${PASS_KEY})
+        SPOTIFY_AUTH_CREDENTIALS_B64=$(python -c "import base64; print base64.b64encode('${SPOTIFY_AUTH_CREDENTIALS}')")
+        SPOTIFY_AUTH_TOKEN=$(curl -X "POST" -H "Authorization: Basic ${SPOTIFY_AUTH_CREDENTIALS_B64}" \
+                -d grant_type=client_credentials https://accounts.spotify.com/api/token | \
+                jq -r '.access_token')
+        echo $SPOTIFY_AUTH_TOKEN > ${SPOTIFY_AUTH_TOKEN_CACHE}
+}
+
+if [[ -f ${SPOTIFY_AUTH_TOKEN_CACHE} ]]
+then
+        mtime=$(stat --printf=%Y ${SPOTIFY_AUTH_TOKEN_CACHE})
+        now=$(date +%s)
+        cache_age=$((now - mtime))
+        if [[ ${cache_age} -gt 3595 ]]
+        then
+                regenerate_auth_token
+        else
+                SPOTIFY_AUTH_TOKEN=$(cat ${SPOTIFY_AUTH_TOKEN_CACHE})
+        fi
+else
+        regenerate_auth_token
+fi
+
+echo Calling spotify api with token: ${SPOTIFY_AUTH_TOKEN}
+response=$(curl -H "Authorization: Bearer ${SPOTIFY_AUTH_TOKEN}" https://api.spotify.com/v1/tracks/${TRACK_ID})
+echo $response > ${RESPONSE_CACHE}
+now_playing_message=$(cat ${RESPONSE_CACHE} | jq -r '.name + " • " + .artists[0].name + " • " + .album.name')
+
+echo Now playing message: ${now_playing_message}
+[[ -p $NOW_PLAYING_PIPE ]] || mkfifo $NOW_PLAYING_PIPE
+echo $now_playing_message > $NOW_PLAYING_PIPE &

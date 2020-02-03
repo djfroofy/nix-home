@@ -43,7 +43,7 @@ Config {
                           , "--low"    , "#88c0d0"
                           ] 1200
      -- CPU activity monitor
-     , Run Cpu [ "--template", "Cpu: <fc=#4c566a><total>%</fc>"
+     , Run Cpu [ "--template", "C: <fc=#4c566a><total>%</fc>"
                , "--Low"     , "20"
                , "--High"    , "80"
                , "--low"     , "#a3be8c"
@@ -51,7 +51,7 @@ Config {
                , "--high"    , "#bf616a"
                ] 10
      -- Core Temperatures
-     , Run MultiCoreTemp [ "--template"  , "Temp: <fc=#4c566a><max>°C <avg>°C</fc>"
+     , Run MultiCoreTemp [ "--template"  , "T: <fc=#4c566a><max>°C <avg>°C</fc>"
                          , "--Low"     , "55"
                          , "--High"    , "80"
                          , "--low"     , "#88c0d0"
@@ -59,7 +59,7 @@ Config {
                          , "--high"    , "#bf616a"
                          ] 10
      -- Memory Usage monitor
-     , Run Memory [ "--template" , "Mem: <fc=#4c566a><usedratio>%</fc>"
+     , Run Memory [ "--template" , "M: <fc=#4c566a><usedratio>%</fc>"
                   ,  "--Low"     , "20"
                   , "--High"     , "80"
                   , "--low"      , "#a3be8c"
@@ -67,7 +67,7 @@ Config {
                   , "--high"     , "#bf616a"
                   ] 10
      -- Battery monitor
-     , Run Battery [ "--template" , "Batt: <fc=#4c566a><acstatus>\\<left>%</fc>"
+     , Run Battery [ "--template" , "B: <fc=#4c566a><acstatus>\\<left>%</fc>"
                    , "--Low"      , "10"   -- units: %
                    , "--High"     , "80"   -- units: %
                    , "--low"      , "#bf661a"
@@ -75,12 +75,12 @@ Config {
                    , "--high"     , "#a3be8c"
                    , "--" -- battery specific options
                           -- discharging status
-                          , "-o"  , "<fc=#d08770>Charging</fc>"
+                          , "-o"  , "<fc=#d08770>Charged</fc>"
                           -- charged status
                           , "-i"  , "<fc=#a3be8c>Charged</fc>"
                    ] 50
      -- Network monitoring
-     , Run DynNetwork [ "--template", "Net: <fc=#4c566a><tx>kB/s|<rx>kB/s</fc>"
+     , Run DynNetwork [ "--template", "N: <fc=#4c566a><tx>kB/s|<rx>kB/s</fc>"
                       , "--Low"     , "80000"          -- units: B/s
                       , "--High"    , "10000000"       -- units: B/s
                       , "--low"     , "#a3be8c"
@@ -90,7 +90,7 @@ Config {
      -- Wireless Network Interface information
      , Run Wireless "{wiiface}" [ "--template" , "<essid> <fc=#4c566a><quality></fc>" ] 50
      -- Disk Usage
-     , Run DiskU [ ("/"     , "Disk: <fc=#4c566a>/ <usedp>%</fc>")
+     , Run DiskU [ ("/"     , "D: <fc=#4c566a>/ <usedp>%</fc>")
                  , ("/boot" , "<fc=#4c566a> /boot <usedp>%</fc>")
                  ]
                  [ "--Low"       , "55"
@@ -108,18 +108,20 @@ Config {
                   , "--high"    , "#bf616a"
                   ] 30
      -- Volume
-     , Run Alsa "default" "Master" [ "--template"  , "Vol: <fc=#b48ead><volume>%</fc> <status>"
+     , Run Alsa "default" "Master" [ "--template"  , "V: <fc=#b48ead><volume>%</fc> <status>"
                                      , "--"
                                      , "--onc"       , "#a3be8c"
                                      , "--offc"      , "#bf616a"
                                      ]
      -- Date and time
      , Run Date "<fc=#88c0d0>%a %b %_d %Y %H:%M</fc>" "date" 10
+     -- Spotify - Currently playing
+     , Run MarqueePipeReader " :/tmp/spotify-now-playing" (50, 3, "     ") "spotifypipe"
      , Run StdinReader
      ]
   , sepChar = "%"
   , alignSep = "}{"
-  , template = " <icon=nixos.xpm/> %StdinReader% %hostname% }{ \
+  , template = " <icon=nixos.xpm/> %StdinReader% %hostname% <fc=#ebcb8b>%spotifypipe%</fc> }{ \
                 \%battery% | %cpu% | {temp}%memory% | %disku% | %diskio% | \
                 \%dynnetwork% | %{wiiface}wi% | \
                 \%KSEA% %KATL% | %alsa:default:Master% | %date% | \

@@ -34,7 +34,7 @@ myTerminal = "termite"
 -- Workspaces
 -- The default number of workspaces (virtual screens) and their names.
 --
-myWorkspaces = ["one","two","three","four","five","six","seven","eight","nine"] -- ++ map show [6..9]
+myWorkspaces = ["1","2","3","4","5","6","7","8","9"] -- ++ map show [6..9]
 
 
 ------------------------------------------------------------------------
