@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+cd $HOME/.config/nixpkgs/personal/zoom
+make
+./result/bin/zoom-us
