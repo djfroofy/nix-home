@@ -15,6 +15,7 @@ import XMonad.Layout.SimplestFloat
 import XMonad.Layout.Spiral
 import XMonad.Layout.PerWorkspace(onWorkspace)
 import XMonad.Layout.Tabbed
+import XMonad.Layout.ThreeColumns
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
 import XMonad.Wallpaper(setRandomWallpaper)
@@ -76,6 +77,8 @@ defaultLayouts = avoidStruts (
     tabbed shrinkText tabConfig |||
     Full |||
     spiral (6/7)) |||
+    ThreeCol 1 (3/100) (1/2) |||
+    ThreeColMid 1 (3/100) (1/2) |||
     noBorders (fullscreenFull Full)
 
 ------------------------------------------------------------------------
