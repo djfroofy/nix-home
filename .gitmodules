@@ -14,3 +14,6 @@
 [submodule "igloo"]
 	path = igloo
 	url = git@github.com:arcticicestudio/igloo.git
+[submodule "termite-colors-solarized"]
+	path = termite-colors-solarized
+	url = git://github.com/alpha-omega/termite-colors-solarized.git

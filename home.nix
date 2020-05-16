@@ -35,7 +35,7 @@
       vimPlugins.rust-vim
       vimPlugins.vim-racer
       vimPlugins.lightline-vim
-      vimPlugins.nord-vim
+      #vimPlugins.nord-vim
       vimPlugins.vim-gitgutter
       vimPlugins.vim-nix
       vimPlugins.vim-better-whitespace
@@ -96,7 +96,7 @@
         "python"
         "rust"
       ];
-      theme = "agnoster";
+      theme = "sunrise";
     };
     initExtra = ''
       eval "$(thefuck --alias)"
@@ -125,7 +125,8 @@
     ".xmonad/icons".source = xmonad/icons;
     ".xsessionrc".source = xmonad/xsessionrc;
     ".mplayer/config".source = mplayer/config;
-    ".config/termite/config".source = nord-termite/src/config;
+    #".config/termite/config".source = nord-termite/src/config;
+    ".config/termite/config".source = termite-colors-solarized/solarized-light;
     ".nord-tmux".source = ./nord-tmux;
     ".local/share/rofi/themes".source = ./base16-rofi/themes;
     ".mutt".source = ./mutt;
