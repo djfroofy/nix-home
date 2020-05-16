@@ -22,6 +22,15 @@
     enable = true;
   };
 
+  services.lorri = {
+    enable = true;
+  };
+
+  programs.direnv = {
+    enable = true;
+  };
+
+
   programs.vim = {
     enable = true;
     extraConfig = builtins.readFile vim/vimrc;
@@ -136,6 +145,7 @@
     ".task/hooks/on-modify.timewarrior".source = ./timewarrior/on-modify.timewarrior;
     ".task/nord.theme".source = ./igloo/snowblocks/taskwarrior/nord.theme;
     ".timewarrior/nord.theme".source = ./igloo/snowblocks/timewarrior/nord.theme;
+    ".gnupg/gpg-agent.conf".source = ./gpg-agent.conf;
     "bin".source = ./bin;
   };
 
