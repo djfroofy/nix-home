@@ -239,7 +239,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
      spawn "$HOME/.screenlayout/laptop.sh")
 
   , ((modMask, xK_m),
-     spawn "$HOME/.screenlayout/home-laptop-closed-1-ext.sh")
+     spawn "$HOME/.screenlayout/home-laptop-closed-1-ext-samsung.sh")
 
   , ((modMask, xK_comma),
      spawn "$HOME/.screenlayout/home-laptop-open-1-ext.sh")
