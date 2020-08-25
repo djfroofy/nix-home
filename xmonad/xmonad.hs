@@ -3,6 +3,7 @@ import System.Exit
 import XMonad
 import XMonad.Actions.GridSelect
 import XMonad.Actions.Volume
+import XMonad.Actions.UpdateFocus
 import XMonad.Actions.WindowGo
 import XMonad.Config.Desktop
 import XMonad.Hooks.DynamicLog
@@ -346,7 +347,7 @@ main = do
  xmonad $ defaults
       { manageHook = manageDocks <+> manageHook desktopConfig
       , layoutHook = avoidStruts $ myLayouts
-      , handleEventHook = handleEventHook desktopConfig <+> docksEventHook
+      , handleEventHook = handleEventHook desktopConfig <+> docksEventHook <+> focusOnMouseMove
       , logHook = dynamicLogWithPP xmobarPP
            { ppOutput  = hPutStrLn xmproc
            , ppTitle   = xmobarColor "#657b83" "" . shorten 100
