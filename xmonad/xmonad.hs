@@ -329,6 +329,7 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 --
 -- By default, do nothing.
 myStartupHook = do
+    adjustEventInput
     spawn "xmodmap ~/.Xmodmap"
 
 ------------------------------------------------------------------------

@@ -27,6 +27,9 @@ Config {
        Run Com "uname" ["-r"] "kernel" 3600
      -- Hostname
      , Run Com "hostname" [] "hostname" 3600
+     -- VPN Tunneled status
+     , Run Com "/home/dsmather/bin/show_tunnel_on" [] "tunnel_on" 50
+     , Run Com "/home/dsmather/bin/show_tunnel_off" [] "tunnel_off" 50
      -- Seattle Weather
      , Run Weather "KSEA" [ "--template", "SEA: <fc=#4c566a><tempF>°F</fc>"
                           , "--Low"    , "50"
@@ -121,8 +124,8 @@ Config {
      ]
   , sepChar = "%"
   , alignSep = "}{"
-  , template = " <icon=nixos.xpm/> %StdinReader% %hostname% <fc=#ebcb8b>%spotifypipe%</fc> }{ \
-                \%battery% | %cpu% | {temp}%memory% | %disku% | %diskio% | \
+  , template = " <icon=nixos.xpm/> %StdinReader% %hostname% <fc=#ebcb8b>%tunnel_on%</fc><fc=#4c566a>%tunnel_off%</fc> <fc=#ebcb8b>%spotifypipe%</fc> }{ \
+                \ %battery% | %cpu% | {temp}%memory% | %disku% | %diskio% | \
                 \%dynnetwork% | %{wiiface}wi% | \
                 \%KSEA% %KATL% | %alsa:default:Master% | %date% | \
                 \<icon=tux.xpm/> <fc=#ebcb8b>%kernel%</fc> "

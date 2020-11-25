@@ -3,6 +3,9 @@
 # Set the background wallpaper with feh
 feh --bg-scale /home/dsmather/captures/modern-desktop-bg.jpg &
 
+eval $(sudo gnome-keyring-daemon --start)
+export GNOME_KEYRING_CONTROL
+
 # Set up i18n input
 export XMODIFIERS="@im=fcitx"
 export XMODIFIER="@im=fcitx"

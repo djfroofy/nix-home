@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+(ifconfig | grep tun0 >/dev/null) && echo TUN || exit 0
