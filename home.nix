@@ -65,7 +65,7 @@
       {
         plugin = tmuxPlugins.resurrect;
         extraConfig = ''
-          set -g @resurrect-processes '"~.glances-wrapped" ~vim ~htop ~journalctl nix-shell "git log" "git diff" "watch" "sudo i7z"'
+          set -g @resurrect-processes '"~.glances-wrapped" ~vis ~vim ~htop ~journalctl nix-shell "git log" "git diff" "watch" "sudo i7z"'
           set -g @resurrect-save-shell-history 'off'
         '';
       }

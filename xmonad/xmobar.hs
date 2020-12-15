@@ -117,7 +117,7 @@ Config {
                                      , "--offc"      , "#bf616a"
                                      ]
      -- Date and time
-     , Run Date "<fc=#88c0d0>%a %b %_d %Y %H:%M</fc>" "date" 10
+     , Run Date "<fc=#88c0d0>%a %b %_d %Y %H:%M %Z</fc>" "date" 10
      -- Spotify - Currently playing
      , Run MarqueePipeReader " :/tmp/spotify-now-playing" (50, 3, "     ") "spotifypipe"
      , Run StdinReader
