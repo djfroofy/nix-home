@@ -120,35 +120,35 @@ nordColorizerOcean = colorRangeFromClassName
     where black = minBound
           white = maxBound
 
-gsconfigWindows colorizer = (buildDefaultGSConfig colorizer)
-    {  gs_cellheight  = gsCellHeight
-    ,  gs_cellwidth   = gsCellWidth
-    ,  gs_bordercolor = "#88c0d0"
+--gsconfigWindows colorizer = (buildDefaultGSConfig colorizer)
+--    {  gs_cellheight  = gsCellHeight
+--    ,  gs_cellwidth   = gsCellWidth
+--    ,  gs_bordercolor = "#88c0d0"
     --,  gs_font        = "xft:Ubuntu-Light:size=14"
-    ,  gs_font        = gsFont
-    }
+--    ,  gs_font        = gsFont
+--    }
 
-nordColorizerSnow = colorRangeFromClassName
-        (0xd8,0xde,0xe9)  -- lowest inactive bg
-        (0xec,0xef,0xf4)  -- highest inactive bg
-        (0xb4,0x8e,0xad)  -- active bg
-        white             -- inactive fg
-        black             -- active fg
-    where black = minBound
-          white = maxBound
+--nordColorizerSnow = colorRangeFromClassName
+--        (0xd8,0xde,0xe9)  -- lowest inactive bg
+--        (0xec,0xef,0xf4)  -- highest inactive bg
+--        (0xb4,0x8e,0xad)  -- active bg
+--        white             -- inactive fg
+--        black             -- active fg
+--    where black = minBound
+--          white = maxBound
 
-gsconfigActions colorizer = (buildDefaultGSConfig colorizer)
-    {  gs_cellheight  = gsCellHeight
-    ,  gs_cellwidth   = gsCellWidth
-    ,  gs_bordercolor = "#b48ead"
-    --,  gs_font        = "xft:Ubuntu-Light:size=14"
-    ,  gs_font        = gsFont
-    }
-
-gsconfigSelectedActions =
-  [ ("Firefox", runOrRaise "firefox" (className =? "Firefox")) ]
-
-gsconfig2 = gsconfigActions nordColorizerSnow
+--gsconfigActions colorizer = (buildDefaultGSConfig colorizer)
+--    {  gs_cellheight  = gsCellHeight
+--    ,  gs_cellwidth   = gsCellWidth
+--    ,  gs_bordercolor = "#b48ead"
+--    --,  gs_font        = "xft:Ubuntu-Light:size=14"
+--    ,  gs_font        = gsFont
+--    }
+--
+--gsconfigSelectedActions =
+--  [ ("Firefox", runOrRaise "firefox" (className =? "Firefox")) ]
+--
+--gsconfig2 = gsconfigActions nordColorizerSnow
 
 ------------------------------------------------------------------------
 -- Key bindings
@@ -172,8 +172,8 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , ((modMask, xK_f),
      runOrRaise "firefox" (className =? "Firefox"))
 
-  , ((modMask, xK_g),
-     goToSelected $ gsconfigWindows nordColorizerOcean)
+  --, ((modMask, xK_g),
+  --   goToSelected $ gsconfigWindows nordColorizerOcean)
 
   -- Close focused window.
   , ((modMask .|. shiftMask, xK_c),

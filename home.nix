@@ -97,6 +97,7 @@
       nature_video = "mplayer -vf delogo=1598:99:254:65:0 $HOME/videos/nature.webm";
       campfire_video = "mplayer -vf delogo=1110:653:150:50:0 $HOME/videos/campfire.mp4";
       sdana = "mkdir -p $HOME/systemd-analyze; systemd-analyze plot > $HOME/systemd-analyze/analysis-$(date +%Y%m%d-%H%M).svg";
+      ssh = "TERM=xterm ssh";
     };
     oh-my-zsh = {
       enable = true;
