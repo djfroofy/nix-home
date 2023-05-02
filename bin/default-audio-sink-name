@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+pacmd list-sinks \
+  | grep -A100 $( \
+      pacmd stat \
+      | grep "Default sink name" \
+      | awk '{print $4}') \
+  | grep alsa.card_name \
+  | head -n1 \
+  | cut -d'=' -f2 \
+  | cut -d'"' -f2

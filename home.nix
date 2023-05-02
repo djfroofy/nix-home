@@ -10,25 +10,25 @@
     oraclejdk.accept_license = true;
   };
 
-  services.redshift = {
-    enable = true;
-    latitude = "47.679925";
-    longitude = "-122.268718";
-  };
+  #services.redshift = {
+  #  enable = true;
+  #  latitude = "47.679925";
+  #  longitude = "-122.268718";
+  #};
 
   # Make holding and release a meta key send key.
   # (Using default which turns CTL keys into escape for vim.
-  services.xcape = {
-    enable = true;
-  };
+  #services.xcape = {
+  #  enable = true;
+  #};
 
-  services.lorri = {
-    enable = true;
-  };
+  #services.lorri = {
+  #  enable = true;
+  #};
 
-  programs.direnv = {
-    enable = true;
-  };
+  #programs.direnv = {
+  #  enable = true;
+  #};
 
 
   programs.vim = {
@@ -98,6 +98,7 @@
       campfire_video = "mplayer -vf delogo=1110:653:150:50:0 $HOME/videos/campfire.mp4";
       sdana = "mkdir -p $HOME/systemd-analyze; systemd-analyze plot > $HOME/systemd-analyze/analysis-$(date +%Y%m%d-%H%M).svg";
       ssh = "TERM=xterm ssh";
+      search = "nix --extra-experimental-features "nix-command flakes" search";
     };
     oh-my-zsh = {
       enable = true;
