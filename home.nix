@@ -98,7 +98,7 @@
       campfire_video = "mplayer -vf delogo=1110:653:150:50:0 $HOME/videos/campfire.mp4";
       sdana = "mkdir -p $HOME/systemd-analyze; systemd-analyze plot > $HOME/systemd-analyze/analysis-$(date +%Y%m%d-%H%M).svg";
       ssh = "TERM=xterm ssh";
-      search = "nix --extra-experimental-features "nix-command flakes" search";
+      search = ''nix --extra-experimental-features "nix-command flakes" search nixpkgs'';
     };
     oh-my-zsh = {
       enable = true;

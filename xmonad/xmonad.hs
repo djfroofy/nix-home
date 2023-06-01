@@ -19,7 +19,6 @@ import XMonad.Layout.Tabbed
 import XMonad.Layout.ThreeColumns
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
-import XMonad.Wallpaper(setRandomWallpaper)
 import qualified XMonad.StackSet as W
 import qualified Data.Map as M
 
@@ -89,7 +88,7 @@ myNormalBorderColor = "#434c5e"
 myFocusedBorderColor = "#8fbcbb"
 
 -- Colors for text and backgrounds of each tab when in "Tabbed" layout.
-tabConfig = defaultTheme {
+tabConfig = def {
     activeBorderColor = "#8fbcbb",
     activeTextColor = "#eceff4",
     activeColor = "#000000",
@@ -227,6 +226,11 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , ((modMask, xK_p),
       spawn "rofi -theme base16-nord-froofy -show run")
 
+  -- change to random wallpaper
+  , ((modMask, xK_z),
+      spawn "feh --bg-scale ${HOME}/captures/wallpapers/$(ls ${HOME}/captures/wallpapers | shuf -n1) &")
+
+  -- select portion of screen for screenshot
   , ((modMask, xK_s),
       spawn "mkdir -p $HOME/captures && maim --select --bordersize=3 \
       \--color=0.706,0.557,0.678 $HOME/captures/select-screen-$(date +%Y%m%d-%H%M%S).png")
@@ -344,11 +348,10 @@ myLayouts = defaultLayouts
 
 main = do
  xmproc <- spawnPipe "xmobar -i ~/.xmonad/icons ~/.xmobarrc"
- setRandomWallpaper [ "$HOME/captures/wallpapers" ]
- xmonad $ defaults
+ xmonad $ docks defaults
       { manageHook = manageDocks <+> manageHook desktopConfig
       , layoutHook = avoidStruts $ myLayouts
-      , handleEventHook = handleEventHook desktopConfig <+> docksEventHook <+> focusOnMouseMove
+      , handleEventHook = handleEventHook desktopConfig <+> focusOnMouseMove
       , logHook = dynamicLogWithPP xmobarPP
            { ppOutput  = hPutStrLn xmproc
            , ppTitle   = xmobarColor "#657b83" "" . shorten 100
