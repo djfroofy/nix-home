@@ -5,6 +5,12 @@
     ./personal/home.nix
   ];
 
+  home = {
+    username = "dsmather";
+    homeDirectory = "/home/dsmather";
+    stateVersion = "23.05";
+  };
+
   nixpkgs.config = {
     allowUnfree = true;
     oraclejdk.accept_license = true;

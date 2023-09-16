@@ -11,7 +11,8 @@
 
 
 Config {
-    font = "xft:audiowide-regular:pixelsize=15:antialias=true"
+-- font = "xft:Audiowide-Regular:pixelsize=12:antialias=true"
+    font = "Audiowide Normal Thin 11"
   , bgColor = "#2e3440"
   , fgColor = "#eceff4"
   , border = NoBorder
@@ -121,13 +122,12 @@ Config {
      -- Date and time
      , Run Date "<fc=#88c0d0>%a %b %_d %Y %H:%M %Z</fc>" "date" 10
      -- Spotify - Currently playing
-     , Run MarqueePipeReader " :/tmp/spotify-now-playing" (50, 3, "     ") "spotifypipe"
      , Run StdinReader
      ]
   , sepChar = "%"
   , alignSep = "}{"
-  , template = " <icon=nixos.xpm/> %StdinReader% %hostname% <fc=#ebcb8b>%tunnel_on%</fc><fc=#4c566a>%tunnel_off%</fc> \
-                \ <fc=#b48ead>%default_audio_sink_name%</fc> <fc=#ebcb8b>%spotifypipe%</fc> }{ \
+  , template = "} <icon=nixos.xpm/> %StdinReader% %hostname% <fc=#ebcb8b>%tunnel_on%</fc><fc=#4c566a>%tunnel_off%</fc> \
+                \ <fc=#b48ead>%default_audio_sink_name%</fc> { \
                 \ %battery% | %cpu% | {temp}%memory% | %disku% | %diskio% | \
                 \%dynnetwork% | %{wiiface}wi% | \
                 \%KSEA% %KATL% | %alsa:default:Master% | %date% | \
