@@ -90,8 +90,16 @@
     '';
   };
 
-  programs.zsh = {
+
+  programs.fish = {
     enable = true;
+    functions = {
+      fish_greeting = "echo -ns ''";
+    };
+  };
+
+  programs.zsh = {
+    enable = false;
     shellAliases = {
       gpom = "git push origin master";
       nso = "nix-store --optimise -v";
@@ -107,7 +115,7 @@
       search = ''nix --extra-experimental-features "nix-command flakes" search nixpkgs'';
     };
     oh-my-zsh = {
-      enable = true;
+      enable = false;
       plugins = [
         "git"
         "python"
