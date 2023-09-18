@@ -35,6 +35,11 @@
   #programs.direnv = {
   #  enable = true;
   #};
+  programs.kitty = {
+    enable = true;
+    shellIntegration.enableFishIntegration = true;
+    theme = "Nord";
+  };
 
 
   programs.vim = {
