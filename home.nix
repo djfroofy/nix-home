@@ -101,6 +101,18 @@
     functions = {
       fish_greeting = "echo -ns ''";
     };
+    plugins = [
+      # Plugin to allow sourcing bash/sh files from fish
+      {
+        name = "bass";
+        src = pkgs.fetchFromGitHub {
+          owner = "edc";
+          repo = "bass";
+          rev = "6effb523e4f2f5a4fb4946819796747223666be8";
+          sha256 = "1pz8nkk2dl7iim6gi2k7788dhhzi58jw4axx30r5i7052gn4r8w7";
+        };
+      }
+    ];
   };
 
   programs.zsh = {
