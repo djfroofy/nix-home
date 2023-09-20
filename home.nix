@@ -35,10 +35,18 @@
   #programs.direnv = {
   #  enable = true;
   #};
-  programs.kitty = {
+
+  programs.alacritty = {
     enable = true;
-    shellIntegration.enableFishIntegration = true;
-    theme = "Nord";
+    settings = {
+      import = [
+        "~/.config/alacritty/themes/themes/nord.yaml"
+      ];
+      font = {
+        size = 10.0;
+      };
+      shell.program = "fish";
+    };
   };
 
 

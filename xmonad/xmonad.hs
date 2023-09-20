@@ -29,7 +29,7 @@ import qualified Data.Map as M
 -- certain contrib modules.
 --
 
-myTerminal = "kitty"
+myTerminal = "alacritty"
 
 ------------------------------------------------------------------------
 -- Workspaces
