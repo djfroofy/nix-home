@@ -42,9 +42,7 @@
       import = [
         "~/.config/alacritty/themes/themes/nord.yaml"
       ];
-      font = {
-        size = 10.0;
-      };
+      font.size = 10.0;
       shell.program = "fish";
     };
   };
@@ -176,6 +174,7 @@
     ".xsessionrc".source = xmonad/xsessionrc;
     ".mplayer/config".source = mplayer/config;
     ".config/termite/config".source = nord-termite/src/config;
+    ".config/alacritty/themes".source = ./alacritty-theme;
     ".nord-tmux".source = ./nord-tmux;
     ".local/share/rofi/themes".source = ./base16-rofi/themes;
     ".mutt".source = ./mutt;
