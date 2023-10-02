@@ -16,6 +16,11 @@
     oraclejdk.accept_license = true;
   };
 
+  programs.home-manager = {
+    enable = true;
+  };
+
+
   #services.redshift = {
   #  enable = true;
   #  latitude = "47.679925";
@@ -42,12 +47,13 @@
       import = [
         "~/.config/alacritty/themes/themes/nord.yaml"
       ];
-      font.size = 10.0;
+      font.size = 7.0;
       shell.program = "fish";
     };
   };
 
 
+  # VIM editor
   programs.vim = {
     enable = true;
     extraConfig = builtins.readFile vim/vimrc;
@@ -68,6 +74,7 @@
     ];
   };
 
+  # TMUX - terminal multiplexer
   programs.tmux = {
     enable = true;
     keyMode = "vi";
@@ -79,6 +86,7 @@
       tmuxPlugins.cpu
       tmuxPlugins.pain-control
       tmuxPlugins.sidebar
+      /*
       {
         plugin = tmuxPlugins.resurrect;
         extraConfig = ''
@@ -95,6 +103,7 @@
           bind-key a set-window-option synchronize-panes
           '';
       }
+      */
     ];
     extraConfig = ''
       run-shell "~/.nord-tmux/nord.tmux"
@@ -102,8 +111,10 @@
   };
 
 
+  # Fish Shell - enabled for experimentation
   programs.fish = {
     enable = true;
+    shellAliases = import ./shell-aliases.nix;
     functions = {
       fish_greeting = "echo -ns ''";
     };
@@ -118,25 +129,24 @@
           sha256 = "1pz8nkk2dl7iim6gi2k7788dhhzi58jw4axx30r5i7052gn4r8w7";
         };
       }
+      /*
+      {
+        name = "tmux.fish";
+        src = pkgs.fetchFromGitHub {
+          owner = "budimanjojo";
+          repo = "tmux.fish";
+          rev = "85fdf568a9e169f5cf7449b3220c8aea6a14ee76";
+          sha256 = "1a055k8ad1050xm1vw81fwxjm2kb5a2wkg53hby3p2bx1l211d5k";
+        };
+      }
+      */
     ];
   };
 
+  # ZSH shell - disabled for now
   programs.zsh = {
     enable = false;
-    shellAliases = {
-      gpom = "git push origin master";
-      nso = "nix-store --optimise -v";
-      gcold = "nix-collect-garbage --delete-older-than 30d";
-      sgcold = "sudo nix-collect-garbage --delete-older-than 30d";
-      nbz = "cd ~/Projects/nix-buildzones";
-      lolj = "sudo journalctl -f | lolcat";
-      nixb = "nix-build '<nixpkgs>' -A";
-      nature_video = "mplayer -vf delogo=1598:99:254:65:0 $HOME/videos/nature.webm";
-      campfire_video = "mplayer -vf delogo=1110:653:150:50:0 $HOME/videos/campfire.mp4";
-      sdana = "mkdir -p $HOME/systemd-analyze; systemd-analyze plot > $HOME/systemd-analyze/analysis-$(date +%Y%m%d-%H%M).svg";
-      ssh = "TERM=xterm ssh";
-      search = ''nix --extra-experimental-features "nix-command flakes" search nixpkgs'';
-    };
+    shellAliases = import ./shell-aliases.nix;
     oh-my-zsh = {
       enable = false;
       plugins = [
@@ -151,6 +161,13 @@
     '';
   };
 
+  programs.atuin = {
+    enable = false;
+    enableFishIntegration = true;
+    # enableZshIntegration = true;
+  };
+
+  # Git - scm
   programs.git = {
     package = pkgs.gitAndTools.gitFull;
     enable = true;
@@ -161,11 +178,7 @@
     };
   };
 
-  programs.home-manager = {
-    enable = true;
-  };
-
-
+  # home dot files and directories
   home.file = {
     ".Xmodmap".source = xmonad/Xmodmap;
     ".xmobarrc".source = xmonad/xmobarrc;
@@ -173,7 +186,7 @@
     ".xmonad/icons".source = xmonad/icons;
     ".xsessionrc".source = xmonad/xsessionrc;
     ".mplayer/config".source = mplayer/config;
-    ".config/termite/config".source = nord-termite/src/config;
+    #".config/termite/config".source = nord-termite/src/config;
     ".config/alacritty/themes".source = ./alacritty-theme;
     ".nord-tmux".source = ./nord-tmux;
     ".local/share/rofi/themes".source = ./base16-rofi/themes;
@@ -181,9 +194,9 @@
     ".notmuch-config".source = ./notmuch-config;
     ".urlview".source = ./urlview;
     ".screenlayout".source = ./screenlayout;
-    ".task/hooks/on-modify.timewarrior".source = ./timewarrior/on-modify.timewarrior;
-    ".task/nord.theme".source = ./igloo/snowblocks/taskwarrior/nord.theme;
-    ".timewarrior/nord.theme".source = ./igloo/snowblocks/timewarrior/nord.theme;
+    #".task/hooks/on-modify.timewarrior".source = ./timewarrior/on-modify.timewarrior;
+    #".task/nord.theme".source = ./igloo/snowblocks/taskwarrior/nord.theme;
+    #".timewarrior/nord.theme".source = ./igloo/snowblocks/timewarrior/nord.theme;
     ".gnupg/gpg-agent.conf".source = ./gpg-agent.conf;
     "bin".source = ./bin;
   };
