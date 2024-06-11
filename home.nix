@@ -125,6 +125,7 @@ let homeManagerUser = "dsmather"; in
   programs.git = {
     package = pkgs.gitAndTools.gitFull;
     enable = true;
+    lfs.enable = true;
     aliases = {
       st = "status -s";
       ls = "log --pretty=format:\"%C(yellow)%h%Cred%d\\\\ %Creset%s%Cblue\\\\ [%cn]\" --decorate";
@@ -148,6 +149,7 @@ let homeManagerUser = "dsmather"; in
     ".notmuch-config".source = ./notmuch-config;
     ".urlview".source = ./urlview;
     ".screenlayout".source = ./screenlayout;
+    ".config/nixpkgs/config.nix".source = ./config.nix;
     #".task/hooks/on-modify.timewarrior".source = ./timewarrior/on-modify.timewarrior;
     #".task/nord.theme".source = ./igloo/snowblocks/taskwarrior/nord.theme;
     #".timewarrior/nord.theme".source = ./igloo/snowblocks/timewarrior/nord.theme;
