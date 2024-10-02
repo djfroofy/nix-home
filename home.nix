@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 let homeManagerUser = "dsmather"; in
 
@@ -10,8 +10,8 @@ let homeManagerUser = "dsmather"; in
 
   home = {
     username = homeManagerUser;
-    homeDirectory = "/home/${homeManagerUser}";
-    stateVersion = "23.05";
+    homeDirectory = "/Users/${homeManagerUser}";
+    stateVersion = "24.05";
   };
 
   nixpkgs.config = {
@@ -28,9 +28,9 @@ let homeManagerUser = "dsmather"; in
     enable = true;
     settings = {
       import = [
-        "~/.config/alacritty/themes/themes/nord.yaml"
+        "~/.config/alacritty/themes/themes/nord.toml"
       ];
-      font.size = 7.0;
+      font.size = 14.0;
       shell.program = "fish";
     };
   };
@@ -134,11 +134,11 @@ let homeManagerUser = "dsmather"; in
 
   # home dot files and directories
   home.file = {
-    ".Xmodmap".source = xmonad/Xmodmap;
-    ".xmobarrc".source = xmonad/xmobarrc;
-    ".xmonad/xmonad.hs".source = xmonad/xmonad.hs;
-    ".xmonad/icons".source = xmonad/icons;
-    ".xsessionrc".source = xmonad/xsessionrc;
+    #".Xmodmap".source = xmonad/Xmodmap;
+    #".xmobarrc".source = xmonad/xmobarrc;
+    #".xmonad/xmonad.hs".source = xmonad/xmonad.hs;
+    #".xmonad/icons".source = xmonad/icons;
+    #".xsessionrc".source = xmonad/xsessionrc;
     ".mplayer/config".source = mplayer/config;
     #".config/termite/config".source = nord-termite/src/config;
     ".config/alacritty/themes".source = ./alacritty-theme;
@@ -148,11 +148,10 @@ let homeManagerUser = "dsmather"; in
     ".notmuch-config".source = ./notmuch-config;
     ".urlview".source = ./urlview;
     ".screenlayout".source = ./screenlayout;
-    #".task/hooks/on-modify.timewarrior".source = ./timewarrior/on-modify.timewarrior;
     #".task/nord.theme".source = ./igloo/snowblocks/taskwarrior/nord.theme;
-    #".timewarrior/nord.theme".source = ./igloo/snowblocks/timewarrior/nord.theme;
     ".gnupg/gpg-agent.conf".source = ./gpg-agent.conf;
     "bin".source = ./bin;
   };
+
 
 }
