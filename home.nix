@@ -76,6 +76,8 @@ let homeManagerUser = "dsmather"; in
   };
 
 
+  programs.go.enable = true;
+
   # Fish Shell - enabled for experimentation
   programs.fish = {
     enable = true;
