@@ -12,6 +12,7 @@ let homeManagerUser = "dsmather"; in
     username = homeManagerUser;
     homeDirectory = "/Users/${homeManagerUser}";
     stateVersion = "24.05";
+    packages = import ./packages.nix pkgs;
   };
 
   nixpkgs.config = {
@@ -22,7 +23,6 @@ let homeManagerUser = "dsmather"; in
   programs.home-manager = {
     enable = true;
   };
-
 
   programs.alacritty = {
     enable = true;
@@ -61,6 +61,7 @@ let homeManagerUser = "dsmather"; in
   programs.tmux = {
     enable = true;
     keyMode = "vi";
+    #shell = "${pkgs.fish}/bin/fish";
     plugins = with pkgs; [
       tmuxPlugins.yank
       tmuxPlugins.fpp
@@ -72,6 +73,8 @@ let homeManagerUser = "dsmather"; in
     ];
     extraConfig = ''
       run-shell "~/.nord-tmux/nord.tmux"
+      # This prevents a login shell which in effect avoids PATH being overriden
+      set -g default-command $SHELL
     '';
   };
 
