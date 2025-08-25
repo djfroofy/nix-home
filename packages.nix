@@ -47,11 +47,12 @@ pkgs: with pkgs; [
   dnsutils
 
   # Java
-  maven
+  # maven
   #oraclejdk8
 
   # Python and python packages
   #python
+  python3
   #python27Packages.virtualenv
   #python311
   #python311Packages.virtualenv
@@ -101,6 +102,7 @@ pkgs: with pkgs; [
 
   # Misc others
   fpm
+  #rpmbuild
   #nixops
   #radeontop
   go-md2man

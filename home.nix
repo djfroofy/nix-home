@@ -12,7 +12,7 @@ let homeManagerUser = "dsmather"; in
     username = homeManagerUser;
     homeDirectory = "/Users/${homeManagerUser}";
     stateVersion = "24.05";
-    packages = import ./packages.nix pkgs;
+    packages = (import ./packages.nix pkgs) ++ (import ./work/packages.nix pkgs);
   };
 
   nixpkgs.config = {
@@ -30,7 +30,7 @@ let homeManagerUser = "dsmather"; in
       import = [
         "~/.config/alacritty/themes/themes/nord.toml"
       ];
-      font.size = 14.0;
+      font.size = 12.5;
       shell.program = "fish";
     };
   };
