@@ -147,9 +147,9 @@ pkgs: with pkgs; [
   # Video
   ffmpeg
   mpv
-  gimp
+  #gimp
   yt-dlp
-  mplayer
+  #mplayer
   #spotify
   #(pkgs.mplayer.override { jackaudioSupport = true; })
   #(pkgs.mpv.override { jackaudioSupport = true; })

@@ -1,3 +1,4 @@
+# Tested with nixpkgs 25.11
 { config, pkgs, lib, ... }:
 
 let homeManagerUser = "dsmather"; in
@@ -128,15 +129,14 @@ let homeManagerUser = "dsmather"; in
 
   # Git - scm
   programs.git = {
-    package = pkgs.gitAndTools.gitFull;
+    package = pkgs.gitFull;
     enable = true;
-    aliases = {
+    settings.alias = {
       st = "status -s";
       ls = "log --pretty=format:\"%C(yellow)%h%Cred%d\\\\ %Creset%s%Cblue\\\\ [%cn]\" --decorate";
       ll = "log --pretty=format:\"%C(yellow)%h%Cred%d\\\\ %Creset%s%Cblue\\\\ [%cn]\" --decorate --numstat";
     };
   };
-
   # home dot files and directories
   home.file = {
     #".Xmodmap".source = xmonad/Xmodmap;
@@ -147,6 +147,7 @@ let homeManagerUser = "dsmather"; in
     ".mplayer/config".source = mplayer/config;
     #".config/termite/config".source = nord-termite/src/config;
     ".config/alacritty/themes".source = ./alacritty-theme;
+    ".config/ghostty/config".source = ./ghostty/config;
     ".nord-tmux".source = ./nord-tmux;
     ".local/share/rofi/themes".source = ./base16-rofi/themes;
     ".mutt".source = ./mutt;
