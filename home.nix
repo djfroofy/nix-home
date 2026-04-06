@@ -28,11 +28,11 @@ let homeManagerUser = "dsmather"; in
   programs.alacritty = {
     enable = true;
     settings = {
-      import = [
+      general.import = [
         "~/.config/alacritty/themes/themes/nord.toml"
       ];
       font.size = 12.5;
-      shell.program = "fish";
+      terminal.shell.program = "fish";
     };
   };
 
