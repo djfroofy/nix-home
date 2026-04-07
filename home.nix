@@ -29,7 +29,7 @@ in
   home = {
     username = profile.identity.username;
     homeDirectory = profile.identity.homeDirectory;
-    stateVersion = "24.05";
+    stateVersion = "25.05";
     packages = (import ./packages.nix pkgs) ++ (import ./work/packages.nix pkgs);
   };
 
