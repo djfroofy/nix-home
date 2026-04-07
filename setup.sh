@@ -21,6 +21,17 @@ do
         fi
 done
 
+if [[ -f user-profile.nix ]]
+then
+        echo Local user-profile.nix already exists, skipping
+else
+        cp user-profile.example.nix user-profile.nix
+        echo "================================================================"
+        echo "Created user-profile.nix from user-profile.example.nix."
+        echo "Edit user-profile.nix with your username, email, home directory, and work-specific values before switching."
+        echo "================================================================"
+fi
+
 nix-channel --add https://github.com/rycee/home-manager/archive/release-19.09.tar.gz home-manager
 nix-channel --update home-manager
 
@@ -30,5 +41,4 @@ echo "================================================================"
 echo done with first part of setup.
 echo now log out, log back in and run:
 echo ./post-setup.sh
-
 

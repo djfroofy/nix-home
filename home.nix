@@ -1,17 +1,34 @@
 # Tested with nixpkgs 25.11
 { config, pkgs, lib, ... }:
 
-let homeManagerUser = "dsmather"; in
+let
+  userProfilePath = ./user-profile.nix;
+  userProfileExists = builtins.pathExists userProfilePath;
+  profile = config.nixHome.profile;
+in
 
 {
   imports = [
+    ./modules/nix-home-profile.nix
+  ] ++ lib.optional userProfileExists userProfilePath ++ [
     ./work/home.nix
     ./personal/home.nix
   ];
 
+  assertions = [
+    {
+      assertion = userProfileExists;
+      message = ''
+        Missing ./user-profile.nix.
+
+        Copy ./user-profile.example.nix to ./user-profile.nix and update the values for your user before running Home Manager.
+      '';
+    }
+  ];
+
   home = {
-    username = homeManagerUser;
-    homeDirectory = "/Users/${homeManagerUser}";
+    username = profile.identity.username;
+    homeDirectory = profile.identity.homeDirectory;
     stateVersion = "24.05";
     packages = (import ./packages.nix pkgs) ++ (import ./work/packages.nix pkgs);
   };

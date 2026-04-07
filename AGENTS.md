@@ -43,6 +43,7 @@ Current repo workflow is non-flake and channel-based.
 ## Editing Expectations
 
 - Read the local module structure before adding new files or imports.
+- Keep user-specific identity and work-specific personal IDs in `user-profile.nix`, not scattered through modules.
 - Prefer extending existing patterns only when they remain maintainable; otherwise introduce a cleaner module split.
 - Document non-obvious decisions in code comments sparingly and only where they reduce future confusion.
 - If a change suggests a broader modernization step, keep the current change compatible and leave the repo easier to migrate later.

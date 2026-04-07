@@ -14,6 +14,11 @@ Now run first pass setup:
     cd ~/.config/nixpkgs
     ./setup.sh
 
+The setup script will create a local `user-profile.nix` from `user-profile.example.nix`
+if it does not already exist. Edit `user-profile.nix` with your username, full name,
+email, home directory, Git signing key, and any work-specific IDs before applying the
+configuration.
+
 Log out and log back in and run:
 
     ./post-setup.sh
@@ -29,6 +34,10 @@ The setup.sh script below creates 2 subdirecties and stub drop-in nix expression
 
 This allows you to easily add custom configuration for personal and work and not worry about
 maintaining divergent branches for home and work profiles.
+
+The user-specific values for this checkout now live in `user-profile.nix`. This file is
+intentionally untracked so each user can keep their own values locally while sharing the
+same Nix modules.
 
 To override work configuration, for example, with a checkout containing nix expressions and other files:
 
