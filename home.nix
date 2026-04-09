@@ -42,6 +42,10 @@ in
     enable = true;
   };
 
+  home.sessionVariables = {
+    EDITOR = "vim";
+  };
+
   programs.alacritty = {
     enable = true;
     settings = {
@@ -91,6 +95,8 @@ in
     ];
     extraConfig = ''
       run-shell "~/.nord-tmux/nord.tmux"
+      # Allow new shells in tmux panes to re-source Home Manager session vars.
+      set-environment -gu __HM_SESS_VARS_SOURCED
       # This prevents a login shell which in effect avoids PATH being overriden
       set -g default-command $SHELL
     '';
