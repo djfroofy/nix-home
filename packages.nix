@@ -143,6 +143,11 @@ pkgs: with pkgs; [
   # Bling
   #almonds
   #xaos
+  cbonsai
+  cmatrix
+  nyancat
+  peaclock
+  pipes
 
   # Video
   ffmpeg

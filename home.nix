@@ -83,6 +83,7 @@ in
   programs.tmux = {
     enable = true;
     keyMode = "vi";
+    terminal = "tmux-256color";
     #shell = "${pkgs.fish}/bin/fish";
     plugins = with pkgs; [
       tmuxPlugins.yank
@@ -170,6 +171,7 @@ in
     ".mplayer/config".source = mplayer/config;
     #".config/termite/config".source = nord-termite/src/config;
     ".config/alacritty/themes".source = ./alacritty-theme;
+    ".config/cava/config".source = ./cava/config;
     ".config/ghostty/config".source = ./ghostty/config;
     ".nord-tmux".source = ./nord-tmux;
     ".local/share/rofi/themes".source = ./base16-rofi/themes;
