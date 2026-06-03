@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+exec gtypist "$HOME/.config/gtypist/right-hand-qwerty.typ"

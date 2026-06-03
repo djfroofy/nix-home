@@ -163,7 +163,7 @@ pkgs: with pkgs; [
   # Games, GFX Demos etc
   #minetest
   #glxinfo
-  #gtypist
+  gtypist
   #unity3d
 
   # electronics projects

@@ -173,6 +173,7 @@ in
     ".config/alacritty/themes".source = ./alacritty-theme;
     ".config/cava/config".source = ./cava/config;
     ".config/ghostty/config".source = ./ghostty/config;
+    ".config/gtypist".source = ./gtypist;
     ".nord-tmux".source = ./nord-tmux;
     ".local/share/rofi/themes".source = ./base16-rofi/themes;
     ".mutt".source = ./mutt;
@@ -182,6 +183,7 @@ in
     #".task/nord.theme".source = ./igloo/snowblocks/taskwarrior/nord.theme;
     ".gnupg/gpg-agent.conf".source = ./gpg-agent.conf;
     "bin".source = ./bin;
+    ".local/bin/gtypist-right-hand-qwerty".source = ./bin/gtypist-right-hand-qwerty;
   };
 
 
