@@ -2,43 +2,27 @@
 
 set -euf -o pipefail
 
-for dropin in work personal
-do
-        if [[ -d "${dropin}" ]]
+clone_if_missing() {
+        local directory="$1"
+        local repository="$2"
+
+        if [[ -d "${directory}/.git" || -f "${directory}/.git" ]]
         then
-                echo Drop-in ${dropin} already exists, skipping
+                echo "${directory} checkout already exists, skipping"
         else
-                mkdir -p ${dropin}
-                echo "{ ... }: {}" > ${dropin}/home.nix
-                echo "pkgs: with pkgs; []" > ${dropin}/packages.nix
-                echo "================================================================"
-                echo "Created stub directory for your ${dropin} configurations. At a later point"
-                echo "you can backup and symlink in prefered ${dropin} configurations. Ex:"
-                echo "    cd ~/.config/nixpgs"
-                echo "    mv ${dropin} ${dropin}.bak"
-                echo "    ln -s ~/Projects/nix-home-${dropin} ${dropin}"
-                echo "================================================================"
+                git clone "${repository}" "${directory}"
         fi
-done
+}
 
-if [[ -f user-profile.nix ]]
-then
-        echo Local user-profile.nix already exists, skipping
-else
-        cp user-profile.example.nix user-profile.nix
-        echo "================================================================"
-        echo "Created user-profile.nix from user-profile.example.nix."
-        echo "Edit user-profile.nix with your username, email, home directory, and work-specific values before switching."
-        echo "================================================================"
-fi
-
-nix-channel --add https://github.com/rycee/home-manager/archive/release-19.09.tar.gz home-manager
-nix-channel --update home-manager
+clone_if_missing work ssh://git@bitbucket.oci.oraclecorp.com:7999/~dsmather/nix-home-work.git
+clone_if_missing personal git@github.com:djfroofy/nix-home-personal.git
 
 make git-submodule
+git -C work submodule sync --recursive
+git -C work submodule update --init --recursive --progress
 
 echo "================================================================"
-echo done with first part of setup.
-echo now log out, log back in and run:
-echo ./post-setup.sh
-
+echo "Bootstrap complete. Verify the flake with:"
+echo "  home-manager build --flake .#dsmather@dsmather-mac --no-out-link"
+echo "Then activate it with:"
+echo "  home-manager switch -b backup --flake .#dsmather@dsmather-mac"

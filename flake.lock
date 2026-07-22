@@ -1,0 +1,202 @@
+{
+  "nodes": {
+    "alacritty-theme": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1783715728,
+        "narHash": "sha256-kXHjFbjJXSDZjSc3BaBZmYQPVDuCUueyWw+GjDv4iL4=",
+        "owner": "alacritty",
+        "repo": "alacritty-theme",
+        "rev": "03cce642656759f440c97bb99ce65fc1c5b064a1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "alacritty",
+        "repo": "alacritty-theme",
+        "type": "github"
+      }
+    },
+    "base16-rofi": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1567886353,
+        "narHash": "sha256-AAXmL7Fac2DZOZcv9aVBBQLYic703t1nayJNwYr2iso=",
+        "owner": "djfroofy",
+        "repo": "base16-rofi",
+        "rev": "4e73caf3da17f3946657a87cf082f215047f508e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "djfroofy",
+        "ref": "nord-froofy",
+        "repo": "base16-rofi",
+        "type": "github"
+      }
+    },
+    "home-manager": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1779506708,
+        "narHash": "sha256-QOD/CNm196nCJRheux/URi4/HE66fthdOMqCJoPP1Y0=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "3ee51fbdac8c8bdfe1e7e1fcaba6520a563f394f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "ref": "release-25.11",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1782847189,
+        "narHash": "sha256-twXPFqFsrrY5r28Zh7Homgcp2gUMBgQ6WDS98Q/3xFI=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "b6018f87da91d19d0ab4cf979885689b469cdd41",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-25.11",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nord-tmux": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1683146574,
+        "narHash": "sha256-mcmVYNWOUoQLiu4eM/EUudRg67Gcou13xuC6zv9aMKA=",
+        "owner": "arcticicestudio",
+        "repo": "nord-tmux",
+        "rev": "f7b6da07ab55fe32ee5f7d62da56d8e5ac691a92",
+        "type": "github"
+      },
+      "original": {
+        "owner": "arcticicestudio",
+        "repo": "nord-tmux",
+        "type": "github"
+      }
+    },
+    "personal": {
+      "locked": {
+        "lastModified": 1784759621,
+        "narHash": "sha256-x3PMr164YHOh5ZxgdnaDFPVG7aqejRfMbsXNliyw7gY=",
+        "owner": "djfroofy",
+        "repo": "nix-home-personal",
+        "rev": "974f58bf2a3867f5348dd2320ceabec5517ce403",
+        "type": "github"
+      },
+      "original": {
+        "owner": "djfroofy",
+        "repo": "nix-home-personal",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "alacritty-theme": "alacritty-theme",
+        "base16-rofi": "base16-rofi",
+        "home-manager": "home-manager",
+        "nixpkgs": "nixpkgs",
+        "nord-tmux": "nord-tmux",
+        "personal": "personal",
+        "work": "work",
+        "workHpcOps": "workHpcOps",
+        "workOsshConfigs": "workOsshConfigs",
+        "workSpartaPki": "workSpartaPki",
+        "workSshConfigs": "workSshConfigs"
+      }
+    },
+    "work": {
+      "locked": {
+        "lastModified": 1784765379,
+        "narHash": "sha256-f1U1Fh6ROBRkdHri7BzpvgKqX5R6JSYs4bTBfefks2o=",
+        "ref": "darwin2024",
+        "rev": "fc8ca5ca38ec7fabe66aec84a6e970661466e31b",
+        "revCount": 74,
+        "type": "git",
+        "url": "ssh://git@bitbucket.oci.oraclecorp.com:7999/~dsmather/nix-home-work.git"
+      },
+      "original": {
+        "ref": "darwin2024",
+        "type": "git",
+        "url": "ssh://git@bitbucket.oci.oraclecorp.com:7999/~dsmather/nix-home-work.git"
+      }
+    },
+    "workHpcOps": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1784640750,
+        "narHash": "sha256-7qECvsVJdx8GwRU0dpM32rV7WZ2/YvF3/ha41JSCSXU=",
+        "ref": "refs/heads/master",
+        "rev": "8e009f9167ce008677a85c17e5f626fed9b9150b",
+        "revCount": 1004,
+        "type": "git",
+        "url": "ssh://git@bitbucket.oci.oraclecorp.com:7999/cccp/hpc-ops.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@bitbucket.oci.oraclecorp.com:7999/cccp/hpc-ops.git"
+      }
+    },
+    "workOsshConfigs": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1783012832,
+        "narHash": "sha256-5oKlYFZmlI0qDSJHMx3qibfYp5hSMBDo4yKJ3TKMn74=",
+        "ref": "refs/heads/master",
+        "rev": "c4d32811cd5253901ed607d430d37caf79b4a38c",
+        "revCount": 50,
+        "type": "git",
+        "url": "ssh://git@bitbucket.oci.oraclecorp.com:7999/acep/ssh-configs.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@bitbucket.oci.oraclecorp.com:7999/acep/ssh-configs.git"
+      }
+    },
+    "workSpartaPki": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1783736619,
+        "narHash": "sha256-WPokg6szmTA2KuwC2ZCkolVTySyJ+aEQDEuXa3LngqY=",
+        "ref": "refs/heads/master",
+        "rev": "696ca52354713ad10eacd9fe1be30d0b062c312c",
+        "revCount": 402,
+        "type": "git",
+        "url": "ssh://git@bitbucket.oci.oraclecorp.com:7999/secinf/sparta-pki.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@bitbucket.oci.oraclecorp.com:7999/secinf/sparta-pki.git"
+      }
+    },
+    "workSshConfigs": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1784571351,
+        "narHash": "sha256-cDHxgx8c4Ypf16bdx3LbLTDcNRbAtyP3Px6JhNP8KOg=",
+        "ref": "refs/heads/master",
+        "rev": "41ec12a264cf9f0edc3ec54deb3c81596a6dbb43",
+        "revCount": 462,
+        "type": "git",
+        "url": "ssh://git@bitbucket.oci.oraclecorp.com:7999/secedge/ssh_configs.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@bitbucket.oci.oraclecorp.com:7999/secedge/ssh_configs.git"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}

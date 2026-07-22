@@ -1,11 +1,11 @@
-#!/run/current-system/sw/bin/bash
+#!/usr/bin/env bash
 
 set -euf -o pipefail
 
-cd ~
-mkdir -p .config
-cd .config
-git clone https://github.com/djfroofy/nix-home.git nixpkgs
-cd nixpkgs
+config_root="${HOME}/.config/home-manager"
+
+mkdir -p "${HOME}/.config"
+git clone git@github.com:djfroofy/nix-home.git "${config_root}"
+cd "${config_root}"
 ./setup.sh
-echo "Install completed. Log out and log in and then run ./install-post.sh"
+echo "Install completed. Run ./post-setup.sh to activate the Home Manager flake."

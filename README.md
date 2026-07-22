@@ -1,54 +1,41 @@
 # nix-home
-Nix home-manager configuration for my computers.
 
-To recreate home on another first create a .config directory in your home and clone
-this project there:
+Standalone Home Manager flake configuration for `dsmather@dsmather-mac` on Apple
+Silicon macOS. The root repository composes shared configuration with pinned private
+`work` and `personal` module repositories.
 
-    cd ~
-    mkdir -p .config
-    cd .config
-    git clone git@github.com:djfroofy/nix-home.git nixpkgs
+## Prerequisites
 
-Now run first pass setup:
+- Nix with `nix-command` and `flakes` enabled.
+- Home Manager installed for the current user.
+- SSH access to the private work repository and its submodules.
 
-    cd ~/.config/nixpkgs
+## Bootstrap
+
+    git clone git@github.com:djfroofy/nix-home.git ~/.config/home-manager
+    cd ~/.config/home-manager
     ./setup.sh
 
-The setup script will create a local `user-profile.nix` from `user-profile.example.nix`
-if it does not already exist. Edit `user-profile.nix` with your username, full name,
-email, home directory, Git signing key, and any work-specific IDs before applying the
-configuration.
+`setup.sh` clones the `work` and `personal` module repositories when missing and
+initializes root and work submodules. The machine-specific profile lives in the
+private work repository at `user-profile.nix`.
 
-Log out and log back in and run:
+## Build and activate
 
-    ./post-setup.sh
+    home-manager build --flake .#dsmather@dsmather-mac --no-out-link
+    home-manager switch -b backup --flake .#dsmather@dsmather-mac
 
-This is mostly tested on NixOS 19.09 along with the following configuration: https://github.com/djfroofy/nix-configuration
-On other Linux systems, ymmv definitely.
+The first activation uses a backup generation because this configuration manages
+existing files in the home directory.
 
-For more details on home-manager for nix, see: https://github.com/rycee/home-manager
+## Nested module development
 
-# drop-in configurations
+The committed root lock pins remote revisions. To test local work before committing
+and publishing the nested repositories, override their inputs:
 
-The setup.sh script below creates 2 subdirecties and stub drop-in nix expressions: (work|personal).nix and packages.nix.
+    home-manager build --flake .#dsmather@dsmather-mac --no-out-link \
+      --override-input work "git+file:///Users/dsmather/.config/home-manager/work?submodules=1" \
+      --override-input personal "git+file:///Users/dsmather/.config/home-manager/personal"
 
-This allows you to easily add custom configuration for personal and work and not worry about
-maintaining divergent branches for home and work profiles.
-
-The user-specific values for this checkout now live in `user-profile.nix`. This file is
-intentionally untracked so each user can keep their own values locally while sharing the
-same Nix modules.
-
-To override work configuration, for example, with a checkout containing nix expressions and other files:
-
-    cd ~/.config/nixpgs
-    mv work work.bak
-    ln -s ~/Projects/nix-home-work work
-
-For personal configuration:
-
-    cd ~/.config/nixpgs
-    mv personal personal.bak
-    ln -s ~/Projects/nix-home-personal personal
-
-For an example drop-in see: https://github.com/djfroofy/nix-home-personal
+Update one dependency at a time with `nix flake update <input>`, then rebuild and
+commit the resulting `flake.lock` only after validation succeeds.

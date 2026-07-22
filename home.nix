@@ -1,41 +1,16 @@
 # Tested with nixpkgs 25.11
-{ config, pkgs, lib, ... }:
+{ config, pkgs, alacrittyTheme, nordTmux, base16Rofi, ... }:
 
 let
-  userProfilePath = ./user-profile.nix;
-  userProfileExists = builtins.pathExists userProfilePath;
   profile = config.nixHome.profile;
 in
 
 {
-  imports = [
-    ./modules/nix-home-profile.nix
-  ] ++ lib.optional userProfileExists userProfilePath ++ [
-    ./work/home.nix
-    ./personal/home.nix
-  ];
-
-  assertions = [
-    {
-      assertion = userProfileExists;
-      message = ''
-        Missing ./user-profile.nix.
-
-        Copy ./user-profile.example.nix to ./user-profile.nix and update the values for your user before running Home Manager.
-      '';
-    }
-  ];
-
   home = {
     username = profile.identity.username;
     homeDirectory = profile.identity.homeDirectory;
     stateVersion = "25.05";
-    packages = (import ./packages.nix pkgs) ++ (import ./work/packages.nix pkgs);
-  };
-
-  nixpkgs.config = {
-    allowUnfree = true;
-    oraclejdk.accept_license = true;
+    packages = import ./packages.nix pkgs;
   };
 
   programs.home-manager = {
@@ -170,12 +145,12 @@ in
     #".xsessionrc".source = xmonad/xsessionrc;
     ".mplayer/config".source = mplayer/config;
     #".config/termite/config".source = nord-termite/src/config;
-    ".config/alacritty/themes".source = ./alacritty-theme;
+    ".config/alacritty/themes".source = alacrittyTheme;
     ".config/cava/config".source = ./cava/config;
     ".config/ghostty/config".source = ./ghostty/config;
     ".config/gtypist".source = ./gtypist;
-    ".nord-tmux".source = ./nord-tmux;
-    ".local/share/rofi/themes".source = ./base16-rofi/themes;
+    ".nord-tmux".source = nordTmux;
+    ".local/share/rofi/themes".source = "${base16Rofi}/themes";
     ".mutt".source = ./mutt;
     ".notmuch-config".source = ./notmuch-config;
     ".urlview".source = ./urlview;

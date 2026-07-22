@@ -15,19 +15,19 @@ This repository manages Home Manager configuration for the author's machines.
 - Keep shared behavior in the root repo. Keep environment-specific behavior in `work/` or `personal/`.
 - Prefer declarative Home Manager options over ad hoc shell scripting when Home Manager can express the same behavior cleanly.
 - Avoid duplicating package lists, option values, or file wiring across modules. Factor common behavior into shared modules or helper expressions.
-- Preserve the current non-flake workflow, but do not add new channel-era complexity unless required for compatibility.
+- Keep the standalone Home Manager flake workflow. Do not add channel-era state or commands.
 - Favor changes that will migrate cleanly to flakes later: explicit imports, limited side effects, clear module boundaries, and minimal implicit state.
 - When changing package sets or imports, keep evaluation straightforward and predictable. Avoid clever abstractions that make maintenance harder.
 
 ## Commands
 
-Current repo workflow is non-flake and channel-based.
+Current repo workflow is standalone Home Manager with flakes.
 
 - Initial bootstrap: `./setup.sh`
 - First activation after login/bootstrap: `./post-setup.sh`
-- Validate evaluation/build without activation: `home-manager build`
-- Apply changes: `home-manager switch`
-- Safer apply when touching linked files or riskier config: `home-manager switch -b backup`
+- Validate evaluation/build without activation: `home-manager build --flake .#dsmather@dsmather-mac --no-out-link`
+- Apply changes: `home-manager switch --flake .#dsmather@dsmather-mac`
+- Safer apply when touching linked files or riskier config: `home-manager switch -b backup --flake .#dsmather@dsmather-mac`
 - Sync submodules: `make git-submodule`
 
 ## VCS Workflow

@@ -1,4 +1,3 @@
 #!/usr/bin/env bash
 
-#nix-shell '<home-manager>' -A install
-home-manager switch
+home-manager switch -b backup --flake .#dsmather@dsmather-mac
