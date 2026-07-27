@@ -28,6 +28,25 @@ private work repository at `user-profile.nix`.
 The first activation uses a backup generation because this configuration manages
 existing files in the home directory.
 
+## Update Codex
+
+Codex is pinned as the `codex-cli-nix` flake input. To update it deliberately,
+then validate and activate the new generation:
+
+    nix flake update codex-cli-nix
+    home-manager build --flake .#dsmather@dsmather-mac --no-out-link
+    home-manager switch -b backup --flake .#dsmather@dsmather-mac
+    exec "$SHELL" -l
+    codex --version
+    codex --profile act debug prompt-input smoke-test
+
+On the first migration from the legacy imperative install only, remove its old
+profile entry after a successful switch:
+
+    nix profile remove codex-cli-nix
+
+Commit the corresponding `flake.lock` update with the configuration change.
+
 ## Nested module development
 
 The committed root lock pins remote revisions. To test local work before committing

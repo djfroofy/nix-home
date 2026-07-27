@@ -7,6 +7,10 @@
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    codex-cli-nix = {
+      url = "git+https://github.com/sadjow/codex-cli-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     work.url = "git+ssh://git@bitbucket.oci.oraclecorp.com:7999/~dsmather/nix-home-work.git?ref=darwin2024";
     personal.url = "github:djfroofy/nix-home-personal";
@@ -45,6 +49,7 @@
   outputs = inputs@{
     nixpkgs,
     home-manager,
+    codex-cli-nix,
     work,
     personal,
     workSshConfigs,
@@ -74,6 +79,7 @@
       ];
 
       extraSpecialArgs = {
+        codexPackage = codex-cli-nix.packages.aarch64-darwin.default;
         alacrittyTheme = alacritty-theme;
         nordTmux = nord-tmux;
         base16Rofi = base16-rofi;

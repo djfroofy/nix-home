@@ -33,6 +33,45 @@
         "type": "github"
       }
     },
+    "codex-cli-nix": {
+      "inputs": {
+        "flake-utils": "flake-utils",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1784658824,
+        "narHash": "sha256-TYW3rOz0V0NgXCTW+/GcdX5kNyRsMsxoS5FGRKmo0Jw=",
+        "ref": "refs/heads/main",
+        "rev": "bd1773d0f796c93de7f4f00ea6c2469e95e44b62",
+        "revCount": 155,
+        "type": "git",
+        "url": "https://github.com/sadjow/codex-cli-nix"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://github.com/sadjow/codex-cli-nix"
+      }
+    },
+    "flake-utils": {
+      "inputs": {
+        "systems": "systems"
+      },
+      "locked": {
+        "lastModified": 1731533236,
+        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -105,6 +144,7 @@
       "inputs": {
         "alacritty-theme": "alacritty-theme",
         "base16-rofi": "base16-rofi",
+        "codex-cli-nix": "codex-cli-nix",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "nord-tmux": "nord-tmux",
@@ -116,13 +156,28 @@
         "workSshConfigs": "workSshConfigs"
       }
     },
+    "systems": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
     "work": {
       "locked": {
-        "lastModified": 1784765379,
-        "narHash": "sha256-f1U1Fh6ROBRkdHri7BzpvgKqX5R6JSYs4bTBfefks2o=",
+        "lastModified": 1785189421,
+        "narHash": "sha256-p1fjGMQPXKoTqDQ4jCAhU/uuD3SrubTFGlzD7FA7v8Q=",
         "ref": "darwin2024",
-        "rev": "fc8ca5ca38ec7fabe66aec84a6e970661466e31b",
-        "revCount": 74,
+        "rev": "2b867eb1150732f9d6e28d052bd3e35cd76a796a",
+        "revCount": 76,
         "type": "git",
         "url": "ssh://git@bitbucket.oci.oraclecorp.com:7999/~dsmather/nix-home-work.git"
       },
