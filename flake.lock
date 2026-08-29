@@ -41,11 +41,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1785294467,
-        "narHash": "sha256-mylUWHK2wIw8S07K5hbkrLELnflJkDwsSWz2YFbJzLI=",
+        "lastModified": 1787798436,
+        "narHash": "sha256-sgQx7yUo2I1c4McylOW1vRklIxDL3Kwzq35ilr7firc=",
         "ref": "refs/heads/main",
-        "rev": "e4e3b0672bbb8fba7f32fe53cd9c604990970374",
-        "revCount": 156,
+        "rev": "18eb1cac4e17c8cbc40f3a2a83940d8f38ddace5",
+        "revCount": 167,
         "type": "git",
         "url": "https://github.com/sadjow/codex-cli-nix"
       },
