@@ -41,11 +41,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1788304374,
-        "narHash": "sha256-K5JXIpkGEj2QXnapaeWsQJ9Io00N7Sf8p+ym9yAtx88=",
+        "lastModified": 1791227718,
+        "narHash": "sha256-3Jzu4qVWw5jcdzzxkLz1paFLk+m5jc3ISZgSvhgedFo=",
         "ref": "refs/heads/main",
-        "rev": "bde8e6641e076855e84e47b5e4b5ff4a106004bc",
-        "revCount": 170,
+        "rev": "52421aa18bebfee9ee29aadba39e774027a77926",
+        "revCount": 190,
         "type": "git",
         "url": "https://github.com/sadjow/codex-cli-nix"
       },
@@ -173,11 +173,11 @@
     },
     "work": {
       "locked": {
-        "lastModified": 1785189421,
-        "narHash": "sha256-p1fjGMQPXKoTqDQ4jCAhU/uuD3SrubTFGlzD7FA7v8Q=",
+        "lastModified": 1791310869,
+        "narHash": "sha256-VeTJM34ydeKYUkz7d5vKWAjxY3J5PNvAuQWUt5TSoh8=",
         "ref": "darwin2024",
-        "rev": "2b867eb1150732f9d6e28d052bd3e35cd76a796a",
-        "revCount": 76,
+        "rev": "2a191afc6010e2581a7007ad76d346da1ec9d31c",
+        "revCount": 78,
         "type": "git",
         "url": "ssh://git@bitbucket.oci.oraclecorp.com:7999/~dsmather/nix-home-work.git"
       },

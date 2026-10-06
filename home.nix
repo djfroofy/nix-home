@@ -156,7 +156,6 @@ in
     ".urlview".source = ./urlview;
     ".screenlayout".source = ./screenlayout;
     #".task/nord.theme".source = ./igloo/snowblocks/taskwarrior/nord.theme;
-    ".gnupg/gpg-agent.conf".source = ./gpg-agent.conf;
     "bin".source = ./bin;
     ".local/bin/gtypist-right-hand-qwerty".source = ./bin/gtypist-right-hand-qwerty;
   };
