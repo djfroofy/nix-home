@@ -173,11 +173,11 @@
     },
     "work": {
       "locked": {
-        "lastModified": 1791310869,
-        "narHash": "sha256-VeTJM34ydeKYUkz7d5vKWAjxY3J5PNvAuQWUt5TSoh8=",
+        "lastModified": 1793052273,
+        "narHash": "sha256-Dh6z7kge4VCwbIbkmZBv+WCNn1fasxNlu8NnhC/6lU0=",
         "ref": "darwin2024",
-        "rev": "2a191afc6010e2581a7007ad76d346da1ec9d31c",
-        "revCount": 78,
+        "rev": "37587d6f94b356aa20b4aa04a968d23b474ae16d",
+        "revCount": 79,
         "type": "git",
         "url": "ssh://git@bitbucket.oci.oraclecorp.com:7999/~dsmather/nix-home-work.git"
       },
