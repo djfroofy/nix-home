@@ -23,6 +23,21 @@ let homeManagerUser = "dsmather"; in
     enable = true;
   };
 
+  programs.ghostty = {
+    enable = true;
+
+    # Enable whichever shell(s) you use
+    enableBashIntegration = true;
+    enableFishIntegration = true;
+    enableZshIntegration = true;
+
+    settings = {
+      theme = "Nord";
+      # optional extras
+      font-size = 12;
+      background-opacity = 0.95;
+    };
+  };
 
   programs.alacritty = {
     enable = true;
@@ -46,7 +61,7 @@ let homeManagerUser = "dsmather"; in
     };
     plugins = with pkgs; [
       vimPlugins.supertab
-      vimPlugins.The_NERD_tree # file system explorer
+      vimPlugins.nerdtree # file system explorer
       vimPlugins.rust-vim
       vimPlugins.vim-racer
       vimPlugins.lightline-vim
@@ -123,10 +138,10 @@ let homeManagerUser = "dsmather"; in
 
   # Git - scm
   programs.git = {
-    package = pkgs.gitAndTools.gitFull;
+    #package = pkgs.gitAndTools.gitFull;
     enable = true;
     lfs.enable = true;
-    aliases = {
+    settings.aliases = {
       st = "status -s";
       ls = "log --pretty=format:\"%C(yellow)%h%Cred%d\\\\ %Creset%s%Cblue\\\\ [%cn]\" --decorate";
       ll = "log --pretty=format:\"%C(yellow)%h%Cred%d\\\\ %Creset%s%Cblue\\\\ [%cn]\" --decorate --numstat";
