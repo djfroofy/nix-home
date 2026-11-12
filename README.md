@@ -1,45 +1,22 @@
-# nix-home
-Nix home-manager configuration for my computers.
+# Linux Home Manager configuration
 
-To recreate home on another first create a .config directory in your home and clone
-this project there:
+Standalone flakes for `dsmather@linux` on x86_64 Linux. Requires Nix with
+`experimental-features = nix-command flakes` and host access to the private work inputs.
 
-    cd ~
-    mkdir -p .config
-    cd .config
-    git clone git@github.com:djfroofy/nix-home.git nixpkgs
+```sh
+./setup.sh
+home-manager build --flake '.#dsmather@linux' --no-out-link
+./post-setup.sh
+```
 
-Now run first pass setup:
+The root flake pins work, personal and external assets. Ignored sibling checkouts
+and initialized submodules are not needed for evaluation.
 
-    cd ~/.config/nixpkgs
-    ./setup.sh
+For local work-module development:
 
-Log out and log back in and run:
+```sh
+home-manager build --flake '.#dsmather@linux' --override-input work path:../work --no-write-lock-file --no-out-link
+```
 
-    ./post-setup.sh
-
-This is mostly tested on NixOS 19.09 along with the following configuration: https://github.com/djfroofy/nix-configuration
-On other Linux systems, ymmv definitely.
-
-For more details on home-manager for nix, see: https://github.com/rycee/home-manager
-
-# drop-in configurations
-
-The setup.sh script below creates 2 subdirecties and stub drop-in nix expressions: (work|personal).nix and packages.nix.
-
-This allows you to easily add custom configuration for personal and work and not worry about
-maintaining divergent branches for home and work profiles.
-
-To override work configuration, for example, with a checkout containing nix expressions and other files:
-
-    cd ~/.config/nixpgs
-    mv work work.bak
-    ln -s ~/Projects/nix-home-work work
-
-For personal configuration:
-
-    cd ~/.config/nixpgs
-    mv personal personal.bak
-    ln -s ~/Projects/nix-home-personal personal
-
-For an example drop-in see: https://github.com/djfroofy/nix-home-personal
+Keep root and work changes in separate commits. `flake-migration` branches are
+review candidates; no master merge or Darwin activation is part of validation.

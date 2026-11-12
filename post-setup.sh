@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-
-nix-shell '<home-manager>' -A install
-home-manager switch
+set -euo pipefail
+cd "$(dirname "$0")"
+nix run --inputs-from . home-manager -- switch -b backup --flake '.#dsmather@linux'

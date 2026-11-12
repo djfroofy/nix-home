@@ -1,0 +1,191 @@
+{
+  "nodes": {
+    "alacritty-theme": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1695022682,
+        "narHash": "sha256-MWXo8N19McmbQrN4IrXSp24L3elRNCOz5yDqV//Ycpo=",
+        "owner": "alacritty",
+        "repo": "alacritty-theme",
+        "rev": "9f769d54eccc0b43bb1ae600575baddea15aae56",
+        "type": "github"
+      },
+      "original": {
+        "owner": "alacritty",
+        "repo": "alacritty-theme",
+        "rev": "9f769d54eccc0b43bb1ae600575baddea15aae56",
+        "type": "github"
+      }
+    },
+    "base16-rofi": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1567886353,
+        "narHash": "sha256-AAXmL7Fac2DZOZcv9aVBBQLYic703t1nayJNwYr2iso=",
+        "owner": "djfroofy",
+        "repo": "base16-rofi",
+        "rev": "4e73caf3da17f3946657a87cf082f215047f508e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "djfroofy",
+        "repo": "base16-rofi",
+        "rev": "4e73caf3da17f3946657a87cf082f215047f508e",
+        "type": "github"
+      }
+    },
+    "home-manager": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1794251182,
+        "narHash": "sha256-R2sZBXiOJo3HAnvTiVkbbHDJy//JMlAwUKEiPbfqPXk=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "6eb2d33d1d0c95a37ef6443c88e6c1686012ee8b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "ref": "release-26.05",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1794165970,
+        "narHash": "sha256-XuAV2cUwaod3Bt4XFVqiXz3v1w2ex16W6Sv4S7EWres=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "ac588ef1c914865dad517b337ea0eb9694a4021c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-26.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nord-tmux": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1559548097,
+        "narHash": "sha256-s/rimJRGXzwY9zkOp9+2bAF1XCT9FcyZJ1zuHxOBsJM=",
+        "owner": "arcticicestudio",
+        "repo": "nord-tmux",
+        "rev": "b0fd5838dbd5f3cf55eefd83ac84f3f9ac076610",
+        "type": "github"
+      },
+      "original": {
+        "owner": "arcticicestudio",
+        "repo": "nord-tmux",
+        "rev": "b0fd5838dbd5f3cf55eefd83ac84f3f9ac076610",
+        "type": "github"
+      }
+    },
+    "personal": {
+      "locked": {
+        "lastModified": 1784759621,
+        "narHash": "sha256-x3PMr164YHOh5ZxgdnaDFPVG7aqejRfMbsXNliyw7gY=",
+        "owner": "djfroofy",
+        "repo": "nix-home-personal",
+        "rev": "974f58bf2a3867f5348dd2320ceabec5517ce403",
+        "type": "github"
+      },
+      "original": {
+        "owner": "djfroofy",
+        "repo": "nix-home-personal",
+        "rev": "974f58bf2a3867f5348dd2320ceabec5517ce403",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "alacritty-theme": "alacritty-theme",
+        "base16-rofi": "base16-rofi",
+        "home-manager": "home-manager",
+        "nixpkgs": "nixpkgs",
+        "nord-tmux": "nord-tmux",
+        "personal": "personal",
+        "work": "work",
+        "workComputeOps": "workComputeOps",
+        "workNixUtils": "workNixUtils",
+        "workSpartaPki": "workSpartaPki"
+      }
+    },
+    "work": {
+      "locked": {
+        "lastModified": 1794512833,
+        "narHash": "sha256-t3asZplX614DHfiOdNDukKAnJ1IRD8DANImn1OFB1dU=",
+        "ref": "refs/heads/flake-migration",
+        "rev": "7f3736e7a6a702757c738ad37863679e64720ec6",
+        "revCount": 52,
+        "type": "git",
+        "url": "file:///private/tmp/home-manager-worktrees/work"
+      },
+      "original": {
+        "ref": "flake-migration",
+        "type": "git",
+        "url": "ssh://git@bitbucket.oci.oraclecorp.com:7999/~dsmather/nix-home-work.git"
+      }
+    },
+    "workComputeOps": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1727672979,
+        "narHash": "sha256-aMHW0///QiaDKrnbSPPzsNv7CtvktqihVYI9wcLMIyM=",
+        "ref": "refs/heads/master",
+        "rev": "57179a852df64928659b742b863c03126851c8c1",
+        "revCount": 2510,
+        "type": "git",
+        "url": "ssh://git@bitbucket.oci.oraclecorp.com:7999/cccp/compute-ops.git"
+      },
+      "original": {
+        "rev": "57179a852df64928659b742b863c03126851c8c1",
+        "type": "git",
+        "url": "ssh://git@bitbucket.oci.oraclecorp.com:7999/cccp/compute-ops.git"
+      }
+    },
+    "workNixUtils": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1715784722,
+        "narHash": "sha256-1Q962ZINZRAzI2r4ati5YNjXcIyRx/EbdkVNfREKg14=",
+        "ref": "refs/heads/master",
+        "rev": "b499313fe5971db74f7a5c784d21e46124699f7c",
+        "revCount": 28,
+        "type": "git",
+        "url": "ssh://git@bitbucket.oci.oraclecorp.com:7999/vmidp/nix-utils.git"
+      },
+      "original": {
+        "rev": "b499313fe5971db74f7a5c784d21e46124699f7c",
+        "type": "git",
+        "url": "ssh://git@bitbucket.oci.oraclecorp.com:7999/vmidp/nix-utils.git"
+      }
+    },
+    "workSpartaPki": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1783736619,
+        "narHash": "sha256-WPokg6szmTA2KuwC2ZCkolVTySyJ+aEQDEuXa3LngqY=",
+        "ref": "refs/heads/master",
+        "rev": "696ca52354713ad10eacd9fe1be30d0b062c312c",
+        "revCount": 402,
+        "type": "git",
+        "url": "ssh://git@bitbucket.oci.oraclecorp.com:7999/secinf/sparta-pki.git"
+      },
+      "original": {
+        "rev": "696ca52354713ad10eacd9fe1be30d0b062c312c",
+        "type": "git",
+        "url": "ssh://git@bitbucket.oci.oraclecorp.com:7999/secinf/sparta-pki.git"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}

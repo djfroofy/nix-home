@@ -1,16 +1,9 @@
-{ config, pkgs, ... }:
-
-let homeManagerUser = "dsmather"; in
+{ config, pkgs, alacrittyTheme, nordTmux, base16Rofi, ... }:
 
 {
-  imports = [
-    ./work/home.nix
-    ./personal/home.nix
-  ];
-
   home = {
-    username = homeManagerUser;
-    homeDirectory = "/home/${homeManagerUser}";
+    username = config.nixHome.profile.identity.username;
+    homeDirectory = config.nixHome.profile.identity.homeDirectory;
     stateVersion = "23.05";
   };
 
@@ -42,11 +35,11 @@ let homeManagerUser = "dsmather"; in
   programs.alacritty = {
     enable = true;
     settings = {
-      import = [
+      general.import = [
         "~/.config/alacritty/themes/themes/nord.yaml"
       ];
       font.size = 7.0;
-      shell.program = "fish";
+      terminal.shell.program = "${pkgs.fish}/bin/fish";
     };
   };
 
@@ -141,7 +134,7 @@ let homeManagerUser = "dsmather"; in
     #package = pkgs.gitAndTools.gitFull;
     enable = true;
     lfs.enable = true;
-    settings.aliases = {
+    settings.alias = {
       st = "status -s";
       ls = "log --pretty=format:\"%C(yellow)%h%Cred%d\\\\ %Creset%s%Cblue\\\\ [%cn]\" --decorate";
       ll = "log --pretty=format:\"%C(yellow)%h%Cred%d\\\\ %Creset%s%Cblue\\\\ [%cn]\" --decorate --numstat";
@@ -151,15 +144,19 @@ let homeManagerUser = "dsmather"; in
   # home dot files and directories
   home.file = {
     ".Xmodmap".source = xmonad/Xmodmap;
-    ".xmobarrc".source = xmonad/xmobarrc;
+    ".xmobarrc".text = builtins.replaceStrings
+      [ "{wiiface}" "{temp}" ]
+      [ config.nixHome.profile.linux.wifiInterface
+        (if config.nixHome.profile.linux.cpuTemperature then "%multicoretemp% | " else "") ]
+      (builtins.readFile ./xmonad/xmobar.hs);
     ".xmonad/xmonad.hs".source = xmonad/xmonad.hs;
     ".xmonad/icons".source = xmonad/icons;
     ".xsessionrc".source = xmonad/xsessionrc;
     ".mplayer/config".source = mplayer/config;
     #".config/termite/config".source = nord-termite/src/config;
-    ".config/alacritty/themes".source = ./alacritty-theme;
-    ".nord-tmux".source = ./nord-tmux;
-    ".local/share/rofi/themes".source = ./base16-rofi/themes;
+    ".config/alacritty/themes".source = alacrittyTheme;
+    ".nord-tmux".source = nordTmux;
+    ".local/share/rofi/themes".source = base16Rofi + "/themes";
     ".mutt".source = ./mutt;
     ".notmuch-config".source = ./notmuch-config;
     ".urlview".source = ./urlview;
