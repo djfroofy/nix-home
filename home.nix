@@ -4,7 +4,7 @@
   home = {
     username = config.nixHome.profile.identity.username;
     homeDirectory = config.nixHome.profile.identity.homeDirectory;
-    stateVersion = "23.05";
+    stateVersion = "26.05";
   };
 
   nixpkgs.config = {
