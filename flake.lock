@@ -122,11 +122,11 @@
       "locked": {
         "lastModified": 1794512833,
         "narHash": "sha256-t3asZplX614DHfiOdNDukKAnJ1IRD8DANImn1OFB1dU=",
-        "ref": "refs/heads/flake-migration",
+        "ref": "flake-migration",
         "rev": "7f3736e7a6a702757c738ad37863679e64720ec6",
         "revCount": 52,
         "type": "git",
-        "url": "file:///private/tmp/home-manager-worktrees/work"
+        "url": "ssh://git@bitbucket.oci.oraclecorp.com:7999/~dsmather/nix-home-work.git"
       },
       "original": {
         "ref": "flake-migration",

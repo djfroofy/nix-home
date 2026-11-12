@@ -20,3 +20,10 @@ home-manager build --flake '.#dsmather@linux' --override-input work path:../work
 
 Keep root and work changes in separate commits. `flake-migration` branches are
 review candidates; no master merge or Darwin activation is part of validation.
+
+The old channel-based `nixb` alias is retired. Use `nix build nixpkgs#<attribute>`
+for an ad hoc package build. Configure Xmobar's wireless interface and CPU
+temperature support through `nixHome.profile.linux` in a host profile.
+
+Migration details and validation boundaries are recorded in
+[the migration notes](docs/linux-flake-migration.md).
