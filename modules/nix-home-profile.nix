@@ -44,21 +44,5 @@ with lib;
       };
     };
 
-    work = {
-      ociProfileName = mkOption {
-        type = types.str;
-        description = "Default OCI CLI profile used by work shell helpers.";
-      };
-
-      ociCompartmentRoot = mkOption {
-        type = types.str;
-        description = "OCI compartment OCID for the work root compartment.";
-      };
-
-      ociCompartmentDev = mkOption {
-        type = types.str;
-        description = "OCI compartment OCID for the work development compartment.";
-      };
-    };
   };
 }

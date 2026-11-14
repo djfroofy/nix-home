@@ -5,7 +5,8 @@
 This repository manages Home Manager configuration for the author's machines.
 
 - The root repo contains shared configuration and orchestration.
-- `work/` contains work-specific Home Manager and related config.
+- This Linux branch requires only the personal drop-in; work is not part of its flake.
+- An existing `work/` checkout is a separate repository and must remain untouched.
 - `personal/` contains non-work and personal productivity config shared across personal environments.
 - Treat `work/` and `personal/` as repo boundaries. Keep their changes intentional and separate from root changes unless a task truly spans repos.
 

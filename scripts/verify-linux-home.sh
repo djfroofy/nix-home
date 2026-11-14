@@ -3,17 +3,22 @@ set -euo pipefail
 export PATH="$HOME/.nix-profile/bin:$HOME/.local/state/nix/profiles/home-manager/home-path/bin:$PATH"
 test "$(id -un)" = dsmather
 test "$HOME" = /home/dsmather
-for path in .Xmodmap .xmobarrc .xmonad/xmonad.hs .config/alacritty/themes .nord-tmux .pic-tools .ssh/config workbin sparta_roots; do
+for path in .Xmodmap .xmobarrc .xmonad/xmonad.hs .config/alacritty/themes .nord-tmux; do
   test -L "$HOME/$path"
   test -e "$HOME/$path"
 done
 test ! -e "$HOME/.config/karabiner"
 test "$(git config --get commit.gpgsign)" = false
 test "$(git config --get user.name)" = 'Drew Smathers'
-for command in git fish vim tmux ykman pcsc_scan go; do
+test "$(git config --get user.email)" = 'drew.smathers@gmail.com'
+for path in .pic-tools .ssh/config workbin sparta_roots ._tunnelsetup ._yubi .m2/settings.xml omni-curl; do
+  test ! -e "$HOME/$path"
+  test ! -L "$HOME/$path"
+done
+for command in git fish vim tmux; do
   command -v "$command"
 done
-fish --login --command 'functions -q boci; and command -q git; and command -q ykman'
+fish --login --command 'not functions -q boci; and command -q git'
 verification_dir=$(mktemp -d)
 trap 'rm -rf "$verification_dir"' EXIT
 git init -q "$verification_dir"

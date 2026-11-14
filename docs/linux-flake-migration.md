@@ -1,14 +1,15 @@
-# Linux flake migration validation
+# Personal-only Linux flake migration
 
-## Source boundaries
+## Composition
 
-Root base: `fb2b8acd63a1336a3f9c0a31795cc68ea9c3b2a6`.
-Work base: `95a3d336f389843611930e91158ddcbc13ae241d`.
-The existing Darwin checkouts and personal working tree are excluded.
-Linux retains its X11 links, Fish setup, terminal settings and work helpers.
-External assets use the original master gitlink revisions where available.
-The missing generated trustroots directory uses the Sparta source pinned by Darwin.
-The legacy NixOS certificate module is not a standalone Home Manager module.
+The Linux root requires only the personal flake module. Work and its private
+asset inputs are removed; unrelated public input revisions remain pinned.
+The work and personal repositories and Darwin checkouts are unchanged.
+
+The root `user-profile.nix` supplies Drew Smathers' Linux identity, including
+`drew.smathers@gmail.com` and `/home/dsmather`. Its signing key is empty and
+automatic commit signing remains disabled. The personal module's macOS
+Karabiner link remains disabled on Linux. State version stays at 26.05.
 
 ## State-version audit
 
@@ -30,46 +31,25 @@ The state-version change is separate from the flake composition commit.
 A clean VM transition cannot certify migration of undiscovered state on an
 existing Linux workstation. Review its enabled modules before deployment.
 
-## Verification gate
+## Verification
 
-Passed in the x86_64 Ubuntu 24.04 Lima VM: full build and activation at
-23.05, transition to 26.05, repeat activation, and three successful runs of
-`scripts/verify-linux-home.sh`. Checks cover managed links, command availability,
-Fish login, Git identity and an unsigned commit without overrides.
-Final remote-pinned validation is required before root publication.
-Hardware tokens, corporate connectivity and graphical behavior are outside
-what the VM smoke checks establish.
+The earlier work-enabled migration passed full x86_64 VM builds, the state-version
+transition and repeat activation. On 2026-11-13 the personal-only update also passed an offline build, transition
+from that work-enabled generation, repeat activation, and two successful runs
+of `scripts/verify-linux-home.sh`. The checks verified shared links, Fish,
+personal Git identity, unsigned commits, and removal of the old work-managed
+links and `boci` function. The flake metadata resolved offline using only public
+inputs, and all retained lockfile input nodes were unchanged. No corporate Git
+inputs or local input overrides are needed by the new flake.
 
-## Required compatibility changes
+VM: `limactl shell flake-migration -- sudo -iu dsmather`.
+Logs: `/private/tmp/home-manager-worktrees/vm-personal-only.log` (transition and
+repeat activation), and `vm-personal-only-final.log` (committed-source verification).
+Graphical behavior and physical devices are outside the VM smoke checks.
 
-- `yubikey-manager-qt` is removed from Nixpkgs 26.05 because upstream archived
-  it. Retain `yubikey-manager` CLI; no unrelated GUI is substituted.
-- pic-tools upstream is unavailable. Vendor the exact master submodule snapshot
-  from the cached Git object; its tree matches Darwin's existing vendored tree.
-- `pcsctools` is renamed to `pcsc-tools`.
-- Xmobar previously referenced an ignored, absent generated file. Home Manager now
-  renders the tracked template; `nixHome.profile.linux.wifiInterface` defaults to
-  empty for hosts without Wi-Fi and `cpuTemperature` defaults to true. Set those
-  profile options for the target workstation (disable CPU temperature on unsupported CPUs).
-- Alacritty uses its current `general.import` and `terminal.shell` settings.
-- Git aliases use Git's `alias` section rather than the ineffective `aliases` section.
+## Compatibility retained
 
-## Local verification evidence
-
-Host evaluation succeeded for the full activation derivation. Evaluated package
-lists, managed file definitions, Git settings and session variables match across
-23.05 and 26.05 after normalizing root source-store prefixes.
-Bootstrap and validation shell scripts passed `bash -n`.
-
-Nix detected a hash mismatch in the host's existing Sparta source store path.
-Re-exporting the pinned commit directly from the cached Git repository into the
-VM reproduced the lockfile's exact NAR hash:
-`sha256-WPokg6szmTA2KuwC2ZCkolVTySyJ+aEQDEuXa3LngqY=`.
-No host store path was rewritten to bypass the check.
-
-VM access: `limactl shell flake-migration -- sudo -iu dsmather`.
-Validation logs are retained beside the host worktrees in
-`/private/tmp/home-manager-worktrees/` (`vm-build-2305.log` and `vm-transition.log`).
-The host required Lima's additional guest-agent package, which also upgraded
-Lima/QEMU and their Homebrew dependencies. No macOS Home Manager activation ran.
-The old `nixb` alias is retired; use `nix build nixpkgs#<attribute>`.
+Xmobar is rendered from its tracked template. Set `nixHome.profile.linux` options
+for the workstation's Wi-Fi interface and CPU temperature support. Alacritty uses
+its current settings structure. Git aliases use the `alias` section, and the
+old channel-based `nixb` alias remains retired.

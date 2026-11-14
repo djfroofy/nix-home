@@ -111,78 +111,7 @@
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "nord-tmux": "nord-tmux",
-        "personal": "personal",
-        "work": "work",
-        "workComputeOps": "workComputeOps",
-        "workNixUtils": "workNixUtils",
-        "workSpartaPki": "workSpartaPki"
-      }
-    },
-    "work": {
-      "locked": {
-        "lastModified": 1794512833,
-        "narHash": "sha256-t3asZplX614DHfiOdNDukKAnJ1IRD8DANImn1OFB1dU=",
-        "ref": "flake-migration",
-        "rev": "7f3736e7a6a702757c738ad37863679e64720ec6",
-        "revCount": 52,
-        "type": "git",
-        "url": "ssh://git@bitbucket.oci.oraclecorp.com:7999/~dsmather/nix-home-work.git"
-      },
-      "original": {
-        "ref": "flake-migration",
-        "type": "git",
-        "url": "ssh://git@bitbucket.oci.oraclecorp.com:7999/~dsmather/nix-home-work.git"
-      }
-    },
-    "workComputeOps": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1727672979,
-        "narHash": "sha256-aMHW0///QiaDKrnbSPPzsNv7CtvktqihVYI9wcLMIyM=",
-        "ref": "refs/heads/master",
-        "rev": "57179a852df64928659b742b863c03126851c8c1",
-        "revCount": 2510,
-        "type": "git",
-        "url": "ssh://git@bitbucket.oci.oraclecorp.com:7999/cccp/compute-ops.git"
-      },
-      "original": {
-        "rev": "57179a852df64928659b742b863c03126851c8c1",
-        "type": "git",
-        "url": "ssh://git@bitbucket.oci.oraclecorp.com:7999/cccp/compute-ops.git"
-      }
-    },
-    "workNixUtils": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1715784722,
-        "narHash": "sha256-1Q962ZINZRAzI2r4ati5YNjXcIyRx/EbdkVNfREKg14=",
-        "ref": "refs/heads/master",
-        "rev": "b499313fe5971db74f7a5c784d21e46124699f7c",
-        "revCount": 28,
-        "type": "git",
-        "url": "ssh://git@bitbucket.oci.oraclecorp.com:7999/vmidp/nix-utils.git"
-      },
-      "original": {
-        "rev": "b499313fe5971db74f7a5c784d21e46124699f7c",
-        "type": "git",
-        "url": "ssh://git@bitbucket.oci.oraclecorp.com:7999/vmidp/nix-utils.git"
-      }
-    },
-    "workSpartaPki": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1783736619,
-        "narHash": "sha256-WPokg6szmTA2KuwC2ZCkolVTySyJ+aEQDEuXa3LngqY=",
-        "ref": "refs/heads/master",
-        "rev": "696ca52354713ad10eacd9fe1be30d0b062c312c",
-        "revCount": 402,
-        "type": "git",
-        "url": "ssh://git@bitbucket.oci.oraclecorp.com:7999/secinf/sparta-pki.git"
-      },
-      "original": {
-        "rev": "696ca52354713ad10eacd9fe1be30d0b062c312c",
-        "type": "git",
-        "url": "ssh://git@bitbucket.oci.oraclecorp.com:7999/secinf/sparta-pki.git"
+        "personal": "personal"
       }
     }
   },
